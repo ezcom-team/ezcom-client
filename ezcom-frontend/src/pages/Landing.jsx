@@ -5,7 +5,7 @@ function Landing() {
   return (
     <div>
       <Nav />
-      Landing
+      PLEUM 1
       Landing 2
       Landing 3
     </div>
