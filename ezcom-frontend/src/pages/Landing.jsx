@@ -6,7 +6,7 @@ function Landing() {
     <div>
       <Nav />
       Landing
-      Landing 2
+      gorn 2
     </div>
   );
 }
