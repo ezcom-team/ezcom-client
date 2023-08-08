@@ -6,6 +6,8 @@ function Landing() {
     <div>
       <Nav />
       Landing
+      Landing 2
+      Landing 3
     </div>
   );
 }
