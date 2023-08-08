@@ -8,7 +8,9 @@ function Home() {
   return (
     <div>
       <Nav />
-      <h1 className="text-3xl font-bold underline">Hello world! {count}</h1>
+      <h1 className="text-3xl font-bold underline">
+        Hello world! pleum{count}
+      </h1>
     </div>
   );
 }
