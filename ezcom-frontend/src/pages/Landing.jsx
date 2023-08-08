@@ -8,6 +8,7 @@ function Landing() {
       Landing
       Landing 2
       Landing 3
+      puter delete
     </div>
   );
 }
