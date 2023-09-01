@@ -7,8 +7,10 @@ function Nav() {
     <nav className="red">
       <Link to="/">Home</Link>
       <Link to="/landing">Landing</Link>
-      <Link to="/about">About</Link>
+      <Link to="/about">Detail</Link>
       <Link to="/testRedux">Test-Redux</Link>
+      <Link to="/MyOrder">MyOrder</Link>
+
     </nav>
   );
 }
