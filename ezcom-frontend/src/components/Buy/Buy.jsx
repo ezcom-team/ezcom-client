@@ -1,5 +1,5 @@
 import BuyDetail from './BuyDetail';
-import SellDetail from './SellDetail'
+import SellDetail from '../Sell/SellDetail'
 
 const Buy = () =>{
     return(

@@ -1,7 +1,7 @@
-import picProduct from '../img/testPic.png'
-import p1 from '../img/p1.jpg'
-import p2 from '../img/p2.jpg'
-import { data } from "../content/detail.js";
+import picProduct from '../../img/testPic.png'
+import p1 from '../../img/p1.jpg'
+import p2 from '../../img/p2.jpg'
+import { data } from "../../content/detail";
 
 const SellDetail = () => {
     return (

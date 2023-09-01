@@ -1,5 +1,5 @@
-import picProduct from "../img/testPic.png";
-import { data } from "../content/detail.js";
+import picProduct from "../../img/testPic.png";
+import { data } from "../../content/detail.js";
 // import React from "react";
 
 const Detail = () => {

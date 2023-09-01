@@ -1,12 +1,10 @@
-import picProduct from "../img/testPic.png";
-import p1 from "../img/p1.jpg";
-import p2 from "../img/p2.jpg";
+
 import React, { useState } from "react";
-import SellDetail from "./SellDetail";
-import Buy from "./Buy";
-import Sell from "./Sell";
-import Dropdown from "./Dropdown";
-import Graph from "../components/Graph";
+
+import Buy from "../Buy/Buy";
+import Sell from "../Sell/Sell";
+
+import Graph from "../Graph/Graph";
 
 
 
