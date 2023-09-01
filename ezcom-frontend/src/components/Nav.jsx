@@ -9,6 +9,8 @@ function Nav() {
       <Link to="/landing">Landing</Link>
       <Link to="/about">About</Link>
       <Link to="/testRedux">Test-Redux</Link>
+      <Link to="/MyOrder">MyOrder</Link>
+
     </nav>
   );
 }
