@@ -15,7 +15,7 @@ import MyOrder from "./pages/MyOrder.jsx";
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
-import TestRedux from "./pages/TestRedux";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
     element: <About />,
   },
   {
-    path: "/testRedux",
-    element: <TestRedux />,
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "/MyOrder",
