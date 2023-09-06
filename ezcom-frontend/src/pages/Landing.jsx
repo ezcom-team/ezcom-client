@@ -6,7 +6,7 @@ import { Searchbar } from "../components/Searchbar";
 import axios from 'axios';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import { PromoteSlider } from "../components/PromoteSlider";
+// import { PromoteSlider } from "../components/PromoteSlider";
 
 function Landing() {
   
@@ -31,7 +31,7 @@ function Landing() {
       <Nav />
       <div className="w-full bg-100 h-auto flex justify-center">
         <div className="bg-400 w-3/4 py-5 lg:py-10">
-          <PromoteSlider />
+          {/* <PromoteSlider /> */}
         </div>
       </div>
       <div className="bg-200 w-full h-16 lg:h-24 flex justify-between sm:justify-center md:justify-end">
