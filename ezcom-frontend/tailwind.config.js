@@ -2,7 +2,7 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {    
+    extend: {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
@@ -11,7 +11,7 @@ export default {
         300: '#5c5c5c',
         200: '#e7e7e7',
         100: '#ffffff',
-      },
+      }
     },
   },
   plugins: [],
