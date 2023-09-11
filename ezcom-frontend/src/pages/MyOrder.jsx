@@ -4,7 +4,7 @@ import MyOrder from "../components/MyOrderpage/MyOrder";
 
 function Landing() {
   return (
-    <div className="bg-400 min-h-full">
+    <div className="bg-back min-h-full">
       <Nav />
       <MyOrder />
     </div>

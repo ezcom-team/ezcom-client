@@ -32,7 +32,7 @@ const BuyDetail = () => {
             </div>
             <div className="flex align-middle my-auto">
                 <a
-                    className=" bg-green-600 px-8 py-2 rounded-md hover:bg-green-700"
+                    className=" border-[2px] border-green-600 hover:bg-green-600 px-8 py-2 rounded-md duration-500"
                     href="#"
                 >
                     Buy

@@ -38,7 +38,7 @@ const BuyCard =() =>{
             <div className="flex align-middle justify-center">
                 <div className="my-auto justify-center">
                 <a
-                    className=" bg-primary px-8 py-3 rounded-md hover:bg-orange-700 text-100"
+                    className="border-[2px] border-primary px-8 py-3 rounded-md hover:bg-primary text-100"
                     href="#"
                 >
                     Cancel

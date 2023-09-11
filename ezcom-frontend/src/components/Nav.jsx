@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Nav.css";
+import AccountProfile from "./AccountProfile/index.jsx"
 
 function Nav() {
   const location = useLocation();
@@ -20,8 +21,8 @@ function Nav() {
       case "/about":
         buttonName = "detail";
         break;
-      case "/testRedux":
-        buttonName = "test";
+      case "/login":
+        buttonName = "login";
         break;
       case "/MyOrder":
         buttonName = "myorder";
@@ -34,8 +35,9 @@ function Nav() {
   }, [location]);
 
   return (
-    <nav className="bg-400 text-100 min-h-[60px] py-2">
-      <div className="flex gap-7 ml-5 box">
+    <nav className="bg-400 text-100 min-h-[60px] py-2 justify-center">
+      <div className="flex w-[95%] justify-between">
+        <div className="flex gap-7 ml-5 box">
         <Link
           className={selectedButton === "ezcom" ? "selected" : ""}
           to="/"
@@ -55,10 +57,10 @@ function Nav() {
           Detail
         </Link>
         <Link
-          className={selectedButton === "test" ? "selected" : ""}
-          to="/testRedux"
+          className={selectedButton === "login" ? "selected" : ""}
+          to="/login"
         >
-          Test-Redux
+          login
         </Link>
         <Link
           className={selectedButton === "myorder" ? "selected" : ""}
@@ -66,6 +68,10 @@ function Nav() {
         >
           MyOrder
         </Link>
+        </div>
+        <div>
+        <AccountProfile />
+        </div>
       </div>
     </nav>
   );

@@ -39,7 +39,7 @@ const SellDetail = () => {
             
             <div className="flex align-middle">
                 <div className="my-auto flex gap-2 round">
-                    <a className=" bg-primary px-8 py-2 rounded-md hover:bg-orange-700" href='#'>
+                    <a className="border-[2px] border-primary px-8 py-2 rounded-md hover:bg-orange-600" href='#'>
                         Supply
                     </a>
                     
