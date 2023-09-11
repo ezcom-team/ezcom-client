@@ -11,9 +11,11 @@ import {
 import Home from "./pages/Home.jsx";
 import Landing from "./pages/Landing.jsx";
 import About from "./pages/About.jsx";
+import MyOrder from "./pages/MyOrder.jsx";
+
 import { store } from "./store/store";
 import { Provider } from "react-redux";
-import TestRedux from "./pages/TestRedux";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -33,8 +35,12 @@ const router = createBrowserRouter([
     element: <About />,
   },
   {
-    path: "/testRedux",
-    element: <TestRedux />,
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/MyOrder",
+    element: <MyOrder />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
