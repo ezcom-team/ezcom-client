@@ -12,10 +12,10 @@ const Detail = () => {
       </div>
 
       <div className="w-100 md:grid md:grid-cols-2 ">
-        <div className="mt-10">
+        <div className="border border-300 rounded-l-md">
           <img src={picProduct} className="" /> 
         </div>
-        <div className="w-100 flex flex-col gap-3  bg-400 p-3">
+        <div className="w-100 flex flex-col gap-3  bg-400 p-5 rounded-r-md">
           <div className="">
             <div className="text-3xl text-100 mb-2">{data.nameProduct}</div>
             <div className=" text-200">{data.subNameProduct}</div>
@@ -38,13 +38,13 @@ const Detail = () => {
           </div>
 
           <hr class="h-1 my-3 border-0 bg-300 mb-6"></hr>
-          <div class="flex gap-1 mb-6 text-100 text-xl">
-            <button class="flex-grow-0  w-72 bg-green-600 py-3 rounded-md hover:bg-green-500">{data.textBuy}</button>
-            <button class="flex-grow-0  w-72 bg-primary rounded-md hover:bg-orange-500">{data.textSell}</button>
-            <button class="flex-grow bg-yellow-600 rounded-md hover:bg-yellow-500 w-14">{data.textVS}</button>
+          <div class="flex gap-1 mb-6 text-100 text-xl ">
+            <button class="flex-grow-0  w-72 border-[2px] border-green-600 py-3 rounded-md hover:bg-green-600 duration-500">{data.textBuy}</button>
+            <button class="flex-grow-0  w-72 border-[2px] border-primary rounded-md hover:bg-orange-500 duration-500">{data.textSell}</button>
+            <button class="flex-grow border-[2px] border-yellow-500 rounded-md hover:bg-yellow-500 w-14 duration-500">{data.textVS}</button>
           </div>
 
-          <button className="text-200 p-4 flex justify-start text-lg rounded-md hover:bg-300 ">
+          <button className="text-200 p-4 flex justify-start text-lg rounded-md border-[2px] border-300 hover:bg-300 duration-500">
             รายละเอียดสินค้า
           </button>
         </div>

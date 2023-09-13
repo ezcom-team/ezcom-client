@@ -9,7 +9,7 @@ import BuyOrSellOrTrade from "../components/HeaderDetailPage/BuyOrSellOrTrade";
 
 function About() {
   return (
-    <div className=" bg-400">
+    <div className=" bg-back">
       <Nav />
       <Detail /> 
       <BuyOrSellOrTrade />
