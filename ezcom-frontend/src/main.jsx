@@ -10,12 +10,13 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Landing from "./pages/Landing.jsx";
-import About from "./pages/About.jsx";
+import Detail from "./pages/Detail.jsx";
 import MyOrder from "./pages/MyOrder.jsx";
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Login from "./pages/Login";
+
 
 const router = createBrowserRouter([
   {
@@ -24,15 +25,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/detail/:id",
-    element: <Home />, // Edit here
+    element: <Detail />,
   },
   {
     path: "/landing",
     element: <Landing />,
-  },
-  {
-    path: "/about",
-    element: <About />,
   },
   {
     path: "/login",
