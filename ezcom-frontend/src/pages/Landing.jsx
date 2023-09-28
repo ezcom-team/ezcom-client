@@ -45,8 +45,8 @@ function Landing() {
   return (
     <div className="w-full">
       <Nav />
-      <div className="w-full bg-400 h-auto flex justify-center">
-        <div className="bg-400 w-3/4 py-5 lg:py-10">
+      <div className="w-full bg-back h-auto flex justify-center">
+        <div className="bg-back w-3/4 py-5 lg:py-10">
           {/* <PromoteSlider /> */}
         </div>
       </div>
