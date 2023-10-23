@@ -13,10 +13,6 @@ export default {
         100: '#ffffff',
         back: '#18181b',
       },
-      animation: {
-        spin: "spin 0.4s linear(0, 0.1)",
-        ease: "ease-in 0.4s",
-      },
     },
   },
   plugins: [],
