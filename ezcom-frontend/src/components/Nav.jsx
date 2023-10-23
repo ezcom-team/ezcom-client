@@ -35,7 +35,7 @@ function Nav() {
   }, [location]);
 
   return (
-    <nav className="bg-400 text-100 min-h-[60px] py-2 justify-center">
+    <nav className="bg-300 text-100 min-h-[60px] py-2 justify-center">
       <div className="flex w-[95%] justify-between">
         <div className="flex gap-7 ml-5 box">
         <Link
