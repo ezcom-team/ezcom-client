@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Nav.css";
-import AccountProfile from "./AccountProfile/index.jsx"
+import AccountProfile from "./AccountProfile/index.jsx";
 
 function Nav() {
   const location = useLocation();
@@ -34,35 +34,32 @@ function Nav() {
   return (
     <nav className="bg-300 text-100 min-h-[60px] py-2 justify-center">
       <div className="flex w-[95%] justify-between">
-        <div className="flex gap-7 ml-5 box">
-        <Link
-          className={selectedButton === "ezcom" ? "selected" : ""}
-          to="/"
-        >
-          Ezcom
-        </Link>
-        <Link
-          className={selectedButton === "landing" ? "selected" : ""}
-          to="/landing"
-        >
-          Landing
-        </Link>
-        
-        <Link
-          className={selectedButton === "login" ? "selected" : ""}
-          to="/login"
-        >
-          login
-        </Link>
-        <Link
-          className={selectedButton === "myorder" ? "selected" : ""}
-          to="/MyOrder"
-        >
-          MyOrder
-        </Link>
+        <div className="flex ml-5 gap-7 box">
+          <Link className={selectedButton === "ezcom" ? "selected" : ""} to="/">
+            Ezcom
+          </Link>
+          <Link
+            className={selectedButton === "landing" ? "selected" : ""}
+            to="/landing"
+          >
+            Landing
+          </Link>
+
+          <Link
+            className={selectedButton === "login" ? "selected" : ""}
+            to="/login"
+          >
+            login
+          </Link>
+          <Link
+            className={selectedButton === "myorder" ? "selected" : ""}
+            to="/MyOrder"
+          >
+            MyOrder
+          </Link>
         </div>
         <div>
-        <AccountProfile />
+          <AccountProfile />
         </div>
       </div>
     </nav>

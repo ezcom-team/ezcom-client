@@ -26,7 +26,7 @@ function Detail() {
 
   // console.log(id)
   return (
-    <div className=" bg-back">
+    <div className="bg-back">
       <Nav />
       <Productdetail product={data}/> 
       <BuyOrSellOrTrade />
