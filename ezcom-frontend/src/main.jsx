@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     element: <MyOrder />,
   },
   {
-    path: "/Compare",
+    path: "/Compare/:id",
     element: <Compare />,
   },
   {

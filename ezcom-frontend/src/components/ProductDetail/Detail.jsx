@@ -3,6 +3,7 @@ import '../Modal/Modal.css'; // Import your CSS file for styling
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { data } from '../../content/detail.js';
 import Modal from '../Modal/Modal';
+import { Link } from 'react-router-dom';
 
 function Productdetail({ product }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -71,7 +72,7 @@ function Productdetail({ product }) {
             </button>
 
             <button class="flex-grow-0  w-72 border-[2px] border-primary rounded-md hover:bg-orange-500 duration-500">{data.textSell}</button>
-            <Link to={'/Compare'} class="flex justify-center border-[2px] border-yellow-500 rounded-md hover:bg-yellow-500 w-14 duration-500">
+            <Link to={`/Compare/${product.ID}`} class="flex justify-center border-[2px] border-yellow-500 rounded-md hover:bg-yellow-500 w-14 duration-500">
               <button >{data.textVS}</button>
             </Link>
           </div>
