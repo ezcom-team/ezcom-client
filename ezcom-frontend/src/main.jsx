@@ -12,11 +12,11 @@ import Home from "./pages/Home.jsx";
 import Landing from "./pages/Landing.jsx";
 import Detail from "./pages/Detail.jsx";
 import MyOrder from "./pages/MyOrder.jsx";
+import Admin from "./pages/Admin";
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Login from "./pages/Login";
-
 
 const router = createBrowserRouter([
   {
@@ -38,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/MyOrder",
     element: <MyOrder />,
+  },
+  {
+    path: "/Admin",
+    element: <Admin />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
