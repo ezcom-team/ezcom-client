@@ -3,55 +3,55 @@ import Nav from "../components/Nav";
 import { Categories } from "../components/Categories";
 import { CardItem } from "../components/cardItem";
 import { Searchbar } from "../components/Searchbar";
-import axios from 'axios';
+import axios from "axios";
 
 // import { PromoteSlider } from "../components/PromoteSlider";
 // import { Hamburger } from "../components/Hamburger";
 
 function Landing() {
-  
-  const [allData, setAllData] = useState([])
-  const [data, setData] = useState([])
-  
+  const [allData, setAllData] = useState([]);
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
-    try {
-      const response = await axios.get('https://ezcom-backend-production-09b5.up.railway.app/products/')
-      setAllData(response.data)
-      setData(response.data)
-    } catch (error) {
-      console.error('Fetch Error', error)
-    }}
+      try {
+        const response = await axios.get(
+          "https://ezcom-backend-production-09b5.up.railway.app/products/"
+        );
+        setAllData(response.data);
+        setData(response.data);
+      } catch (error) {
+        console.error("Fetch Error", error);
+      }
+    }
 
-    fetchData()
+    fetchData();
+  }, []);
 
-  }, [])
-
-  const filterChangeHandler = (filtervalue) => {
-    console.log('Filtervalue = ', filtervalue);
+  const filterChangeHandler = filtervalue => {
+    console.log("Filtervalue = ", filtervalue);
     if (filtervalue.length != 0) {
-      const newData = allData.filter((product) => {
-        return filtervalue.includes(product.Type)
-      })
-      setData(newData)
+      const newData = allData.filter(product => {
+        return filtervalue.includes(product.Type);
+      });
+      setData(newData);
+    } else {
+      setData(allData);
+      console.log("clear");
     }
-    else {
-      setData(allData)
-      console.log('clear')
-    }
-  }
-  console.log(data)
+  };
+  console.log(data);
 
   return (
     <div className="w-full">
       <Nav />
-      <div className="w-full bg-back h-auto flex justify-center">
-        <div className="bg-back w-3/4 py-5 lg:py-10">
+      <div className="flex justify-center w-full h-auto bg-400">
+        <div className="w-3/4 py-5 bg-400 lg:py-10">
           {/* <PromoteSlider /> */}
         </div>
       </div>
-      <div className="bg-400 w-full h-16 lg:h-24 flex justify-between md:justify-end">
-        <div  className="m-5 flex md:hidden justify-center">
+      <div className="flex justify-between w-full h-16 bg-400 lg:h-24 md:justify-end">
+        <div className="flex justify-center m-5 md:hidden">
           {/* <Hamburger className='z-50' /> */}
         </div>
       </div>
@@ -63,7 +63,7 @@ function Landing() {
           <div className="my-5 flex justify-center">
             <Categories onFilterChange={filterChangeHandler} />
           </div>
-          <div className="my-5 flex justify-center">
+          <div className="flex justify-center my-5">
             <Categories />
           </div>
         </div>

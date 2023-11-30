@@ -27,26 +27,8 @@ const Selling = () => {
     }
 
     return (
-        <div className="max-w-[95vw] xl:max-w-[75vw] min-h-screen mx-auto  gap-10 mt-10">
-            <div className="flex gap-9 py-5 bg-primary rounded-t-md text-100">
-                <button
-                    className="ml-3 hover:bg-300 px-4 p-2 rounded-md"
-                    onClick={() => toggle("selling")}
-                >
-                    Selling
-                </button>
-                <button
-                    onClick={() => toggle("pending")}
-                    className=" hover:bg-300 px-4 p-2 rounded-md"
-                >
-                    Pending
-                </button>
-            </div>
+        <div className="max-w-[95vw] xl:max-w-[75vw] min-h-screen mx-auto  gap-10 ">
             {CurrentComponent}
-            {/* <div className="h-full flex flex-row gap-2 bg-200 p-5 rounded-b-md">
-                
-
-            </div> */}
         </div>
     );
 };
