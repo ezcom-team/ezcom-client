@@ -150,14 +150,14 @@ function Login() {
           </div>
 
           <div className="flex gap-2 mt-3">
-          <button className="text-200 p-4 flex-grow justify-start text-lg rounded-md border-[2px] border-red-500 hover:bg-red-500 duration-500">
-            <GoogleIcon />
-            <span className="ml-1">Google</span>
-          </button>
-          <button className="text-200 p-4 flex-grow justify-start text-lg rounded-md border-[2px] border-blue-500 hover:bg-blue-500 duration-500">
-          <FacebookIcon />
-            <span className="ml-1">Facebook</span>
-          </button>
+            <button className="text-200 p-4 flex-grow justify-start text-lg rounded-md border-[2px] border-red-500 hover:bg-red-500 duration-500">
+              <GoogleIcon />
+              <span className="ml-1">Google</span>
+            </button>
+            <button className="text-200 p-4 flex-grow justify-start text-lg rounded-md border-[2px] border-blue-500 hover:bg-blue-500 duration-500">
+              <FacebookIcon />
+              <span className="ml-1">Facebook</span>
+            </button>
           </div>
 
           <div className="flex justify-center items-end mt-28 gap-3 text-ce">
@@ -167,7 +167,7 @@ function Login() {
             </button>
           </div>
         </form>
-        
+
       </div>
     </div>
   );

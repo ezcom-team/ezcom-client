@@ -18,9 +18,6 @@ function Nav() {
       case "/landing":
         buttonName = "landing";
         break;
-      case "/about":
-        buttonName = "detail";
-        break;
       case "/login":
         buttonName = "login";
         break;
@@ -50,12 +47,7 @@ function Nav() {
         >
           Landing
         </Link>
-        <Link
-          className={selectedButton === "detail" ? "selected" : ""}
-          to="/about"
-        >
-          Detail
-        </Link>
+        
         <Link
           className={selectedButton === "login" ? "selected" : ""}
           to="/login"
