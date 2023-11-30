@@ -107,7 +107,7 @@ function Productdetail({ product }) {
                     <input className='bg-100 rounded-sm text-400 px-1'></input>
                   </div> */}
                   <div className='flex justify-center mt-4 gap-5'>
-                  <button className=' w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded'>Create Order</button>
+                  <button className=' w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded'>Payment</button>
                   <button className=' w-40 bg-primary hover:bg-orange-700 transition text-200 p-2 rounded'>Cancal</button>
                   </div>
                 </div>

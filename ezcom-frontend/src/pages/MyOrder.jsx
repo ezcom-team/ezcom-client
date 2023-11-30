@@ -9,9 +9,9 @@ function Landing() {
   return (
     <div className="bg-back min-h-screen">
       <Nav />
-      {/* <MyOrder /> */}
-      {/* <Chat /> */}
-      <Payment />
+      <MyOrder />
+      <Chat />
+      {/* <Payment /> */}
     </div>
   );
 }

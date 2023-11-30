@@ -34,22 +34,22 @@ const BuyOrSellOrTrade = () => {
   
   return (
     <div className="max-w-[95vw] mx-auto  gap-10 mt-8  xl:max-w-[75vw]">
-      <div className="flex gap-9 py-5 bg-primary text-100 mb-10 rounded-md">
+      <div className="flex gap-9 py-5 bg-primary text-100  rounded-t-md ">
         <button
-          className="ml-3 hover:bg-300 px-4 p-2 rounded-md"
+          className="ml-3 hover:bg-200 hover:text-primary px-4 p-2 rounded-md"
           onClick={() => toggle("Selling")} 
         >
           Selling
         </button>
         <button
           onClick={() => toggle("Buying")}
-          className=" hover:bg-300 px-4 p-2 rounded-md"
+          className=" hover:bg-200 hover:text-primary px-4 p-2 rounded-md"
         >
           Buying
         </button>
         <button
           onClick={() => toggle("History")}
-          className="hover:bg-300 px-4 p-2 rounded-md"
+          className="hover:bg-200 hover:text-primary px-4 p-2 rounded-md"
         >
           History
         </button>
