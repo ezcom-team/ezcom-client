@@ -1,5 +1,5 @@
 import picProduct from "../../img/testPic.png";
-import { data } from "../../content/detail.js";
+import { Link } from "react-router-dom";
 // import React from "react";
 
 const Detail = () => {
@@ -41,7 +41,9 @@ const Detail = () => {
           <div class="flex gap-1 mb-6 text-100 text-xl ">
             <button class="flex-grow-0  w-72 border-[2px] border-green-600 py-3 rounded-md hover:bg-green-600 duration-500">{data.textBuy}</button>
             <button class="flex-grow-0  w-72 border-[2px] border-primary rounded-md hover:bg-orange-500 duration-500">{data.textSell}</button>
-            <button class="flex-grow border-[2px] border-yellow-500 rounded-md hover:bg-yellow-500 w-14 duration-500">{data.textVS}</button>
+            <Link to={'/Compare'} class="flex justify-center border-[2px] border-yellow-500 rounded-md hover:bg-yellow-500 w-14 duration-500">
+              <button >{data.textVS}</button>
+            </Link>
           </div>
 
           <button className="text-200 p-4 flex justify-start text-lg rounded-md border-[2px] border-300 hover:bg-300 duration-500">

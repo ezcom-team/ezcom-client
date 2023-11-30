@@ -16,6 +16,8 @@ import MyOrder from "./pages/MyOrder.jsx";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Login from "./pages/Login";
+import { Compare } from "./pages/Compare";
+import { Chat } from "./pages/Chat";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
   {
     path: "/MyOrder",
     element: <MyOrder />,
+  },
+  {
+    path: "/Compare",
+    element: <Compare />,
+  },
+  {
+    path: "/Chat",
+    element: <Chat />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

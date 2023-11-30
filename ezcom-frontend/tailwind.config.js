@@ -7,6 +7,7 @@ export default {
         transparent: 'transparent',
         current: 'currentColor',
         primary: '#ff6827',
+        black: '#000000',
         400: '#181818',
         300: '#1e1e1e',
         200: '#e7e7e7',
