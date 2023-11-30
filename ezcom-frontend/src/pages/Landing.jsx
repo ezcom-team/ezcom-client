@@ -54,10 +54,12 @@ function Landing() {
         <div  className="m-5 flex md:hidden justify-center">
           {/* <Hamburger className='z-50' /> */}
         </div>
-        <Searchbar />
       </div>
       <div className="bg-400 w-full h-screen flex justify-center">
         <div className="hidden md:block bg-400 w-1/4 h-full mx-0 lg:mx-4">
+          <div className="my-5 flex justify-center">
+            <Searchbar />
+          </div>
           <div className="my-5 flex justify-center">
             <Categories onFilterChange={filterChangeHandler} />
           </div>
@@ -65,11 +67,17 @@ function Landing() {
             <Categories />
           </div>
         </div>
-        <div className="bg-400 w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        {allData != null ?         
+          <div className="bg-400 w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             {data.map(item => (
               <CardItem id={item.ID} img={item.Image} name={item.Name} price={item.Price} quantity={item.Quantity} />
             ))}
-        </div>
+          </div> : 
+          <div className="bg-400 w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            No product
+          </div>
+        }
+
       </div>
     </div>
   );
