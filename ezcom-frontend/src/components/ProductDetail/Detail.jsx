@@ -17,20 +17,7 @@ function Productdetail({ product }) {
 
   return (
     <div className="mx-auto md:max-w-[95vw] lg:max-w-[85vw] xl:max-w-[75vw]">
-      {/* Buttons */}
-      {/* <div className="flex flex-col justify-center ml-2 mt-3">
-        <button className="flex text-200">
-          <FavoriteBorderIcon />
-        </button>
-        <button className="flex text-200">
-          <FavoriteBorderIcon />
-        </button>
-        <button className="flex text-200">
-          <FavoriteBorderIcon />
-        </button>
-      </div> */}
-
-
+      
       <div className="w-100 md:grid md:grid-cols-2 mt-10">
         <div className="border border-300 rounded-l-md p-4 ">
           <img src={product.Image} className="" alt="Product Image" />

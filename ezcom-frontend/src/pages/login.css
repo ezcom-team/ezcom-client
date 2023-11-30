@@ -5,3 +5,13 @@ input {
     color: #fff;
     font-size: 16px;
 }
+
+/* Remove white background and border on autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  background-color: #000 !important;
+  color:gold !important;
+  border: 1px solid #f11 !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important; 
+}

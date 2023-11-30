@@ -12,6 +12,7 @@ export default {
         200: '#e7e7e7',
         100: '#ffffff',
         back: '#18181b',
+        b2:'#1e1e1e'
       },
     },
   },

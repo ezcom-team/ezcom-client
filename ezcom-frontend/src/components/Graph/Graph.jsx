@@ -49,7 +49,7 @@ const Graph = () => {
     },
   ];
   return(
-    <div className="max-w-[75vw] mx-auto mt-10 bg-300 p-10 rounded-md">
+    <div className="max-w-[75vw] mx-auto mt-10 bg-b2 p-10 rounded-md">
       <ResponsiveContainer width="100%" aspect={3}>
         <LineChart
           width={500}
