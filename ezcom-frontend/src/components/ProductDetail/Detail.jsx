@@ -17,22 +17,9 @@ function Productdetail({ product }) {
 
   return (
     <div className="mx-auto md:max-w-[95vw] lg:max-w-[85vw] xl:max-w-[75vw]">
-      {/* Buttons */}
-      <div className="flex flex-col justify-center ml-2 mt-3">
-        <button className="flex text-200">
-          <FavoriteBorderIcon />
-        </button>
-        <button className="flex text-200">
-          <FavoriteBorderIcon />
-        </button>
-        <button className="flex text-200">
-          <FavoriteBorderIcon />
-        </button>
-      </div>
-
-
-      <div className="w-100 md:grid md:grid-cols-2">
-        <div className="border border-300 rounded-l-md ">
+      
+      <div className="w-100 md:grid md:grid-cols-2 mt-10">
+        <div className="border border-300 rounded-l-md p-4 ">
           <img src={product.Image} className="" alt="Product Image" />
         </div>
         <div className="w-100 flex flex-col gap-3 bg-400 p-5 rounded-r-md">
@@ -115,12 +102,12 @@ function Productdetail({ product }) {
                     <div className='flex justify-center '>Price</div>
                     <input className='bg-100 rounded-sm text-400 px-1'></input>
                   </div>
-                  <div className='grid grid-cols-[30%_70%] p-4 bg-300   rounded-sm'>
+                  {/* <div className='grid grid-cols-[30%_70%] p-4 bg-300   rounded-sm'>
                     <div className='flex justify-center '>Amount to be paid</div>
                     <input className='bg-100 rounded-sm text-400 px-1'></input>
-                  </div>
+                  </div> */}
                   <div className='flex justify-center mt-4 gap-5'>
-                  <button className=' w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded'>Create Order</button>
+                  <button className=' w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded'>Payment</button>
                   <button className=' w-40 bg-primary hover:bg-orange-700 transition text-200 p-2 rounded'>Cancal</button>
                   </div>
                 </div>

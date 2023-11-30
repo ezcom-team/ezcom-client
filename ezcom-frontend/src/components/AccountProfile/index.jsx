@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import pic from '../../img/p1.jpg'
+// import { useSelector } from "react-redux"
+
 function index() {
     const [isOpen, setIsOpen] = useState(false);
+    const [storedUser, setStoredUser] = useState("");
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
+
+    useEffect(() => {
+        setStoredUser(JSON.parse(localStorage.getItem('user')))
+    }, [])
 
     return (
         <div className="relative inline-block text-left ">
@@ -15,10 +22,10 @@ function index() {
                 className="px-4 py-2 font-medium text-white bg-primary border-[2px] border-transparent hover:border-orange-700 rounded-md  focus:outline-none focus-visible:ring focus-visible:ring-blue-300"
             >
                 <div className="h-[35px] flex">
-                    <img src={pic} className="max-h-full max-w-full rounded-full mr-2 " />
-                    <div className='my-auto text-xl'>Napong</div>
+                    <im g src={pic} className="max-h-full max-w-full rounded-full mr-2 " />
+                    <div className='my-auto text-xl'>{storedUser ? (<div>{storedUser}</div>) : (<div></div>)}</div>
                 </div>
-                
+
             </button>
 
             {/* Apply transition classes to create animation */}
@@ -43,7 +50,7 @@ function index() {
                             Log out
                         </a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>

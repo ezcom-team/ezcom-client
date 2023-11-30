@@ -15,11 +15,28 @@ const instance = axios.create({
 });
 
 function Login() {
+
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [dataUser, setDataUser] = useState({});
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
+  const submit = async() => {
+    try {
+      const response = await axios.post('https://ezcom-backend-production-09b5.up.railway.app/auth/login',{
+        email:email,
+        password:password
+      })
+     setDataUser(response.data.user)
+    } catch (error) {
+      console.error('Fetch Error', error)
+    }
+  }
+  console.log("user = ", dataUser)
+  
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -37,12 +54,14 @@ function Login() {
         email,
         password,
       });
+     setDataUser(response.data.user)
 
       // ตรวจสอบการตอบกลับจาก API
       if (response.status === 200) {
         const cookieValue = document.cookie;
         console.log(response.data.user);
         dispatch(setUser(response.data.user));
+        localStorage.setItem('user', JSON.stringify(response.data.user.Name));
 
         if (cookieValue) {
           console.log(cookieValue);
@@ -60,11 +79,8 @@ function Login() {
       // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
       console.error("Error sending request:", error);
     }
-    console.log(`Username: ${username}, Password: ${password}`);
+    // console.log(`Username: ${username}, Password: ${password}`);
   };
-
-  const [isEmailFocused, setIsEmailFocused] = useState(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
   const handleEmailFocus = () => {
     setIsEmailFocused(true);
@@ -98,7 +114,7 @@ function Login() {
       <div className="flex flex-col items-center flex-1 bg-back pt-40">
         <form
           onSubmit={handleSubmit}
-          className="bg-400 min-w-[500px] rounded-md p-10"
+          className="bg-400 min-w-[500px] rounded-md p-10 mb-10"
         >
           <div className="mb-10 ">
             <h2 class="text-100 flex justify-center text-3xl ">Login</h2>
@@ -144,7 +160,8 @@ function Login() {
             </div>
           </div>
           <div className="flex justify-center mt-7 ">
-            <button className="flex min-w-[100%] justify-center bg-primary rounded-xl py-3 mt-3 text-100 text-2xl">
+            <button
+              className="flex min-w-[100%] justify-center bg-primary rounded-xl py-3 mt-3 text-100 text-2xl">
               Login
             </button>
           </div>
