@@ -6,7 +6,7 @@ import { data } from "../../content/detail.js";
 const BuyCard =() =>{
     return(
         <div className="max-w-[95vw] xl:max-w-[75vw] mx-auto min-h-[100vh] gap-10 mt-3">
-            <div className="grid grid-cols-[30%_12%_10%_10%_20%_15%] bg-300 py-3 mb-1  text-200 rounded-md">
+            <div className="grid grid-cols-[25%_12%_10%_10%_15%_12%_15%] bg-300 py-3 mb-1  text-200 rounded-md">
             <div className="flex align-middle">
                 <div className="flex h-20 ml-5">
                     <img src={picProduct} className="max-h-full max-w-full" />
@@ -23,6 +23,12 @@ const BuyCard =() =>{
                     <div className="">  {data.priceLowSell}</div>
                 </div>
             </div>
+            <div className="flex align-middle justify-center">
+                <div className="my-auto justify-center text-green-600 text-2xl">
+                    <div className=""> Buy</div>
+                </div>
+            </div>
+
             <div className="flex align-middle justify-center">
                 <div className="my-auto justify-center">
                     <div className="">  0/{data.amountPlaceBuy}</div>

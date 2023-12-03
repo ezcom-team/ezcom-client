@@ -40,10 +40,11 @@ const Buying = () => {
         //     </div>
         // </div>
         <div className='h-full  min-w-full  gap-2 bg-400 p-5 rounded-md'>
-            <div className="grid grid-cols-[30%_12%_10%_10%_20%]  text-200 rounded-md pl-5">
+            <div className="grid grid-cols-[25%_12%_10%_10%_15%_10%]  text-200 rounded-md pl-5">
                 <div className='flex'>Items</div>
                 <div className='flex'>Price</div>
                 <div className='flex'>Max Price</div>
+                <div className='flex justify-center'>Type</div>
                 <div className='flex justify-center'>Progress</div>
                 <div className='flex justify-center'>Create Time</div>
             </div>
