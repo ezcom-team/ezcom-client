@@ -17,6 +17,7 @@ import Admin from "./pages/Admin";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Login from "./pages/Login";
+import { Compare } from "./pages/Compare";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/MyOrder",
     element: <MyOrder />,
+  },
+  {
+    path: "/Compare/:id",
+    element: <Compare />,
   },
   {
     path: "/Admin",

@@ -54,28 +54,30 @@ function Landing() {
         <div className="flex justify-center m-5 md:hidden">
           {/* <Hamburger className='z-50' /> */}
         </div>
-        <Searchbar />
       </div>
-      <div className="flex justify-center w-full h-screen bg-400">
-        <div className="hidden w-1/4 h-full mx-0 md:block bg-400 lg:mx-4">
-          <div className="flex justify-center my-5">
+      <div className="bg-400 w-full h-screen flex justify-center">
+        <div className="hidden md:block bg-400 w-1/4 h-full mx-0 lg:mx-4">
+          <div className="my-5 flex justify-center">
+            <Searchbar />
+          </div>
+          <div className="my-5 flex justify-center">
             <Categories onFilterChange={filterChangeHandler} />
           </div>
           <div className="flex justify-center my-5">
             <Categories />
           </div>
         </div>
-        <div className="grid w-3/4 h-full grid-cols-1 overflow-y-scroll bg-400 place-items-center md:place-content-start md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-          {data.map(item => (
-            <CardItem
-              id={item.ID}
-              img={item.Image}
-              name={item.Name}
-              price={item.Price}
-              quantity={item.Quantity}
-            />
-          ))}
-        </div>
+        {allData != null ?         
+          <div className="bg-400 w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            {data.map(item => (
+              <CardItem id={item.ID} img={item.Image} name={item.Name} price={item.Price} quantity={item.Quantity} />
+            ))}
+          </div> : 
+          <div className="bg-400 w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            No product
+          </div>
+        }
+
       </div>
     </div>
   );

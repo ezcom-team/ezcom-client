@@ -10,7 +10,7 @@ const History = () => {
             <div className="grid grid-cols-[12%_12%_12%_40%_20%]  text-100 rounded-md pl-5">
                 <div className='flex'>Items</div>
                 <div className='flex'>Price</div>
-                <div className='flex'>Buyer</div>
+                <div className='flex'>Trader</div>
                 <div className='flex justify-center'>Order time</div>
                 <div className='flex'>Status</div>
             </div>
