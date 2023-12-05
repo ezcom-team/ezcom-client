@@ -3,6 +3,7 @@ import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 function Admin() {
   const labelsForFormA = [
+    { id: "imgae", text: "Image", type: "file" },
     { id: "name", text: "Name", type: "text" },
     { id: "desc", text: "Desc", type: "text" },
     { id: "sensor", text: "Sensor", type: "text" },
@@ -18,18 +19,25 @@ function Admin() {
   ];
 
   const DynamicForm = ({ labels }) => (
-    <form className="flex flex-col p-4 text-white rounded-md bg-300">
+    <form className="flex flex-col p-4 overflow-scroll text-white rounded-md bg-300 max-h-96">
       {labels.map(label => (
         <label key={label.id}>
           {label.text}
           <div className="border-2 rounded-md border-200">
-            <input className="px-2 text-gray-200"
+            <input
+              className="px-2 text-gray-200"
               type={label.type}
               name={label.id}
             />
           </div>
         </label>
       ))}
+      <button
+        type="submit"
+        className="mt-3 rounded-md bg-slate-400 text-slate-600"
+      >
+        create
+      </button>
     </form>
   );
 
