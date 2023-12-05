@@ -10,7 +10,7 @@ function Landing() {
     <div className="bg-back min-h-screen">
       <Nav />
       <MyOrder />
-      <Chat />
+      {/* <Chat /> */}
       {/* <Payment /> */}
     </div>
   );
