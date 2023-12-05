@@ -7,7 +7,7 @@ export const CardItem = (props) => {
 
   return (
     <Link to={`/detail/${props.id}`} className=''>
-      <div className='m-5 w-52 h-52 p-2 bg-300 hover-drop-shadow shadow-lg hover:shadow-black rounded-lg flex justify-center cursor-pointer'>
+      <div className='m-5 w-52 h-auto p-2 bg-300 hover-drop-shadow shadow-lg hover:shadow-black rounded-lg flex justify-center cursor-pointer'>
           <div className='grid place-items-center'>
             <div className='m-0 w-28 h-28 flex justify-center'>
               <img src={props.img} />
