@@ -61,7 +61,8 @@ function Login() {
         const cookieValue = document.cookie;
         console.log(response.data.user);
         dispatch(setUser(response.data.user));
-        localStorage.setItem('user', JSON.stringify(response.data.user.Name));
+        localStorage.setItem('user-name', JSON.stringify(response.data.user.Name));
+        localStorage.setItem('user-image', JSON.stringify(response.data.user.File));
 
         if (cookieValue) {
           console.log(cookieValue);
@@ -111,7 +112,7 @@ function Login() {
   return (
     <div className="flex flex-col min-h-screen ">
       <Nav />
-      <div className="flex flex-col items-center flex-1 bg-back pt-40">
+      <div className="flex flex-col items-center flex-1 pt-40 bg-back">
         <form
           onSubmit={handleSubmit}
           className="bg-400 min-w-[500px] rounded-md p-10 mb-10"
@@ -120,7 +121,7 @@ function Login() {
             <h2 class="text-100 flex justify-center text-3xl ">Login</h2>
           </div>
           <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-1 bg-300 rounded-md py-2 px-4 " style={emailInputStyle}  >
+            <div className="flex flex-col gap-1 px-4 py-2 rounded-md bg-300 " style={emailInputStyle}  >
               <label htmlFor="email" className="text-200">
                 Email:
               </label>
@@ -136,7 +137,7 @@ function Login() {
               />
             </div>
             <div className="flex flex-col gap-1">
-              <div className="flex flex-col gap-1 bg-300 rounded-md py-2 px-4" style={passwordInputStyle}>
+              <div className="flex flex-col gap-1 px-4 py-2 rounded-md bg-300" style={passwordInputStyle}>
                 <label htmlFor="password" className="text-200">
                   Password:
                 </label>
@@ -152,7 +153,7 @@ function Login() {
                 />
 
               </div>
-              <div className=" text-sm flex justify-end text-primary mr-2">
+              <div className="flex justify-end mr-2 text-sm text-primary">
                 <button className="hover:underline">
                   forgot password ?
                 </button>
@@ -166,6 +167,14 @@ function Login() {
             </button>
           </div>
 
+
+          <div className="flex items-end justify-center gap-3 mt-28 text-ce">
+            <div className="text-200">Don't have an account? </div>
+            <button className="text-xl text-primary">
+              Sign up
+            </button>
+          </div>
+        </form>
           <div className="flex gap-2 mt-3">
             <button className="text-200 p-4 flex-grow justify-start text-lg rounded-md border-[2px] border-red-500 hover:bg-red-500 duration-500">
               <GoogleIcon />
