@@ -4,6 +4,7 @@ import { Categories } from "../components/Categories";
 import { CardItem } from "../components/cardItem";
 import { Searchbar } from "../components/Searchbar";
 import axios from "axios";
+import { PriceRange } from "../components/PriceRange";
 
 // import { PromoteSlider } from "../components/PromoteSlider";
 // import { Hamburger } from "../components/Hamburger";
@@ -40,6 +41,13 @@ function Landing() {
       console.log("clear");
     }
   };
+
+  const priceChangeHandler = price => {
+    console.log("Price = ", price);
+    const newData = allData.filter(product => (product.Price >= price[0] && product.Price <= price[1]));
+    setData(newData);
+  }
+  
   console.log(data);
 
   return (
@@ -64,7 +72,7 @@ function Landing() {
             <Categories onFilterChange={filterChangeHandler} />
           </div>
           <div className="flex justify-center my-5">
-            <Categories />
+            <PriceRange onPriceChange={priceChangeHandler} />
           </div>
         </div>
         {allData != null ?         
