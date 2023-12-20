@@ -3,7 +3,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 export const Categories = ({ onFilterChange }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [effect, setEffect] = useState(false);
 
   const [filter, setFilter] = useState([]);

@@ -6,9 +6,9 @@ import Slider from '@mui/material/Slider';
 export const PriceRange = ({ onPriceChange }) => {
 
     const [effect, setEffect] = useState(false);
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
-    const [price, setPrice] = useState([0, 30000]);
+    const [price, setPrice] = useState([0, 100000]);
 
     const handleOpen = () => {
         setOpen(!open);
@@ -32,7 +32,7 @@ export const PriceRange = ({ onPriceChange }) => {
             <div className={`${open ? 'block' : 'hidden'} mt-5 px-5 text-md lg:text-lg transition-opacity duration-300 ease-in-out`}>
                 <Slider
                     min={0}
-                    max={30000}
+                    max={100000}
                     getAriaLabel={() => 'range'}
                     value={price}
                     onChange={(e) => handleChange(e)}
