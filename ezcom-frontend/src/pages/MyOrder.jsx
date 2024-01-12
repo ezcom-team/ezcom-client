@@ -4,18 +4,14 @@ import MyOrder from "../components/MyOrderpage/MyOrder";
 import Chat from "../components/Chat/Chat";
 import Payment from "../components/Payment/Payment";
 import ProgressStep from "../components/Progress/ProgressStep";
-import ModalContainer from '../components/modall/ModalContainer';
+// import ModalContainer from '../components/Modal/ModalContainer';
 
 
 function Landing() {
   return (
     <div className="bg-400 min-h-screen">
       <Nav />
-      {/* <ProgressStep /> */}
-      {/* <MyOrder /> */}
-      {/* <Chat /> */}
-      {/* <Payment /> */}
-      <ModalContainer />
+      <MyOrder />
     </div>
   );
 }
