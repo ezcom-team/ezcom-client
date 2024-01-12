@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../Modal/Modal.css"; // Import your CSS file for styling
+// import "../Modal-notwork/Modal.css"; // Import your CSS file for styling
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { data } from "../../content/detail.js";
-import Modal from "../Modal/Modal";
+import Modal from "../Modal-notwork/Modal.jsx";
 import { Link } from "react-router-dom";
 
 function Productdetail({ product }) {
@@ -18,9 +18,11 @@ function Productdetail({ product }) {
 
   const [inputValue, setInputValue] = useState("");
 
+  
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
+
 
   return (
     <div className="mx-auto md:max-w-[95vw] lg:max-w-[85vw] xl:max-w-[75vw]">
@@ -140,7 +142,7 @@ function Productdetail({ product }) {
                       <div className="flex gap-1">
                         <input
                           type="checkbox"
-                          className="bg-100 rounded-sm text-400 px-1"
+                          className="bg-400 rounded-sm text-400 px-1"
                         ></input>
                         <div>C</div>
                       </div>
@@ -151,7 +153,7 @@ function Productdetail({ product }) {
                     <input
                       value={inputValue}
                       onChange={handleInputChange}
-                      className="bg-100 rounded-sm text-400 px-1"
+                      className=" bg-400 rounded-sm text-100 px-1 pl-2"
                     ></input>
                   </div>
                   <div className="grid grid-cols-[30%_70%] p-4 bg-300   rounded-sm">
@@ -162,9 +164,9 @@ function Productdetail({ product }) {
                       id="color"
                       name="color"
                       // style={{ height: "100px" }}
-                      className="text-black"
+                      className="text-100 bg-400 pl-2"
                     >
-                      <option value="white">White</option>
+                      <option value="white" >White</option>
                       <option value="red">Red</option>
                       <option value="green">Green</option>
                     </select>
@@ -177,16 +179,17 @@ function Productdetail({ product }) {
                   <div className="flex flex-col flex-1 items-center gap-2">
                     <span>Buyer Pay</span>  
                     <div className="text-2xl text-primary">{inputValue*1.07}</div>
+                    
                   </div>
                   <div className="flex flex-col flex-1 items-center gap-2">
                     <span>You Get</span>  
-                    <div className="text-2xl text-green-600">{inputValue}</div>
+                    <div className="text-2xl text-green-600">{inputValue*1}</div>
                   </div>
                   </div>
 
                   <div className="flex justify-center mt-4 gap-5">
                     <button className=" w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded">
-                      Payment
+                    Create Order
                     </button>
                     <button
                       onClick={closeModalSell}
