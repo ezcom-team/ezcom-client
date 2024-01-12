@@ -13,6 +13,7 @@ import Landing from "./pages/Landing.jsx";
 import Detail from "./pages/Detail.jsx";
 import MyOrder from "./pages/MyOrder.jsx";
 import Admin from "./pages/Admin";
+import Progress from "./pages/Progress.jsx";
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path: "/Admin",
     element: <Admin />,
+  },
+  {
+    path: "/Progress",
+    element: <Progress />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
