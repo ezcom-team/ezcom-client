@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../store/counterSlice";
+import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 import axios from "axios";
 import React, { useState } from "react";
@@ -22,6 +23,7 @@ function Login() {
   const [dataUser, setDataUser] = useState({});
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const navigate = useNavigate();
 
   const submit = async () => {
     try {
@@ -80,6 +82,7 @@ function Login() {
         }
 
         // ดึง Token มาใช้งาน
+        navigate("/landing");
       } else {
         // ดำเนินการเมื่อมีข้อผิดพลาดจาก API
         console.error("Login failed");
