@@ -24,6 +24,9 @@ function Nav() {
       case "/MyOrder":
         buttonName = "myorder";
         break;
+      case "/progress":
+        buttonName = "progress";
+        break;
       default:
         buttonName = null;
     }
@@ -56,6 +59,13 @@ function Nav() {
             to="/MyOrder"
           >
             MyOrder
+          </Link>
+
+          <Link
+            className={selectedButton === "progress" ? "selected" : ""}
+            to="/Progress"
+          >
+            Progress
           </Link>
         </div>
         <div>
