@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 // import "../Modal-notwork/Modal.css"; // Import your CSS file for styling
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Modal from "../Modal/Modal.jsx";
+import ModalBuy from "../Modal/ModalBuy.jsx";
+import ModalSell from "../Modal/ModalSell.jsx"
 import { data } from "../../content/detail.js";
 import { Link } from "react-router-dom";
 
 function Productdetail({ product }) {
-  const [isModalOpen, setisModalOpen] = useState(false);
-  const [typeModal, setTypeModal] = useState("");
+  const [isBuyModalOpen, setisBuyModalOpen] = useState(false);
+  const [isSellModalOpen, setisSellModalOpen] = useState(false);
   
-
-  const openModal = () => {
-    setTypeModal("sell")
-    setisModalOpen(true);
-  };
-
   const openModalBuy = () => {
-    setTypeModal("buy")
-    setisModalOpen(true);
+    setisBuyModalOpen(true);
   };
 
+  const openModalSell = () => {
+    setisSellModalOpen(true);
+  };
 
   return (
     <div className="mx-auto md:max-w-[95vw] lg:max-w-[85vw] xl:max-w-[75vw]">
@@ -61,10 +58,11 @@ function Productdetail({ product }) {
             >
               {data.textBuy}
             </button>
+            
 
             <button
               class="flex-grow-0  w-72 border-[2px] border-primary rounded-md hover:bg-orange-500 duration-500"
-              onClick={openModal}
+              onClick={openModalSell}
             >
               {data.textSell}
             </button>
@@ -84,7 +82,8 @@ function Productdetail({ product }) {
           </button>
 
           {/* Modal */}
-          <Modal type={typeModal} product={product} isModalOpen={isModalOpen} setisModalOpen={setisModalOpen} />
+          <ModalBuy product={product} isBuyModalOpen={isBuyModalOpen} setisBuyModalOpen={setisBuyModalOpen} />
+          <ModalSell product={product} isBuyModalOpen={isSellModalOpen} setisBuyModalOpen={setisSellModalOpen} />
         </div>
       </div>
     </div>
