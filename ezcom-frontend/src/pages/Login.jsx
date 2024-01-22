@@ -24,23 +24,6 @@ function Login() {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const navigate = useNavigate();
-
-  const submit = async () => {
-    try {
-      const response = await axios.post(
-        "https://ezcom-backend-production-09b5.up.railway.app/auth/login",
-        {
-          email: email,
-          password: password,
-        }
-      );
-      setDataUser(response.data.user);
-    } catch (error) {
-      console.error("Fetch Error", error);
-    }
-  };
-  console.log("user = ", dataUser);
-
   const handleEmailChange = e => {
     setEmail(e.target.value);
   };
@@ -48,7 +31,6 @@ function Login() {
   const handlePasswordChange = e => {
     setPassword(e.target.value);
   };
-
   const handleSubmit = async e => {
     e.preventDefault();
     // ทำการตรวจสอบชื่อผู้ใช้และรหัสผ่าน และดำเนินการตามต้องการ (เช่น ส่งคำขอ API ไปยังเซิร์ฟเวอร์)
@@ -58,12 +40,12 @@ function Login() {
         email,
         password,
       });
-      setDataUser(response.data.user);
 
       // ตรวจสอบการตอบกลับจาก API
       if (response.status === 200) {
         const cookieValue = document.cookie;
         console.log(response.data.user);
+        setDataUser(response.data.user);
         dispatch(setUser(response.data.user));
         localStorage.setItem(
           "user-name",
@@ -73,12 +55,13 @@ function Login() {
           "user-image",
           JSON.stringify(response.data.user.File)
         );
+        localStorage.setItem("access-token", response.data.token);
 
-        if (cookieValue) {
-          console.log(cookieValue);
+        if (response.data.token) {
+          console.log("your token is ", response.data.token);
           // ทำสิ่งที่คุณต้องการด้วย token ที่อ่านได้
         } else {
-          console.log("ไม่พบคุกกี้ Authorization");
+          console.log("ไม่พบคุกกี้ token");
         }
 
         // ดึง Token มาใช้งาน
