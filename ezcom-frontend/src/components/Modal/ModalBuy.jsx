@@ -1,90 +1,100 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import axios from "axios";
-import "./style.css"
-const ModalBuy = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
-
+import "./style.css";
+const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
   const [price, setPrice] = useState(0);
   const [color, setColor] = useState([]);
   const [condition, setCondition] = useState([]);
 
   const [orderData, setOrderData] = useState({
-    product_id: '',
+    product_id: "",
     condition: [],
     price: 0,
     color: [],
-  });  
+  });
 
-  const handleConditionChange = (value) => {
+  const handleConditionChange = value => {
     if (condition.includes(value)) {
       setCondition(condition.filter(item => item !== value));
     } else {
       setCondition([...condition, value]);
     }
-  }
+  };
 
-  const handlePriceChange = (event) => {
+  const handlePriceChange = event => {
     setPrice(Number(event.target.value));
   };
 
-  const handleColorChange = (selectedColor) => {
+  const handleColorChange = selectedColor => {
     if (color.includes(selectedColor)) {
       setColor(color.filter(item => item !== selectedColor));
     } else {
       setColor([...color, selectedColor]);
     }
-  }
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = e => {
+    e.preventDefault();
     setOrderData({
       product_id: product.ID,
       condition: condition,
       price: price,
       color: color,
-    })
+    });
 
     createOrder();
     resetOrderdata();
-    setisBuyModalOpen(false); 
+    setisBuyModalOpen(false);
   };
 
   const closeModal = () => {
-    setisBuyModalOpen(false); 
+    setisBuyModalOpen(false);
   };
 
   async function createOrder() {
+    const token = localStorage.getItem("access-token");
+    console.log("my buy order ");
+    console.log(orderData);
     try {
-        const response = await axios.post(`https://ezcom-backend-production-09b5.up.railway.app/order/buy`, orderData);
-        console.log('Created order', response.data)
-      } catch (error) {
-        console.error('Fetch Error', error);
-      }
+      const response = await axios.post(
+        `https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
+        orderData,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log("Created order", response.data);
+    } catch (error) {
+      console.error("Fetch Error", error);
+    }
   }
 
   const resetOrderdata = () => {
     setOrderData({
-      product_id: '',
+      product_id: "",
       condition: [],
       price: 0,
       color: [],
-    })
-  }
+    });
+  };
 
-  console.log('Buy = ', orderData)
+  console.log("Buy = ", orderData);
 
   return (
     <div>
       {isBuyModalOpen && (
         <div className="modal ">
           <div className="bg-400 ">
-            <div className="flex justify-center text-100 text-2xl">
+            <div className="flex justify-center text-2xl text-100">
               <span>Buy order</span>
             </div>
             {/* <span className="close-btn " onClick={closeModalSell}>
             &times;
           </span> */}
-            <div className="flex flex-col p-2 gap-4 mt-3 text-100">
-              <div className="flex p-4 bg-300 gap-4 rounded-sm">
+            <div className="flex flex-col gap-4 p-2 mt-3 text-100">
+              <div className="flex gap-4 p-4 rounded-sm bg-300">
                 <div className="border border-300 rounded-l-md">
                   <img
                     src={product.Image}
@@ -100,12 +110,10 @@ const ModalBuy = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                   </div>
                   <div className="flex flex-col justify-between">
                     <div>{product.Name}</div>
-                    <div className=" text-green-600 text-2xl">
+                    <div className="text-2xl text-green-600 ">
                       {product.Price}
                     </div>
-                    <div className=" text-primary text-xl">
-                      {product.Price}
-                    </div>
+                    <div className="text-xl text-primary">{product.Price}</div>
                   </div>
                 </div>
               </div>
@@ -116,27 +124,27 @@ const ModalBuy = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                     <div className="flex gap-1">
                       <input
                         type="checkbox"
-                        value={condition.includes('A')}
-                        onChange={() => handleConditionChange('A')}
-                        className="bg-100 rounded-sm text-400 px-1"
+                        value={condition.includes("A")}
+                        onChange={() => handleConditionChange("A")}
+                        className="px-1 rounded-sm bg-100 text-400"
                       ></input>
                       <div>A</div>
                     </div>
                     <div className="flex gap-1">
                       <input
                         type="checkbox"
-                        value={condition.includes('B')}
-                        onChange={() => handleConditionChange('B')}
-                        className="bg-100 rounded-sm text-400 px-1"
+                        value={condition.includes("B")}
+                        onChange={() => handleConditionChange("B")}
+                        className="px-1 rounded-sm bg-100 text-400"
                       />
                       <div>B</div>
                     </div>
                     <div className="flex gap-1">
                       <input
                         type="checkbox"
-                        value={condition.includes('C')}
-                        onChange={() => handleConditionChange('C')}
-                        className="bg-400 rounded-sm text-400 px-1"
+                        value={condition.includes("C")}
+                        onChange={() => handleConditionChange("C")}
+                        className="px-1 rounded-sm bg-400 text-400"
                       />
                       <div>C</div>
                     </div>
@@ -148,49 +156,51 @@ const ModalBuy = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                     value={price}
                     type="number"
                     onChange={handlePriceChange}
-                    className=" bg-400 rounded-sm text-100 px-1 pl-2"
+                    className="px-1 pl-2 rounded-sm bg-400 text-100"
                   ></input>
                 </div>
                 <div className="grid grid-cols-[30%_70%] p-4 bg-300   rounded-sm">
                   <div className="flex justify-center ">Color</div>
-                  {/* <input className="bg-100 rounded-sm text-400 px-1"></input> */}
-                    <div>
-                      {product.Color.map((colors) => (
-                          <div key={colors} className="flex gap-1">
-                            <input
-                              type="checkbox"
-                              value={color.includes(colors)}
-                              onChange={() => handleColorChange(colors)}
-                              className="bg-100 rounded-sm text-400 px-1"
-                              />
-                            <div>{colors}</div>
-                          </div>
-                      ))}
-                    </div>
+                  {/* <input className="px-1 rounded-sm bg-100 text-400"></input> */}
+                  <div>
+                    {product.Color.map(colors => (
+                      <div key={colors} className="flex gap-1">
+                        <input
+                          type="checkbox"
+                          value={color.includes(colors)}
+                          onChange={() => handleColorChange(colors)}
+                          className="px-1 rounded-sm bg-100 text-400"
+                        />
+                        <div>{colors}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 {/* <div className='grid grid-cols-[30%_70%] p-4 bg-300   rounded-sm'>
                 <div className='flex justify-center '>Amount to be paid</div>
-                <input className='bg-100 rounded-sm text-400 px-1'></input>
+                <input className='px-1 rounded-sm bg-100 text-400'></input>
               </div> */}
                 <div className="flex ">
-                  <div className="flex flex-col flex-1 items-center gap-2">
+                  <div className="flex flex-col items-center flex-1 gap-2">
                     <span>Buyer Pay</span>
                     <div className="text-2xl text-primary">{price * 1.07}</div>
-
                   </div>
-                  <div className="flex flex-col flex-1 items-center gap-2">
+                  <div className="flex flex-col items-center flex-1 gap-2">
                     <span>You Get</span>
                     <div className="text-2xl text-green-600">{price * 1}</div>
                   </div>
                 </div>
 
-                <div className="flex justify-center mt-4 gap-5">
-                  <button onClick={handleSubmit} className=" w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded">
+                <div className="flex justify-center gap-5 mt-4">
+                  <button
+                    onClick={handleSubmit}
+                    className="w-40 p-2 transition bg-green-600 rounded hover:bg-green-700 text-200"
+                  >
                     <span>Pay</span>
                   </button>
                   <button
                     onClick={closeModal}
-                    className=" w-40 bg-primary hover:bg-orange-700 transition text-200 p-2 rounded"
+                    className="w-40 p-2 transition rounded bg-primary hover:bg-orange-700 text-200"
                   >
                     Cancel
                   </button>
@@ -198,10 +208,9 @@ const ModalBuy = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
               </form>
             </div>
           </div>
-
-        </div>)}
+        </div>
+      )}
     </div>
-
   );
 };
 
