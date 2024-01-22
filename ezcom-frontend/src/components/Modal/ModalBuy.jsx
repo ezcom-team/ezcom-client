@@ -2,16 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style.css";
 const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState();
   const [color, setColor] = useState([]);
   const [condition, setCondition] = useState([]);
-
-  const [orderData, setOrderData] = useState({
-    product_id: "",
-    condition: [],
-    price: 0,
-    color: [],
-  });
 
   const handleConditionChange = value => {
     if (condition.includes(value)) {
@@ -35,15 +28,7 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setOrderData({
-      product_id: product.ID,
-      condition: condition,
-      price: price,
-      color: color,
-    });
-
     createOrder();
-    resetOrderdata();
     setisBuyModalOpen(false);
   };
 
@@ -53,12 +38,18 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
 
   async function createOrder() {
     const token = localStorage.getItem("access-token");
+    const dataToSend = {
+      price: parseFloat(price),
+      condition,
+      color,
+      product_id: product.ID,
+    };
     console.log("my buy order ");
-    console.log(orderData);
+    console.log(dataToSend);
     try {
       const response = await axios.post(
         `https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
-        orderData,
+        dataToSend,
         {
           headers: {
             Authorization: token,
@@ -67,20 +58,10 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
       );
       console.log("Created order", response.data);
     } catch (error) {
+      console.log("error is ....");
       console.error("Fetch Error", error);
     }
   }
-
-  const resetOrderdata = () => {
-    setOrderData({
-      product_id: "",
-      condition: [],
-      price: 0,
-      color: [],
-    });
-  };
-
-  console.log("Buy = ", orderData);
 
   return (
     <div>
