@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style.css";
 const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState();
   const [color, setColor] = useState([]);
   const [condition, setCondition] = useState([]);
 
@@ -39,7 +39,7 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
   async function createOrder() {
     const token = localStorage.getItem("access-token");
     const dataToSend = {
-      price: parseFloat(price), // แปลงเป็น float64
+      price: parseFloat(price),
       condition,
       color,
       product_id: product.ID,
