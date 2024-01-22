@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import pic from "../../img/p1.jpg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import { useSelector } from "react-redux"
 
 function index() {
@@ -21,6 +22,24 @@ function index() {
   const logoutHandler = () => {
     localStorage.clear();
     navigate("/login");
+  };
+
+  const checkValidateHandler = async () => {
+    const token = localStorage.getItem("access-token");
+    console.log(token);
+    try {
+      const response = await axios.get(
+        `https://ezcom-backend-production-09b5.up.railway.app/auth/validate`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("Fetch Error", error);
+    }
   };
 
   return (
@@ -54,6 +73,15 @@ function index() {
               className="block px-4 py-2 text-slate-300 hover:bg-gray-100"
             >
               Profile
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              className="block px-4 py-2 text-slate-300 hover:bg-gray-100"
+              onClick={checkValidateHandler}
+            >
+              Check Validate
             </a>
           </li>
           <li>
