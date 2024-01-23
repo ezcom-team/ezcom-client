@@ -30,6 +30,7 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
     e.preventDefault();
     createOrder();
     setisBuyModalOpen(false);
+    resetDataToSend();
   };
 
   const closeModal = () => {
@@ -61,6 +62,12 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
       console.log("error is ....");
       console.error("Fetch Error", error);
     }
+  }
+
+  const resetDataToSend = () => {
+    setPrice()
+    setCondition([])
+    setColor([])
   }
 
   return (
