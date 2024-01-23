@@ -1,17 +1,12 @@
 import React, { useState } from "react"
+import axios from "axios";
 import "./style.css"
+
 const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
 
-  const [price, setPrice] = useState(0);
-  const [color, setColor] = useState([]);
-  const [condition, setCondition] = useState([]);
-
-  const [orderData, setOrderData] = useState({
-    product_id: '',
-    condition: [],
-    price: 0,
-    color: [],
-  });  
+  const [price, setPrice] = useState();
+  const [color, setColor] = useState('');
+  const [condition, setCondition] = useState('');
 
   const handleConditionChange = (event) => {
     setCondition(event.target.value);
@@ -25,33 +20,49 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
     setColor(event.target.value);
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setOrderData({
-      product_id: product.ID,
-      condition: condition,
-      price: price,
-      color: color,
-    })
-
-    // resetOrderdata();
+  const handleSubmit = e => {
+    e.preventDefault();
+    createOrder();
     setisBuyModalOpen(false);
+    resetDataToSend();
   };
 
   const closeModal = () => {
     setisBuyModalOpen(false);
   };
 
-  const resetOrderdata = () => {
-    setOrderData({
-      product_id: '',
-      condition: [],
-      price: 0,
-      color: [],
-    })
+  async function createOrder() {
+    const token = localStorage.getItem("access-token");
+    const dataToSend = {
+      price: parseFloat(price),
+      condition,
+      color,
+      product_id: product.ID,
+    };
+    console.log("my sell order ");
+    console.log(dataToSend);
+    try {
+      const response = await axios.post(
+        `https://ezcom-backend-production-09b5.up.railway.app/order/sell`,
+        dataToSend,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      console.log("Created order", response.data);
+    } catch (error) {
+      console.log("error is ....");
+      console.error("Fetch Error", error);
+    }
   }
 
-  console.log('Sell = ', orderData)
+  const resetDataToSend = () => {
+    setPrice()
+    setCondition('')
+    setColor('')
+  }
 
   return (
     <div>
@@ -101,9 +112,10 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                             // style={{ height: "100px" }}
                             className="text-100 bg-400 pl-2"
                         >
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
+                          <option>--- Select condition ---</option>
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                          <option value="C">C</option>
                         </select>
                     </div>
                   </div>
@@ -121,14 +133,12 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                   <div className="flex justify-center ">Color</div>
                   {/* <input className="bg-100 rounded-sm text-400 px-1"></input> */}
                   <select
-                  // select multi
-                    id="color"
-                    name="color"
                     value={color}
                     onChange={handleColorChange}
                     // style={{ height: "100px" }}
                     className="text-100 bg-400 pl-2"
                   >
+                    <option>--- Select color ---</option>
                     {product.Color.map((colors) => (
                         <option value={colors}>{colors}</option>
                     ))}
@@ -138,18 +148,6 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                 <div className='flex justify-center '>Amount to be paid</div>
                 <input className='bg-100 rounded-sm text-400 px-1'></input>
               </div> */}
-                <div className="flex ">
-                  <div className="flex flex-col flex-1 items-center gap-2">
-                    <span>Buyer Pay</span>
-                    <div className="text-2xl text-primary">{price * 1.07}</div>
-
-                  </div>
-                  <div className="flex flex-col flex-1 items-center gap-2">
-                    <span>You Get</span>
-                    <div className="text-2xl text-green-600">{price * 1}</div>
-                  </div>
-                </div>
-
                 <div className="flex justify-center mt-4 gap-5">
                   <button onClick={handleSubmit} className=" w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded">
                     <span>Create Order</span>
