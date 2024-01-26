@@ -2,14 +2,14 @@ import React, { useState } from "react";
 // import "../Modal-notwork/Modal.css"; // Import your CSS file for styling
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ModalBuy from "../Modal/ModalBuy.jsx";
-import ModalSell from "../Modal/ModalSell.jsx"
+import ModalSell from "../Modal/ModalSell.jsx";
 import { data } from "../../content/detail.js";
 import { Link } from "react-router-dom";
 
 function Productdetail({ product }) {
   const [isBuyModalOpen, setisBuyModalOpen] = useState(false);
   const [isSellModalOpen, setisSellModalOpen] = useState(false);
-  
+
   const openModalBuy = () => {
     setisBuyModalOpen(true);
   };
@@ -34,11 +34,11 @@ function Productdetail({ product }) {
 
           <div className="grid grid-cols-3 justify-items-center text-200">
             <div className="grid justify-items-center ">
-              <div className="mb-2">ราคารับซื้อสูงสุด</div>
+              <div className="mb-2">ราคาขายต่ำสุด</div>
               <div className="text-3xl text-100">{product.Price}</div>
             </div>
             <div className="grid justify-items-center ">
-              <div className="mb-2">ราคาขายต่ำสุด</div>
+              <div className="mb-2">ราคารับซื้อสูงสุด</div>
               <div className="text-3xl  text-100">{data.priceLowSell}</div>
             </div>
             <div className="grid justify-items-center ">
@@ -58,7 +58,6 @@ function Productdetail({ product }) {
             >
               {data.textBuy}
             </button>
-            
 
             <button
               class="flex-grow-0  w-72 border-[2px] border-primary rounded-md hover:bg-orange-500 duration-500"
@@ -82,8 +81,16 @@ function Productdetail({ product }) {
           </button>
 
           {/* Modal */}
-          <ModalBuy product={product} isBuyModalOpen={isBuyModalOpen} setisBuyModalOpen={setisBuyModalOpen} />
-          <ModalSell product={product} isBuyModalOpen={isSellModalOpen} setisBuyModalOpen={setisSellModalOpen} />
+          <ModalBuy
+            product={product}
+            isBuyModalOpen={isBuyModalOpen}
+            setisBuyModalOpen={setisBuyModalOpen}
+          />
+          <ModalSell
+            product={product}
+            isBuyModalOpen={isSellModalOpen}
+            setisBuyModalOpen={setisSellModalOpen}
+          />
         </div>
       </div>
     </div>

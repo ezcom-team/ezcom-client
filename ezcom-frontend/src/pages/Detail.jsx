@@ -29,7 +29,7 @@ function Detail() {
     <div className="bg-back">
       <Nav />
       <Productdetail product={data}/> 
-      <BuyOrSellOrTrade />
+      <BuyOrSellOrTrade pid={id} />
     </div>
   );
 }
