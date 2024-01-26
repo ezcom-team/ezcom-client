@@ -1,16 +1,15 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import axios from "axios";
-import "./style.css"
+import "./style.css";
 
-const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
-
+const ModalSell = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
   const [price, setPrice] = useState();
-  const [color, setColor] = useState('');
-  const [condition, setCondition] = useState('');
+  const [color, setColor] = useState("");
+  const [condition, setCondition] = useState("");
 
   const handleConditionChange = (event) => {
     setCondition(event.target.value);
-  }
+  };
 
   const handlePriceChange = (event) => {
     setPrice(Number(event.target.value));
@@ -18,13 +17,11 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
 
   const handleColorChange = (event) => {
     setColor(event.target.value);
-  }
+  };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
     createOrder();
     setisBuyModalOpen(false);
-    resetDataToSend();
   };
 
   const closeModal = () => {
@@ -56,13 +53,16 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
       console.log("error is ....");
       console.error("Fetch Error", error);
     }
+
+    resetDataToSend();
+    window.location.reload();
   }
 
   const resetDataToSend = () => {
-    setPrice()
-    setCondition('')
-    setColor('')
-  }
+    setPrice();
+    setCondition("");
+    setColor("");
+  };
 
   return (
     <div>
@@ -70,7 +70,7 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
         <div className="modal ">
           <div className="bg-400 ">
             <div className="flex justify-center text-100 text-2xl">
-                <span>Sell order</span>
+              <span>Sell order</span>
             </div>
             {/* <span className="close-btn " onClick={closeModalSell}>
             &times;
@@ -95,9 +95,7 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                     <div className=" text-green-600 text-2xl">
                       {product.Price}
                     </div>
-                    <div className=" text-primary text-xl">
-                      {product.Price}
-                    </div>
+                    <div className=" text-primary text-xl">{product.Price}</div>
                   </div>
                 </div>
               </div>
@@ -106,17 +104,17 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                   <div className="flex justify-around ">Condition</div>
                   <div className="flex gap-10">
                     <div className="flex gap-1">
-                        <select
-                            value={condition}
-                            onChange={handleConditionChange}
-                            // style={{ height: "100px" }}
-                            className="text-100 bg-400 pl-2"
-                        >
-                          <option>--- Select condition ---</option>
-                          <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="C">C</option>
-                        </select>
+                      <select
+                        value={condition}
+                        onChange={handleConditionChange}
+                        // style={{ height: "100px" }}
+                        className="text-100 bg-400 pl-2"
+                      >
+                        <option>--- Select condition ---</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -140,7 +138,7 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                   >
                     <option>--- Select color ---</option>
                     {product.Color.map((colors) => (
-                        <option value={colors}>{colors}</option>
+                      <option value={colors}>{colors}</option>
                     ))}
                   </select>
                 </div>
@@ -149,7 +147,10 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
                 <input className='bg-100 rounded-sm text-400 px-1'></input>
               </div> */}
                 <div className="flex justify-center mt-4 gap-5">
-                  <button onClick={handleSubmit} className=" w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded">
+                  <button
+                    onClick={handleSubmit}
+                    className=" w-40 bg-green-600 hover:bg-green-700 transition text-200 p-2 rounded"
+                  >
                     <span>Create Order</span>
                   </button>
                   <button
@@ -162,9 +163,9 @@ const ModalSell = ({ product, isBuyModalOpen , setisBuyModalOpen}) => {
               </form>
             </div>
           </div>
-        </div>)}
+        </div>
+      )}
     </div>
-
   );
 };
 

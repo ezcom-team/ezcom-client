@@ -1,36 +1,37 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./style.css";
+
 const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
   const [price, setPrice] = useState();
   const [color, setColor] = useState([]);
   const [condition, setCondition] = useState([]);
 
-  const handleConditionChange = value => {
+  const handleConditionChange = (value) => {
     if (condition.includes(value)) {
-      setCondition(condition.filter(item => item !== value));
+      setCondition(condition.filter((item) => item !== value));
     } else {
       setCondition([...condition, value]);
     }
   };
 
-  const handlePriceChange = event => {
+  const handlePriceChange = (event) => {
     setPrice(Number(event.target.value));
   };
 
-  const handleColorChange = selectedColor => {
+  const handleColorChange = (selectedColor) => {
     if (color.includes(selectedColor)) {
-      setColor(color.filter(item => item !== selectedColor));
+      setColor(color.filter((item) => item !== selectedColor));
     } else {
       setColor([...color, selectedColor]);
     }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
     createOrder();
     setisBuyModalOpen(false);
     resetDataToSend();
+    window.location.reload();
   };
 
   const closeModal = () => {
@@ -65,10 +66,10 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
   }
 
   const resetDataToSend = () => {
-    setPrice()
-    setCondition([])
-    setColor([])
-  }
+    setPrice();
+    setCondition([]);
+    setColor([]);
+  };
 
   return (
     <div>
@@ -151,7 +152,7 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
                   <div className="flex justify-center ">Color</div>
                   {/* <input className="px-1 rounded-sm bg-100 text-400"></input> */}
                   <div>
-                    {product.Color.map(colors => (
+                    {product.Color.map((colors) => (
                       <div key={colors} className="flex gap-1">
                         <input
                           type="checkbox"
