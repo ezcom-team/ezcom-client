@@ -3,8 +3,33 @@ import p1 from "../../img/p1.jpg";
 import p2 from "../../img/p2.jpg";
 import BuyCard from "./BuyCard";
 import { data } from "../../content/detail.js";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Buying = () => {
+    const [myBuyOrder, setMyBuyOrder] = useState([])
+
+    useEffect(() => {
+        const token = localStorage.getItem("access-token");
+        async function fetchData() {
+          try {
+              const response = await axios.get(`https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
+                {
+                    headers: {
+                        Authorization: token,
+                    },
+                }
+              );
+              console.log(response.data)
+              setMyBuyOrder(response.data);
+            } catch (error) {
+              console.error('Fetch Error', error);
+            }
+        }
+        
+        fetchData();
+      }, []);
+
     return (
         // <div className="grid grid-cols-[15%_40%_15%_15%_15%] bg-300 py-3 mb-1 pb-96 text-200 rounded-md">
         //     <div className="flex align-middle">
@@ -40,16 +65,18 @@ const Buying = () => {
         //     </div>
         // </div>
         <div className='h-full  min-w-full  gap-2 bg-400 p-5 rounded-md'>
-            <div className="grid grid-cols-[25%_12%_10%_10%_15%_10%]  text-200 rounded-md pl-5">
-                <div className='flex'>Items</div>
-                <div className='flex'>Price</div>
-                <div className='flex'>Max Price</div>
-                <div className='flex justify-center'>Type</div>
-                <div className='flex justify-center'>Progress</div>
+            <div className="grid grid-cols-[30%_10%_8%_18%_18%_12%]  text-200 rounded-md">
+                <div className='flex pl-[36px]'>Items</div>
+                <div className='flex justify-center'>Price</div>
+                <div className='flex justify-center'>Condition</div>
+                <div className='flex justify-center'>Color</div>
                 <div className='flex justify-center'>Create Time</div>
+                <div className='flex justify-center'>Status</div>
             </div>
             <hr class="h-[2px]  border-0 bg-300"></hr>
-            <BuyCard/>
+            {myBuyOrder.map((buyOrder) => (
+                <BuyCard order={buyOrder} />
+            ))}
         </div>
 
 
