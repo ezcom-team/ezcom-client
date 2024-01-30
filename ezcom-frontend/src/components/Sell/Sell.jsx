@@ -47,7 +47,7 @@ const Sell = ({ pid }) => {
       {/* header end */}
 
       <div className="grid grid-cols-[15%_40%_15%_15%_15%] mb-4 text-100">
-        <div className="ml-5">Condition</div>
+        <div className="flex justify-center ml-[12px]">Condition</div>
         <div className="">Color</div>
         <div className="">Seller</div>
         <div className="">Price</div>

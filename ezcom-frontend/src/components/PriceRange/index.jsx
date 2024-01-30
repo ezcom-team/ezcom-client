@@ -39,8 +39,8 @@ export const PriceRange = ({ onPriceChange }) => {
                     valueLabelDisplay='off'
                 />
                 <div>
-                    <p>Min: ${price[0]}</p>
-                    <p>Max: ${price[1]}</p>
+                    <p>Min: ฿{price[0]}</p>
+                    <p>Max: ฿{price[1]}</p>
                 </div>
             </div>
         </div>

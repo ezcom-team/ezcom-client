@@ -1,32 +1,21 @@
-import axios from 'axios';
 import React from 'react'
 
-export const OverviewVS = ({ item, spec }) => {
+export const CompareSpec = ({ item, spec }) => {
 
-  console.log(item.Specs)
-  console.log(typeof(item.Specs))
+  // console.log(item.Specs)
+  // console.log(typeof(item.Specs))
 
-  console.log('spec = ', spec)
+  // console.log('spec = ', spec)
 
   return (
-    <div className='m-10'>
-        <div className=" w-72 h-auto p-5 bg-back">
-          <img src={item.Image} className='bg-300 rounded-t-lg px-4 p-t'  alt="" />
-          <div className='bg-300 rounded-b-lg pb-1'>
-            <div>
-              {item.Name}
-            </div>
-            <div className='text-primary'>
-              $ {item.Price}
-            </div>
-          </div>
+    <div>
+        <div className="w-[320px] max-w-[400px] ml-1 bg-back">
           {item.Type === 'Mouse' ? (
-            <div className='mt-12 h-auto text-100 bg-300'>
+            <div className='mt-12 max-w-[350px] h-auto text-100 bg-300'>
               <div className='flex p-2 justify-center'>
-                {item.Color.map((color) => (
-                  <div>{color}/</div>
+                {item.Color.map((color, index) => (
+                    <div className='max-w-[50px] w-[32px] h-[32px] rounded-full mx-[8px]' style={{backgroundColor: color}} />
                 ))}
-                {/* <div>{item.Color}</div> */}
               </div>
               <div className='flex p-2 bg-400 justify-center'>
                 <div>{spec.Sensor}</div>
@@ -38,28 +27,34 @@ export const OverviewVS = ({ item, spec }) => {
                 <div>{spec.Connection}</div>
               </div>
               <div className='flex p-2 bg-300 justify-center'>
-                <div>length</div>
+                <div>{spec.Length}</div>
               </div>
               <div className='flex p-2 bg-400 justify-center'>
-                <div>weight</div>
+                <div>{spec.Weight}</div>
               </div>
               <div className='flex p-2 bg-300 justify-center'>
-                <div>polling</div>
+                <div>{spec.PollingRate}</div>
               </div>
               <div className='flex p-2 bg-400 justify-center'>
-                <div>button</div>
+                <div>{spec.ButtonForce}</div>
               </div>
               <div className='flex p-2 bg-300 justify-center'>
-                <div>shape</div>
+                <div>{spec.Shape}</div>
               </div>
               <div className='flex p-2 bg-400 justify-center'>
-                <div>height</div>
+                <div>{spec.Height}</div>
               </div>
               <div className='flex p-2 bg-300 justify-center'>
-                <div>width</div>
+                <div>{spec.Width}</div>
               </div>
             </div>
-            ) : (<></>)
+            ) : 
+          item.Type === 'VGA' ? (
+            <div>
+
+            </div>
+            ) : 
+            (<></>)
           }
 
         </div>
