@@ -14,7 +14,7 @@ export const CardItem = (props) => {
             </div>
             <div className='text-100 text-lg text-center'>
               <div>{props.name}</div>
-              <div>$ <span className='text-primary'>{props.price}.-</span></div>
+              <div>฿ <span className='text-primary'>{props.price}.-</span></div>
               <div>({props.quantity}) items</div>
             </div>
           </div>
