@@ -25,8 +25,8 @@ const SellCard = ({ order }) =>{
             <div className="grid grid-cols-[30%_12%_10%_10%_20%_10%] bg-300 py-3 mb-1 text-200 rounded-md">
             <div className="flex align-middle">
                 <div className="flex h-20 ml-5">
-                    <img src={picProduct} className="max-h-full max-w-full" />
-                    <div className="my-auto">{data.nameProduct}</div>
+                    <img src={order.Product_img} className="max-h-full max-w-full" />
+                    <div className="my-auto">{order.Product_name}</div>
                 </div>
             </div>
             <div className="flex align-middle justify-center">
