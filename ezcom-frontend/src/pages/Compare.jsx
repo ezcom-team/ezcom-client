@@ -78,7 +78,7 @@ export const Compare = () => {
         updatedMoreSpec.splice(index, 1);
         setMoreSpec(updatedMoreSpec);
     };
-    console.log('Spec:',spec)
+    console.log("Spec:", spec);
     // console.log("MDaata", moreData);
     // console.log("Mspec", moreSpec);
 
@@ -122,133 +122,179 @@ export const Compare = () => {
                         </div>
                         <div className="flex justify-center text-center text-100">
                             <div className="flex">
-                                <div>                                        
+                                <div>
                                     <table className="">
                                         <thead className="text-primary">
                                             <tr className="bg-400">
-                                                <th className="p-2">
-                                                    Specs
-                                                </th>
+                                                <th className="p-2">Specs</th>
                                             </tr>
                                         </thead>
                                         {data.Type === "VGA" ? (
-                                                <tbody>
-                                                    <tr>
-                                                        <td>VGA</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>VGA</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>VGA</td>
-                                                    </tr>
-                                                </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td>VGA</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>VGA</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>VGA</td>
+                                                </tr>
+                                            </tbody>
                                         ) : data.Type === "Headset" ? (
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Headset</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Headset</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Headset</td>
-                                                    </tr>
-                                                </tbody>
+                                            <tbody>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Cable Length
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Connection
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Headset Type
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Microphone
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Noise Cancelling
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Weight
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         ) : data.Type === "Keyboard" ? (
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Keyboard</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Keyboard</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Keyboard</td>
-                                                    </tr>
-                                                </tbody>
+                                            <tbody>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Form_Factor
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Height
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Length
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">PCB</td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">RGB</td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Switches
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Weight
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Width
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         ) : data.Type === "Mouse" ? (
-                                                <tbody>
-                                                    <tr className="bg-300">
-                                                        <td className="p-2">
-                                                            Colors
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-400">
-                                                        <td className="p-2">
-                                                            Sensor
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-300">
-                                                        <td className="p-2">
-                                                            Button switch
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-400">
-                                                        <td className="p-2">
-                                                            Connection
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-300">
-                                                        <td className="p-2">
-                                                            Length
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-400">
-                                                        <td className="p-2">
-                                                            Weight
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-300">
-                                                        <td className="p-2">
-                                                            Polling rate
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-400">
-                                                        <td className="p-2">
-                                                            Button force
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-300">
-                                                        <td className="p-2">
-                                                            Shape
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-400">
-                                                        <td className="p-2">
-                                                            Height
-                                                        </td>
-                                                    </tr>
-                                                    <tr className="bg-300">
-                                                        <td className="p-2">
-                                                            Width
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
+                                            <tbody>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Colors
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Sensor
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Button switch
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Connection
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Length
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Weight
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Polling rate
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Button force
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Shape
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-400">
+                                                    <td className="p-2">
+                                                        Height
+                                                    </td>
+                                                </tr>
+                                                <tr className="bg-300">
+                                                    <td className="p-2">
+                                                        Width
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         ) : data.Type === "Mousepad" ? (
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Mousepad</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Mousepad</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Mousepad</td>
-                                                    </tr>
-                                                </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Mousepad</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mousepad</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mousepad</td>
+                                                </tr>
+                                            </tbody>
                                         ) : data.Type === "CPU" ? (
-                                                <tbody>
-                                                    <tr>
-                                                        <td>CPU</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>CPU</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>CPU</td>
-                                                    </tr>
-                                                </tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td>CPU</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CPU</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CPU</td>
+                                                </tr>
+                                            </tbody>
                                         ) : (
                                             <div>No data type</div>
                                         )}
