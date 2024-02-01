@@ -114,30 +114,60 @@ function Productdetail({ product, spec }) {
                                     </tbody>
                                 ) : product.Type === "Headset" ? (
                                     <tbody>
-                                        <tr>
-                                            <td>Headset</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">
+                                                Cable Length
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>Headset</td>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Connection</td>
                                         </tr>
-                                        <tr>
-                                            <td>Headset</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">
+                                                Headset Type
+                                            </td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Microphone</td>
+                                        </tr>
+                                        <tr className="bg-300">
+                                            <td className="p-2">
+                                                Noise Cancelling
+                                            </td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Weight</td>
                                         </tr>
                                     </tbody>
                                 ) : product.Type === "Keyboard" ? (
                                     <tbody>
-                                        <tr>
-                                            <td>Keyboard</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Form_Factor</td>
                                         </tr>
-                                        <tr>
-                                            <td>Keyboard</td>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Height</td>
                                         </tr>
-                                        <tr>
-                                            <td>Keyboard</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Length</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">PCB</td>
+                                        </tr>
+                                        <tr className="bg-300">
+                                            <td className="p-2">RGB</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Switches</td>
+                                        </tr>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Weight</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Width</td>
                                         </tr>
                                     </tbody>
                                 ) : product.Type === "Mouse" ? (
-                                    <tbody className=" text-gray-500">
+                                    <tbody>
                                         <tr className="bg-300">
                                             <td className="p-2">Colors</td>
                                         </tr>
