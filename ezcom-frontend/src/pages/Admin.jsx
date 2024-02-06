@@ -3,11 +3,14 @@ import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Nav from "../components/Nav";
 import Buy from "../components/Buy/Buy";
-import Selling from "../components/MyOrderpage/SellingPart";
+import Selling from "../components/OrderAdmin";
 import Graph from "../components/Graph/Graph";
 import Productdetail from "../components/ProductDetail/ProductDetail";
 import Product from "../components/Product";
-
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 function Admin() {
   const labelsForFormA = [
     { id: "name", text: "Name", type: "text" },
@@ -48,7 +51,7 @@ function Admin() {
       CurrentComponent = null;
   }
 
-  
+
   return (
     <div>
       <Nav />
@@ -56,46 +59,41 @@ function Admin() {
       <div className="flex flex-row min-h-full">
         {/* Left Sidebar */}
         <div className="w-64 mt-3 ">
-        <div className="p-4">
-              <h1 className="text-2xl font-bold text-primary">Menu</h1>
+          <div className="p-4">
+            <h1 className="text-2xl font-bold text-primary">Menu</h1>
+          </div>
+          <div className="bg-300 text-white w-64 h-fit  left-0 overflow-y-auto rounded-s-lg rounded-e-lg">
+            <div className="p-2x flex flex-col text-xl">
+
+              {/* <div className="mb-2">
+                <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Graph")}>Graph</a>
+              </div>
+              <div className="mb-2">
+                <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Product")}>Product</a>
+              </div>
+              <div className="mb-2">
+                <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Order")}>Order</a>
+              </div>
+              <div className="mb-2">
+                <a href="#" className="text-100 hover:text-200" onClick={() => toggle("User")}>User</a>
+              </div> */}
+
+              <a href="#" onClick={() => toggle("Graph")} className="w-full pl-10 bg-300 p-3 border-b-2 border-400 hover:text-200 hover:bg-400"><TrendingUpIcon /> Graph</a>
+              <a href="#" onClick={() => toggle("Product")} className="w-full pl-10 bg-300 p-3 border-b-2 border-400 hover:text-200 hover:bg-400"><ShoppingBasketIcon /> Product</a>
+              <a href="#" onClick={() => toggle("Order")} className="w-full pl-10 bg-300 p-3 border-b-2 border-400 hover:text-200 hover:bg-400"><ShoppingCartIcon /> Order</a>
+              <a href="#" onClick={() => toggle("User")} className="w-full pl-10 bg-300 p-3 border-b-2 border-400 hover:text-200 hover:bg-400"><AccountCircleIcon /> User</a>
+
             </div>
-          <div className="bg-300 text-white w-64 h-fit fixed left-0 overflow-y-auto py-5 px-4 rounded-lg">
-            <nav className="p-4 ">
-              <ul className=''>
-                <li className="mb-2">
-                  <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Graph")}>Graph</a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Product")}>Product</a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Order")}>Order</a>
-                </li>
-                <li className="mb-2">
-                  <a href="#" className="text-100 hover:text-200" onClick={() => toggle("User")}>User</a>
-                </li>
-              </ul>
-            </nav>
-            {/* <nav className="p-4 ">
-        <div>
-        <button
-          className="ml-3 hover:bg-300 px-4 p-2 rounded-md"
-          onClick={() => toggle("Buy")}
-        >
-          Buy
-        </button>
-        </div>
-      </nav> */}
           </div>
         </div>
 
         {/* Right Content */}
         <div className="flex flex-col flex-1 bg-400">
 
-          <div className="flex gap-5 p-3 h-[150px] text-4xl bg-400 ">
-            <div className="flex-1 bg-300 text-primary p-2 flex items-center justify-center rounded-lg">1850 <span className="text-100">items</span></div>
-            <div className="flex-1 bg-300 text-green-500 p-2 flex items-center justify-center rounded-lg">9999 <span className="text-100">orders</span></div>
-            <div className="flex-1 bg-300 text-blue-500 p-2 flex items-center justify-center rounded-lg">11005 <span className="text-100">users</span></div>
+          <div className="flex gap-5 p-3 h-[150px]  bg-400  ">
+            <div className="flex-1 bg-300 text-primary p-2 flex items-center justify-center rounded-lg text-5xl">1850 <span className="text-100 ml-2 text-4xl"> items</span></div>
+            <div className="flex-1 bg-300 text-green-500 p-2 flex items-center justify-center rounded-lg text-5xl">9999 <span className="text-100 ml-2 text-4xl"> orders</span></div>
+            <div className="flex-1 bg-300 text-blue-500 p-2 flex items-center justify-center rounded-lg text-5xl">11005 <span className="text-100 ml-2 text-4xl"> users</span></div>
           </div>
           <div className="mt-10 w-full p-0">
             {CurrentComponent}
