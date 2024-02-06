@@ -8,7 +8,7 @@ import Graph from "../Graph/Graph";
 
 
 
-const BuyOrSellOrTrade = () => {
+const BuyOrSellOrTrade = ({ pid }) => {
   const [activeComponent, setActiveComponent] = useState("Buy");
 
   const toggle = (component) => {
@@ -18,10 +18,10 @@ const BuyOrSellOrTrade = () => {
 
   switch (activeComponent) {
     case "Buy":
-      CurrentComponent = <Buy />;
+      CurrentComponent = <Buy pid={pid} />;
       break;
     case "Sell":
-      CurrentComponent = <Sell />;
+      CurrentComponent = <Sell pid={pid} />;
       break;
     case "Trade":
       CurrentComponent = <Graph />;
