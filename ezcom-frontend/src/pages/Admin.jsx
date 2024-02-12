@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Nav from "../components/Nav";
 import Buy from "../components/Buy/Buy";
@@ -11,6 +11,9 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import axios from "axios";
+import Account from "../components/Account";
+
 function Admin() {
   const labelsForFormA = [
     { id: "imgae", text: "Image", type: "file" },
@@ -30,6 +33,32 @@ function Admin() {
 
   const [activeComponent, setActiveComponent] = useState("Order");
 
+
+  const DynamicForm = ({ labels }) => (
+    <form className="flex flex-col p-4 overflow-scroll text-white rounded-md bg-300 max-h-96">
+      {labels.map(label => (
+        <label key={label.id}>
+          {label.text}
+          <div className="border-2 rounded-md border-200">
+            <input
+              className="px-2 text-gray-200"
+              type={label.type}
+              name={label.id}
+            />
+          </div>
+        </label>
+      ))}
+      <button
+        type="submit"
+        className="mt-3 rounded-md bg-slate-400 text-slate-600"
+      >
+        create
+      </button>
+    </form>
+    );
+
+  
+
   const toggle = (component) => {
     setActiveComponent(component);
   };
@@ -46,7 +75,7 @@ function Admin() {
       CurrentComponent = <Selling />;
       break;
     case "User":
-      CurrentComponent = <Buy />;
+      CurrentComponent = <Account />;
       break;
     default:
       CurrentComponent = null;
@@ -63,7 +92,7 @@ function Admin() {
           <div className="p-4">
             <h1 className="text-2xl font-bold text-primary">Menu</h1>
           </div>
-          <div className="bg-300 text-white w-64 h-fit  left-0 overflow-y-auto rounded-s-lg rounded-e-lg">
+          <div className="bg-400 text-white w-64 h-fit  left-0 overflow-y-auto rounded-s-lg rounded-e-lg">
             <div className="p-2x flex flex-col text-xl">
 
               {/* <div className="mb-2">
@@ -107,25 +136,4 @@ function Admin() {
 
 export default Admin;
 
-      // const DynamicForm = ({ labels }) => (
-      //   <form className="flex flex-col p-4 overflow-scroll text-white rounded-md bg-300 max-h-96">
-      //     {labels.map(label => (
-      //       <label key={label.id}>
-      //         {label.text}
-      //         <div className="border-2 rounded-md border-200">
-      //           <input
-      //             className="px-2 text-gray-200"
-      //             type={label.type}
-      //             name={label.id}
-      //           />
-      //         </div>
-      //       </label>
-      //     ))}
-      //     <button
-      //       type="submit"
-      //       className="mt-3 rounded-md bg-slate-400 text-slate-600"
-      //     >
-      //       create
-      //     </button>
-      //   </form>
-      //   );
+      

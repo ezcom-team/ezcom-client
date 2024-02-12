@@ -70,12 +70,4 @@ const Sell = ({ pid }) => {
   );
 };
 
-<<<<<<< HEAD
-
-    )
-}
-
 export default Sell;
-=======
-export default Sell;
->>>>>>> develop
