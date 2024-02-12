@@ -64,12 +64,10 @@ const ProcessPage = () => {
                     </div>
                     <div className="flex-grow p-4 overflow-y-auto h-[650px] mt-10">
                         <div className="flex flex-col gap-3 p-4 ">
-                            <CardDetail />
-                            <CardDetail />
-                            <CardDetail />
-                            <CardDetail />
-                            <CardDetail />
-                            <CardDetail />
+                            <CardDetail title={"prepare"} status={currentStatus} />
+                            <CardDetail title={"verify"} status={currentStatus} />
+                            <CardDetail title={"delivery"} status={currentStatus} />
+                            <CardDetail title={"done"} status={currentStatus} />
                         </div>
                     </div>
                 </div>

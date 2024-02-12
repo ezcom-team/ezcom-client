@@ -4,7 +4,7 @@ export const CompareData = ({ item }) => {
     return (
         <div className="w-auto max-w-[400px] ml-3 bg-back">
             <div className="max-h-[332px] bg-300 rounded-lg px-auto">
-                <div className="w-[320px] h-[300px] max-h-[322px] p-[8px] mt-[8px]">
+                <div className="w-[320px] h-[300px] max-h-[322px] p-[8px]">
                     <div className="flex justify-center">
                         <img src={item.Image} className="max-h-[180px]" />
                     </div>
