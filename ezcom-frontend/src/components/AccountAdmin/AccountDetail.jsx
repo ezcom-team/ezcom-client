@@ -1,6 +1,6 @@
-import picProduct from '../img/testPic.png'
+
 import { data } from "../../content/detail";
-import p2 from '../img/p2.jpg'
+import p2 from '../../img/p2.jpg'
 import { useState, useEffect } from "react";
 
 
