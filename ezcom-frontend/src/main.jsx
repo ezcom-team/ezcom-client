@@ -11,10 +11,9 @@ import {
 import Home from "./pages/Home.jsx";
 import Landing from "./pages/Landing.jsx";
 import Detail from "./pages/Detail.jsx";
-import MyOrder from "./pages/MyOrderPage.jsx";
+import MyOrder from "./pages/MyOrder.jsx";
 import Admin from "./pages/Admin";
-import Progress from "./pages/ProgressPage.jsx";
-import Register from "./pages/ResgisterPage.jsx";
+import Progress from "./pages/Progress.jsx";
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
@@ -53,10 +52,6 @@ const router = createBrowserRouter([
   {
     path: "/Progress",
     element: <Progress />,
-  },
-  {
-    path: "/Register",
-    element: <Register />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

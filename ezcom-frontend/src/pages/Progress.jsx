@@ -7,7 +7,7 @@ import Progress from "../components/Progress/Progress";
 import { CardItem } from "../components/cardItem";
 
 
-function ProgressPage() {
+function Landing() {
   return (
     <div className="bg-back min-h-screen">
       <Nav />
@@ -16,4 +16,4 @@ function ProgressPage() {
   );
 }
 
-export default ProgressPage;
+export default Landing;

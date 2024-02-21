@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Nav from "../components/Nav";
 import Buy from "../components/Buy/Buy";
-import Selling from "../components/OrderAdmin/OrderAdmin";
+import Selling from "../components/OrderAdmin";
 import Graph from "../components/Graph/Graph";
 import Productdetail from "../components/ProductDetail/ProductDetail";
 import Product from "../components/Product";
@@ -12,7 +12,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import axios from "axios";
-import Account from "../components/AccountAdmin/Account";
+import Account from "../components/Account";
 
 function Admin() {
   const labelsForFormA = [
@@ -136,4 +136,4 @@ function Admin() {
 
 export default Admin;
 
-    
+      

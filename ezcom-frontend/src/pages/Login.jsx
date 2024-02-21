@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../store/counterSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 import axios from "axios";
 import React, { useState } from "react";
@@ -165,7 +165,7 @@ function Login() {
 
           <div className="flex items-end justify-center gap-3 mt-28 text-ce">
             <div className="text-200">Don't have an account? </div>
-            <Link to="/register" className="text-xl text-primary">Sign up</Link>
+            <button className="text-xl text-primary">Sign up</button>
           </div>
         </form>
         <div className="flex gap-2 mt-3">
@@ -179,7 +179,10 @@ function Login() {
           </button>
         </div>
 
-        
+        <div className="flex items-end justify-center gap-3 mt-28 text-ce">
+          <div className="text-200">Don't have an account? </div>
+          <button className="text-xl text-primary">Sign up</button>
+        </div>
       </div>
     </div>
   );
