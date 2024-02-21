@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
-const FormData = require('form-daata');
+// const FormData = require('form-daata');
 const Register = () => {
   let data = new FormData();
   const [formData, setFormData] = useState({
