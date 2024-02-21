@@ -7,7 +7,7 @@ import ProgressStep from "../components/Progress/ProgressStep";
 // import ModalContainer from '../components/Modal/ModalContainer';
 
 
-function Landing() {
+function MyOrderPage() {
   return (
     <div className="bg-400 min-h-screen">
       <Nav />
@@ -16,4 +16,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default MyOrderPage;
