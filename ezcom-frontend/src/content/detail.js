@@ -19,7 +19,8 @@ export const data = {
     buytime:"22/7/64 8:30 AM",
     pendingstatus : "On Discussion",
     amountPlaceBuy : "9",
-
+    type:"sell",
+    
     historyStatus: "Success",
     // productCondition:"",
 

@@ -2,10 +2,27 @@ import React from 'react'
 
 function Sidebar() {
   return (
-    <div className='fixed top-0 left-0 flex flex-col w-48 h-full p-4 text-white bg-300'>
-        <p>product</p>
-        <p>member</p>
-        <p>order</p>
+    <div className="bg-300 text-white w-64 h-full fixed left-0 overflow-y-auto">
+      <div className="p-4">
+        <h1 className="text-2xl font-bold text-primary">Menu</h1>
+      </div>
+      
+      <nav className="p-4 ">
+        <ul className=''>
+          <li className="mb-2">
+            <a href="#" className="text-100 hover:text-200">Graph</a>
+          </li>
+          <li className="mb-2">
+            <a href="#" className="text-100 hover:text-200">Product</a>
+          </li>
+          <li className="mb-2">
+            <a href="#" className="text-100 hover:text-200">Order</a>
+          </li>
+          <li className="mb-2">
+            <a href="#" className="text-100 hover:text-200">User</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   )
 }

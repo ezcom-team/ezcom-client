@@ -6,14 +6,14 @@ import Payment from "../components/Payment/Payment";
 import Progress from "../components/Progress/Progress";
 import { CardItem } from "../components/cardItem";
 
-function Landing() {
+
+function ProgressPage() {
   return (
     <div className="bg-back min-h-screen">
       <Nav />
       <Progress />
-
     </div>
   );
 }
 
-export default Landing;
+export default ProgressPage;
