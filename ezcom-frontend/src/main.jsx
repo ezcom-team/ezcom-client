@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createTheme, ThemeProvider } from "@mui/material/styles"; // เพิ่ม import เข้ามา
 // import App from "./App.jsx";
+import CssBaseline from "@mui/material/CssBaseline";
 import "./index.css";
 import {
   createBrowserRouter,
@@ -20,6 +22,21 @@ import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Login from "./pages/Login";
 import { Compare } from "./pages/Compare";
+
+// สร้าง theme สำหรับ dark mode
+const theme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#d85610', // สี primary ที่ต้องการ
+    },
+    secondary: {
+      main: '#ff00a2', // สี secondary ที่ต้องการ
+    },
+  },
+});
+
+
 
 const router = createBrowserRouter([
   {
@@ -59,10 +76,17 @@ const router = createBrowserRouter([
     element: <Register />,
   },
 ]);
+
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      dark theme
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );

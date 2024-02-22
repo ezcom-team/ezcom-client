@@ -1,10 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 function Product() {
   const labelsForFormMouse = [
-    { id: "imgae", text: "Image", type: "file" },
+    { id: "image", text: "Image", type: "file" },
+    { id: "type", text: "Type", type: "text" },
     { id: "name", text: "Name", type: "text" },
+    { id: "color", text: "color", type: "text" },
     { id: "desc", text: "Desc", type: "text" },
     { id: "sensor", text: "Sensor", type: "text" },
     { id: "buttonSwitch", text: "ButtonSwitch", type: "text" },
@@ -16,6 +23,8 @@ function Product() {
     { id: "shape", text: "Shape", type: "text" },
     { id: "height", text: "Height", type: "text" },
     { id: "width", text: "Width", type: "text" },
+    { id: "price", text: "Price", type: "text" },
+    { id: "quantity", text: "Quantity", type: "text" },
     // เพิ่ม label อื่น ๆ ตามต้องการ
   ];
 
@@ -24,22 +33,95 @@ function Product() {
     { id: "phone", text: "Phone", type: "number" },
     // เพิ่ม label อื่น ๆ ตามต้องการ
   ];
-  const DynamicForm = ({ labels }) => (
-    <form className="flex flex-col p-4 text-white rounded-md bg-300">
-      {labels.map(label => (
-        <label key={label.id}>
-          {label.text}
-          <div className="border-2 rounded-md border-200">
-            <input
-              className="px-2 text-gray-200"
-              type={label.type}
-              name={label.id}
-            />
+  const sendData = async formData => {
+    console.log("form data :", formData);
+    try {
+      console.log("string" + " : " + formData.name);
+      // สร้าง request ด้วย Axios
+
+      const response = await axios.post(
+        "https://ezcom-backend-production-09b5.up.railway.app/products",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
+      console.error("Error sending request:", error);
+    }
+  };
+
+  const DynamicForm = ({ labels }) => {
+    const [formData, setFormData] = useState({});
+
+    const handleInputChange = e => {
+      const { name, value, files } = e.target;
+      if (name === "image") {
+        setFormData({
+          ...formData,
+          image: files[0],
+        });
+      } else {
+        setFormData({
+          ...formData,
+          [name]: value,
+        });
+      }
+    };
+
+    const handleSubmit = e => {
+      e.preventDefault();
+      sendData(formData); // ส่งข้อมูลผ่าน Axios เมื่อ form ถูกส่ง
+    };
+
+    return (
+      <form
+        className="flex flex-col p-4 text-white rounded-md"
+        onSubmit={handleSubmit}
+      >
+        {labels.map(label => (
+          <div className="flex flex-wrap w-auto max-h-50">
+            <Box
+              component="form"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                flexWrap: "wrap",
+                "& > :not(style)": { m: 1, width: "25ch" },
+              }}
+              noValidate
+              autoComplete="off"
+              className="text-200"
+            >
+              {label.type === "file" ? (
+                <input type={label.type} />
+              ) : (
+                <TextField
+                  id={label.id}
+                  type={label.type}
+                  name={label.id}
+                  label={label.text}
+                  variant="outlined"
+                  color="primary"
+                  onChange={handleInputChange}
+                />
+              )}
+            </Box>
           </div>
-        </label>
-      ))}
-    </form>
-  );
+        ))}
+        <button
+          type="submit"
+          className="p-1 mt-4 text-white border-2 border-white rounded-sm"
+        >
+          Submit
+        </button>
+      </form>
+    );
+  };
 
   const [selectedForm, setSelectedForm] = useState(null);
 
@@ -50,7 +132,7 @@ function Product() {
     setSelectedForm(labelsForFormMousepad);
   };
   return (
-    <div className="flex flex-col items-center justify-center flex-1 gap-4">
+    <div className="flex flex-col items-center justify-center flex-1 gap-4 text-200">
       <div className="flex flex-row gap-8">
         <button
           className="p-1 text-white border-2 border-white rounded-sm"
