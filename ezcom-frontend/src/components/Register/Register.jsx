@@ -18,34 +18,40 @@ const Register = () => {
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
   const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = e => {
     setFormData({ ...formData, email: e.target.value });
   };
 
-  const handleUsernameChange = (e) => {
+  const handleUsernameChange = e => {
     setFormData({ ...formData, name: e.target.value });
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = e => {
     setFormData({ ...formData, password: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     console.log("Submitting form with data:", formData);
-    data.appen("name",formData.name)
-    data.appen("email",formData.email)
-    data.appen("password",formData.password)
-    data.appen("role",formData.role)
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("password", formData.password);
+    data.append("role", formData.role);
     // ทำการตรวจสอบชื่อผู้ใช้และรหัสผ่าน และดำเนินการตามต้องการ (เช่น ส่งคำขอ API ไปยังเซิร์ฟเวอร์)
     try {
-      console.log("string"+" : "+formData.name)
+      console.log("string" + " : " + formData.name);
       // สร้าง request ด้วย Axios
-      const response = await axios.post("https://ezcom-backend-production-09b5.up.railway.app/auth/register",
-        data
+      const response = await axios.post(
+        "https://ezcom-backend-production-09b5.up.railway.app/auth/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
-      console.log("outsite : "+ response.data);
-      
+      console.log("outsite : " + response.data);
+
       // ตรวจสอบการตอบกลับจาก API
       if (response.status === 200) {
         console.log(response.data);
@@ -103,7 +109,6 @@ const Register = () => {
   };
 
   return (
-    
     <div className="flex flex-col items-center flex-1 pt-40 bg-back">
       <form
         onSubmit={handleSubmit}
@@ -170,8 +175,8 @@ const Register = () => {
                 onBlur={handlePasswordBlur}
               />
             </div>
-
-          </div></div>
+          </div>
+        </div>
         <div className="flex justify-center mt-7 ">
           <button className="flex min-w-[100%] justify-center bg-primary rounded-xl py-3 mt-3 text-100 text-2xl">
             Register
@@ -179,11 +184,12 @@ const Register = () => {
         </div>
 
         <div className="flex items-end justify-center gap-3 mt-28 text-ce">
-          <div className="text-200">Already have an account?{' '}</div>
-          <Link to="/login" className="text-xl text-primary">Sign in</Link>
+          <div className="text-200">Already have an account? </div>
+          <Link to="/login" className="text-xl text-primary">
+            Sign in
+          </Link>
         </div>
       </form>
-
     </div>
   );
 };
