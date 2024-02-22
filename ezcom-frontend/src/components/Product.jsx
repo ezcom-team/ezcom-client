@@ -2,9 +2,31 @@ import React from "react";
 import { useState } from "react";
 
 function Product() {
+  const labelsForFormMouse = [
+    { id: "imgae", text: "Image", type: "file" },
+    { id: "name", text: "Name", type: "text" },
+    { id: "desc", text: "Desc", type: "text" },
+    { id: "sensor", text: "Sensor", type: "text" },
+    { id: "buttonSwitch", text: "ButtonSwitch", type: "text" },
+    { id: "connection", text: "Connection", type: "text" },
+    { id: "legth", text: "Legth", type: "text" },
+    { id: "weight", text: "Weight", type: "text" },
+    { id: "pollingRate", text: "PollingRate", type: "text" },
+    { id: "buttonForce", text: "ButtonForce", type: "text" },
+    { id: "shape", text: "Shape", type: "text" },
+    { id: "height", text: "Height", type: "text" },
+    { id: "width", text: "Width", type: "text" },
+    // เพิ่ม label อื่น ๆ ตามต้องการ
+  ];
+
+  const labelsForFormMousepad = [
+    { id: "email", text: "Email", type: "text" },
+    { id: "phone", text: "Phone", type: "number" },
+    // เพิ่ม label อื่น ๆ ตามต้องการ
+  ];
   const DynamicForm = ({ labels }) => (
     <form className="flex flex-col p-4 text-white rounded-md bg-300">
-      {labels.map((label) => (
+      {labels.map(label => (
         <label key={label.id}>
           {label.text}
           <div className="border-2 rounded-md border-200">
@@ -22,10 +44,10 @@ function Product() {
   const [selectedForm, setSelectedForm] = useState(null);
 
   const showFormA = () => {
-    setSelectedForm(labelsForFormA);
+    setSelectedForm(labelsForFormMouse);
   };
   const showFormB = () => {
-    setSelectedForm(labelsForFormB);
+    setSelectedForm(labelsForFormMousepad);
   };
   return (
     <div className="flex flex-col items-center justify-center flex-1 gap-4">
