@@ -59,7 +59,7 @@ export const Categories = ({ onFilterChange }) => {
                         </>
                     )}
                 </div>
-                <div className="bg-300 text-200">
+                <div className="text-200">
                     <div
                         className={`${
                             open ? "block" : "hidden"
@@ -73,7 +73,7 @@ export const Categories = ({ onFilterChange }) => {
                                         type="checkbox"
                                         value={type}
                                         onChange={(e) => handleFilter(e)}
-                                        className="w-4 h-4 mr-2 xl:mr-5 accent-primary"
+                                        className="w-4 h-4 mr-2 xl:mr-5 accent-primary bg-transparent cursor-pointer opacity-40 checked:opacity-100"
                                     />
                                     {type}
                                 </li>
@@ -84,7 +84,7 @@ export const Categories = ({ onFilterChange }) => {
                                 className="py-[4px] px-[8px] text-primary hover:text-100 hover:bg-primary rounded-md"
                                 onClick={handleClearFilter}
                             >
-                                CLEAR ALL
+                                CLEAR
                             </button>
                         </div>
                     </div>

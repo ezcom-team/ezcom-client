@@ -59,7 +59,7 @@ export const ColorFilter = ({ onColorChange }) => {
                         </>
                     )}
                 </div>
-                <div className="bg-300 text-400">
+                <div className="text-400">
                     <div
                         className={`${
                             open ? "block" : "hidden"
@@ -78,7 +78,7 @@ export const ColorFilter = ({ onColorChange }) => {
                                             }
                                             name="checkbox"
                                             type="checkbox"
-                                            className="mr-[20px] w-4 h-4"
+                                            className="w-4 h-4 mr-2 xl:mr-5 accent-primary bg-transparent cursor-pointer opacity-40 checked:opacity-100"
                                         />
                                         <div>{color}</div>
                                     </div>
@@ -90,7 +90,7 @@ export const ColorFilter = ({ onColorChange }) => {
                                 className="py-[4px] px-[8px] text-primary hover:text-100 hover:bg-primary rounded-md"
                                 onClick={handleClearFilter}
                             >
-                                CLEAR ALL
+                                CLEAR
                             </button>
                         </div>
                     </div>
