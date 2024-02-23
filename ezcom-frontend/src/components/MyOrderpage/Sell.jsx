@@ -28,8 +28,8 @@ const Sell = () => {
     }, []);
 
     return (
-        <div className="h-full  min-w-full  gap-2 bg-400 p-5 rounded-md">
-            <div className="grid grid-cols-[30%_12%_10%_10%_20%_10%]  text-100 rounded-md">
+        <div className="h-full min-w-full gap-2 p-5 rounded-md bg-400">
+            <div className="grid grid-cols-[30%_12%_10%_10%_20%_10%]  text-100 rounded-md pb-2">
                 <div className="flex pl-[36px]">Items</div>
                 <div className="flex justify-center">Price</div>
                 <div className="flex justify-center">Condition</div>
