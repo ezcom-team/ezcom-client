@@ -29,8 +29,17 @@ function Product() {
   ];
 
   const labelsForFormMousepad = [
-    { id: "email", text: "Email", type: "text" },
-    { id: "phone", text: "Phone", type: "number" },
+    { id: "type", text: "Type", type: "text" },
+    { id: "image", text: "Image", type: "file" },
+    { id: "name", text: "Name", type: "text" },
+    { id: "color", text: "Color", type: "text" },
+    { id: "desc", text: "Desc", type: "text" },
+    { id: "headset_type", text: "Headset_type", type: "text" },
+    { id: "cable_length", text: "Cable_length", type: "text" },
+    { id: "connection", text: "Connection", type: "text" },
+    { id: "microphone", text: "Microphone", type: "text" },
+    { id: "noise_cancelling", text: "Noise_cancelling", type: "text" },
+    { id: "weight", text: "Weight", type: "text" },
     // เพิ่ม label อื่น ๆ ตามต้องการ
   ];
   const sendData = async formData => {
@@ -75,51 +84,41 @@ function Product() {
 
     const handleSubmit = e => {
       e.preventDefault();
-      sendData(formData); // ส่งข้อมูลผ่าน Axios เมื่อ form ถูกส่ง
+      sendData(formData);
     };
 
     return (
-      <form
-        className="flex flex-col p-4 text-white rounded-md"
-        onSubmit={handleSubmit}
-      >
-        {labels.map(label => (
-          <div className="flex flex-wrap w-auto max-h-50">
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flexWrap: "wrap",
-                "& > :not(style)": { m: 1, width: "25ch" },
-              }}
-              noValidate
-              autoComplete="off"
-              className="text-200"
-            >
-              {label.type === "file" ? (
-                <input type={label.type} />
-              ) : (
-                <TextField
+      <div>
+        <form onSubmit={handleSubmit}>
+          <div class="grid gap-6 mb-6 md:grid-cols-3">
+            {labels.map(label => (
+              <div>
+                <label
+                  for={label.id}
+                  class="block mb-2 text-sm font-medium text-200 dark:text-white"
+                >
+                  {label.text}
+                </label>
+                <input
                   id={label.id}
                   type={label.type}
                   name={label.id}
-                  label={label.text}
-                  variant="outlined"
-                  color="primary"
+                  class="bg-300 border border-gray-300 text-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="-"
                   onChange={handleInputChange}
+                  required
                 />
-              )}
-            </Box>
+              </div>
+            ))}
           </div>
-        ))}
-        <button
-          type="submit"
-          className="p-1 mt-4 text-white border-2 border-white rounded-sm"
-        >
-          Submit
-        </button>
-      </form>
+          <button
+            type="submit"
+            class="text-white mb-6 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Create
+          </button>
+        </form>
+      </div>
     );
   };
 
@@ -133,21 +132,22 @@ function Product() {
   };
   return (
     <div className="flex flex-col items-center justify-center flex-1 gap-4 text-200">
-      <div className="flex flex-row gap-8">
+      <div className="text-4xl text-100">create new product</div>
+      <hr className=" min-w-[90px]"/>
+      <div className="flex flex-row justify-center min-w-full gap-8">
         <button
-          className="p-1 text-white border-2 border-white rounded-sm"
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 hover:ring-4 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100"
           onClick={showFormA}
         >
           mouse
         </button>
         <button
-          className="p-1 text-white border-2 border-white rounded-sm"
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           onClick={showFormB}
         >
-          mousepad
-        </button>
-        <button className="p-1 text-white border-2 border-white rounded-sm">
-          cpu
+          head phone
         </button>
       </div>
       {selectedForm && <DynamicForm labels={selectedForm} />}

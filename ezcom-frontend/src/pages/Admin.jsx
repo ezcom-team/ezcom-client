@@ -43,12 +43,12 @@ function Admin() {
     <div>
       <Nav />
 
-      <div className="flex flex-row min-h-full">
+      <div className="flex flex-row min-h-full ">
         {/* Left Sidebar */}
-        <div className="w-64 mt-3 ">
-          <div className="p-4">
+        <div className=" w-max-40 mt-3 pt-[180px] px-5">
+          {/* <div className="p-4">
             <h1 className="text-2xl font-bold text-primary">Menu</h1>
-          </div>
+          </div> */}
           <div className="left-0 w-64 overflow-y-auto text-white bg-400 h-fit rounded-s-lg rounded-e-lg">
             <div className="flex flex-col text-xl p-2x">
               {/* <div className="mb-2">
@@ -67,28 +67,28 @@ function Admin() {
               <a
                 href="#"
                 onClick={() => toggle("Graph")}
-                className="w-full p-3 pl-10 border-b-2 bg-300 border-400 hover:text-200 hover:bg-400"
+                className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
                 <TrendingUpIcon /> Graph
               </a>
               <a
                 href="#"
                 onClick={() => toggle("Product")}
-                className="w-full p-3 pl-10 border-b-2 bg-300 border-400 hover:text-200 hover:bg-400"
+                className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
                 <ShoppingBasketIcon /> Product
               </a>
               <a
                 href="#"
                 onClick={() => toggle("Order")}
-                className="w-full p-3 pl-10 border-b-2 bg-300 border-400 hover:text-200 hover:bg-400"
+                className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
                 <ShoppingCartIcon /> Order
               </a>
               <a
                 href="#"
                 onClick={() => toggle("User")}
-                className="w-full p-3 pl-10 border-b-2 bg-300 border-400 hover:text-200 hover:bg-400"
+                className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
                 <AccountCircleIcon /> User
               </a>
