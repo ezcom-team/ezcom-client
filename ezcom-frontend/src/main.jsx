@@ -26,17 +26,15 @@ import { Compare } from "./pages/Compare";
 // สร้าง theme สำหรับ dark mode
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark",
     primary: {
-      main: '#d85610', // สี primary ที่ต้องการ
+      main: "#d85610", // สี primary ที่ต้องการ
     },
     secondary: {
-      main: '#ff00a2', // สี secondary ที่ต้องการ
+      main: "#ff00a2", // สี secondary ที่ต้องการ
     },
   },
 });
-
-
 
 const router = createBrowserRouter([
   {
@@ -77,13 +75,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      dark theme
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
