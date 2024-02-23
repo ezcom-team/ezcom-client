@@ -3,10 +3,12 @@ import CardDetail from "../CardDetail/Carddetail.jsx";
 import ProgressStep from "./ProgressStep.jsx";
 import axios from "axios";
 import { CardReceive } from "../CardReceive/CardReceive.jsx";
+import { Loading } from "../Loading/Loading.jsx";
 
 const ProcessPage = () => {
     const [matchedOrder, setMatchedOrder] = useState([]);
     const [currentStatus, setCurrentStatus] = useState([]);
+    const [loading, setLoading] = useState([]);
 
     useEffect(() => {
         const token = localStorage.getItem("access-token");
@@ -22,6 +24,7 @@ const ProcessPage = () => {
                 );
                 console.log(response.data);
                 setMatchedOrder(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -47,14 +50,22 @@ const ProcessPage = () => {
                         <div className="flex justify-center text-2xl text-200">
                             รายการที่ต้องได้รับ
                         </div>
-                        {matchedOrder.map((order) => (
-                            <CardReceive
-                                price={order.Price}
-                                image={order.Product_img}
-                                name={order.Product_name}
-                                setActive={() => handleActive(order.Status)}
-                            />
-                        ))}
+                        {loading ? (
+                            <Loading />
+                        ) : (
+                            <>
+                                {matchedOrder.map((order) => (
+                                    <CardReceive
+                                        price={order.Price}
+                                        image={order.Product_img}
+                                        name={order.Product_name}
+                                        setActive={() =>
+                                            handleActive(order.Status)
+                                        }
+                                    />
+                                ))}
+                            </>
+                        )}
                     </div>
                 </div>
 
@@ -64,9 +75,18 @@ const ProcessPage = () => {
                     </div>
                     <div className="flex-grow p-4 overflow-y-auto h-[650px] mt-10">
                         <div className="flex flex-col gap-3 p-4 ">
-                            <CardDetail title={"prepare"} status={currentStatus} />
-                            <CardDetail title={"verify"} status={currentStatus} />
-                            <CardDetail title={"delivery"} status={currentStatus} />
+                            <CardDetail
+                                title={"prepare"}
+                                status={currentStatus}
+                            />
+                            <CardDetail
+                                title={"verify"}
+                                status={currentStatus}
+                            />
+                            <CardDetail
+                                title={"delivery"}
+                                status={currentStatus}
+                            />
                             <CardDetail title={"done"} status={currentStatus} />
                         </div>
                     </div>

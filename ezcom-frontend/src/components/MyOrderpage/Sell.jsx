@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import SellCard from "./SellCard";
 import axios from "axios";
+import { Loading } from "../Loading/Loading";
 
 const Sell = () => {
     const [mySellOrder, setMySellOrder] = useState([]);
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const token = localStorage.getItem("access-token");
@@ -19,6 +22,7 @@ const Sell = () => {
                 );
                 console.log(response.data);
                 setMySellOrder(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -37,17 +41,25 @@ const Sell = () => {
                 <div className="flex justify-center">Create Time</div>
                 <div className="flex justify-center">Status</div>
             </div>
-            <hr class="h-[2px]  border-0 bg-300"></hr>
-            {mySellOrder ? (
-                <div>
-                    {mySellOrder.map((sellOrder) => (
-                        <SellCard order={sellOrder} />
-                    ))}
+            <hr class="h-[2px]  border-0 bg-300" />
+            {loading ? (
+                <div className="">
+                    <Loading />
                 </div>
             ) : (
-                <div className="text-100 flex justify-center mt-[64px]">
-                    No sell order
-                </div>
+                <>
+                    {mySellOrder ? (
+                        <div>
+                            {mySellOrder.map((sellOrder) => (
+                                <SellCard order={sellOrder} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-100 flex justify-center mt-[64px]">
+                            No sell order
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );
