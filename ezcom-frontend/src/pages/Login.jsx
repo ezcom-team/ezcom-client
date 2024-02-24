@@ -48,13 +48,24 @@ function Login() {
         setDataUser(response.data.user);
         dispatch(setUser(response.data.user));
         localStorage.setItem(
+          "user-id",
+          JSON.stringify(response.data.user.ID)
+        );
+        localStorage.setItem(
           "user-name",
           JSON.stringify(response.data.user.Name)
         );
-        localStorage.setItem(
-          "user-image",
-          JSON.stringify(response.data.user.File)
-        );
+        if (response.data.user.File === "") {
+          localStorage.setItem(
+            "user-image",
+            JSON.stringify("https://github.com/identicons/sumetsm.png")
+          );
+        } else {
+          localStorage.setItem(
+            "user-image",
+            JSON.stringify(response.data.user.File)
+          );
+        }
         localStorage.setItem("access-token", response.data.token);
 
         if (response.data.token) {
