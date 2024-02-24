@@ -6,6 +6,7 @@ import { Searchbar } from "../components/Searchbar";
 import axios from "axios";
 import { PriceRange } from "../components/PriceRange";
 import { ColorFilter } from "../components/ColorFilter/ColorFilter";
+import { Loading } from "../components/Loading/Loading";
 
 // import { PromoteSlider } from "../components/PromoteSlider";
 // import { Hamburger } from "../components/Hamburger";
@@ -17,6 +18,8 @@ function Landing() {
     const [colorFilters, setColorFilters] = useState([]);
     const [priceFilters, setPriceFilters] = useState([]);
 
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -25,6 +28,7 @@ function Landing() {
                 );
                 setAllData(response.data);
                 setData(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -156,22 +160,30 @@ function Landing() {
                         <PriceRange onPriceChange={handlePriceChange} />
                     </div>
                 </div>
-                {allData != null ? (
-                    <div className="w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                        {data.map((item) => (
-                            <CardItem
-                                id={item.ID}
-                                img={item.Image}
-                                name={item.Name}
-                                price={item.Price}
-                                quantity={item.Quantity}
-                            />
-                        ))}
+                {loading ? (
+                    <div className="my-[120px] w-3/4 h-full overflow-y-scroll place-items-center md:place-content-start">
+                        <Loading />
                     </div>
                 ) : (
-                    <div className="bg-400 w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-                        No product
-                    </div>
+                    <>
+                        {allData != null ? (
+                            <div className="w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                                {data.map((item) => (
+                                    <CardItem
+                                        id={item.ID}
+                                        img={item.Image}
+                                        name={item.Name}
+                                        price={item.Price}
+                                        quantity={item.Quantity}
+                                    />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="bg-400 w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                                No product
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </div>
