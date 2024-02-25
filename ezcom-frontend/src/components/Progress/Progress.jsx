@@ -50,21 +50,29 @@ const ProcessPage = () => {
                         <div className="flex justify-center text-2xl text-200">
                             รายการที่ต้องได้รับ
                         </div>
-                        {loading ? (
-                            <Loading />
-                        ) : (
+                        {matchedOrder !== null ? (
                             <>
-                                {matchedOrder.map((order) => (
-                                    <CardReceive
-                                        price={order.Price}
-                                        image={order.Product_img}
-                                        name={order.Product_name}
-                                        setActive={() =>
-                                            handleActive(order.Status)
-                                        }
-                                    />
-                                ))}
+                                {loading ? (
+                                    <Loading />
+                                ) : (
+                                    <>
+                                        {matchedOrder.map((order) => (
+                                            <CardReceive
+                                                price={order.Price}
+                                                image={order.Product_img}
+                                                name={order.Product_name}
+                                                setActive={() =>
+                                                    handleActive(order.Status)
+                                                }
+                                            />
+                                        ))}
+                                    </>
+                                )}
                             </>
+                        ) : (
+                            <div className="text-100 flex justify-center mt-[64px]">
+                                No order
+                            </div>
                         )}
                     </div>
                 </div>

@@ -40,7 +40,7 @@ function Login() {
         email,
         password,
       });
-
+      console.log(response.data);
       // ตรวจสอบการตอบกลับจาก API
       if (response.status === 200) {
         const cookieValue = document.cookie;
@@ -67,6 +67,7 @@ function Login() {
           );
         }
         localStorage.setItem("access-token", response.data.token);
+        // localStorage.setItem("access-token", response.data.token);
 
         if (response.data.token) {
           console.log("your token is ", response.data.token);
@@ -176,7 +177,9 @@ function Login() {
 
           <div className="flex items-end justify-center gap-3 mt-28 text-ce">
             <div className="text-200">Don't have an account? </div>
-            <Link to="/register" className="text-xl text-primary">Sign up</Link>
+            <Link to="/register" className="text-xl text-primary">
+              Sign up
+            </Link>
           </div>
         </form>
         <div className="flex gap-2 mt-3">
@@ -189,8 +192,6 @@ function Login() {
             <span className="ml-1">Facebook</span>
           </button>
         </div>
-
-        
       </div>
     </div>
   );
