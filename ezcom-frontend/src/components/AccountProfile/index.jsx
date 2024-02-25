@@ -44,21 +44,31 @@ function index() {
 
   return (
     <div className="relative inline-block text-left ">
-      <button
-        onClick={toggleDropdown}
-        type="button"
-        className="px-4 py-2 font-medium text-white bg-primary border-[2px] border-transparent hover:border-orange-700 rounded-md  focus:outline-none focus-visible:ring focus-visible:ring-blue-300"
-      >
-        <div className="h-[35px] flex">
-          <img
-            src={storedUserImage}
-            className="max-w-full max-h-full mr-2 rounded-full "
-          />
-          <div className="my-auto text-xl">
-            {storedUser ? <div>{storedUser}</div> : <div>Login</div>}
+      {storedUser ? (
+        <button
+          onClick={toggleDropdown}
+          type="button"
+          className="px-4 py-2 font-medium text-white bg-primary border-[2px] border-transparent hover:border-orange-700 rounded-md  focus:outline-none focus-visible:ring focus-visible:ring-blue-300"
+        >
+          <div className="h-[35px] flex">
+            <img
+              src={storedUserImage}
+              className="max-w-full max-h-full mr-2 rounded-full "
+            />
+            <div className="my-auto text-xl">{storedUser}</div>
           </div>
-        </div>
-      </button>
+        </button>
+      ) : (
+        <button
+          onClick={logoutHandler}
+          type="button"
+          className="px-4 py-2 font-medium text-white bg-primary border-[2px] border-transparent hover:border-orange-700 rounded-md  focus:outline-none focus-visible:ring focus-visible:ring-blue-300"
+        >
+          <div className="h-[35px] flex">
+            <div className="my-auto text-xl">Login</div>
+          </div>
+        </button>
+      )}
 
       {/* Apply transition classes to create animation */}
       <div
@@ -84,6 +94,7 @@ function index() {
               Check Validate
             </a>
           </li>
+
           <li>
             <a
               href="#"
