@@ -5,7 +5,6 @@ import Nav from "../components/Nav";
 import Buy from "../components/Buy/Buy";
 import Selling from "../components/OrderAdmin/OrderAdmin";
 import Graph from "../components/Graph/Graph";
-import Productdetail from "../components/ProductDetail/ProductDetail";
 import Product from "../components/Product";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
