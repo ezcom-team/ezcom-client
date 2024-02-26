@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Sidebar from "../components/Sidebar";
 import Nav from "../components/Nav";
-import Buy from "../components/Buy/Buy";
 import Selling from "../components/OrderAdmin/OrderAdmin";
 import Graph from "../components/Graph/Graph";
 import Product from "../components/Product";
@@ -12,6 +10,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import axios from "axios";
 import Account from "../components/AccountAdmin/Account";
+import ModalEdit from '../components/Modal/ModalEdit';
 
 function Admin() {
   const [activeComponent, setActiveComponent] = useState("Order");
@@ -19,7 +18,7 @@ function Admin() {
   const toggle = component => {
     setActiveComponent(component);
   };
-  let CurrentComponent;
+  let CurrentComponent;  
 
   switch (activeComponent) {
     case "Graph":
@@ -32,7 +31,7 @@ function Admin() {
       CurrentComponent = <Selling />;
       break;
     case "User":
-      CurrentComponent = <Account />;
+      CurrentComponent = <Account />
       break;
     default:
       CurrentComponent = null;
