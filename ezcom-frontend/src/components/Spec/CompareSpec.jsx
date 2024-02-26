@@ -9,7 +9,7 @@ export const CompareSpec = ({ item, spec }) => {
     return (
         <div>
             <div className="w-[320px] max-w-[400px] ml-1 bg-back">
-                {item.Type === "Mouse" ? (
+                {item.Type === "mouse" ? (
                     <div className="mt-12 max-w-[350px] h-auto text-100 bg-300">
                         <div className="flex p-2 justify-center">
                             {item.Color.map((color, index) => (
@@ -50,7 +50,7 @@ export const CompareSpec = ({ item, spec }) => {
                             <div>{spec.Width}</div>
                         </div>
                     </div>
-                ) : item.Type === "Headset" ? (
+                ) : item.Type === "headset" ? (
                     <div className="mt-12 max-w-[350px] h-auto text-100 bg-300">
                         <div className="flex p-2 bg-300 justify-center">
                             <div>{spec.Cable_Length}</div>
@@ -71,7 +71,7 @@ export const CompareSpec = ({ item, spec }) => {
                             <div>{spec.Weight}</div>
                         </div>
                     </div>
-                ) : item.Type === "Keyboard" ? (
+                ) : item.Type === "keyboard" ? (
                     <div className="mt-12 max-w-[350px] h-auto text-100 bg-300">
                         <div className="flex p-2 bg-300 justify-center">
                             <div>{spec.Form_Factor}</div>
@@ -98,8 +98,14 @@ export const CompareSpec = ({ item, spec }) => {
                             <div>{spec.Width}</div>
                         </div>
                     </div>
-                ) : (
+                ) : item.Type === "vga" ? (
                     <></>
+                ) : item.Type === "mousepad" ? (
+                    <></>
+                ) : item.Type === "cpu" ? (
+                    <></>
+                ) : (
+                    <>No data type</>
                 )}
             </div>
         </div>
