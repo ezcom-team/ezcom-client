@@ -83,11 +83,11 @@ export const Compare = () => {
     // console.log("Mspec", moreSpec);
 
     return (
-        <div className="bg-black">
+        <div>
             <div className=" top-0">
                 <Nav />
             </div>
-            <div className="bg-black text-2xl">
+            <div className="text-2xl">
                 <AddCompare
                     product={data}
                     open={openModal}
@@ -127,18 +127,29 @@ export const Compare = () => {
                                 </thead>
                                 {data.Type === "GPU" ? (
                                     <tbody>
-                                        <tr>
-                                            <td>VGA</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Colors</td>
                                         </tr>
-                                        <tr>
-                                            <td>VGA</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Boost clock</td>
                                         </tr>
-                                        <tr>
-                                            <td>VGA</td>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Memory size</td>
+                                        </tr>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Memory type</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">
+                                                NVIDIA CUDA cores
+                                            </td>
                                         </tr>
                                     </tbody>
                                 ) : data.Type === "headset" ? (
                                     <tbody>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Colors</td>
+                                        </tr>
                                         <tr className="bg-300">
                                             <td className="py-2 px-1">
                                                 Cable Length
@@ -173,6 +184,9 @@ export const Compare = () => {
                                 ) : data.Type === "keyboard" ? (
                                     <tbody>
                                         <tr className="bg-300">
+                                            <td className="p-2">Colors</td>
+                                        </tr>
+                                        <tr className="bg-300">
                                             <td className="p-2">Form factor</td>
                                         </tr>
                                         <tr className="bg-400">
@@ -201,6 +215,9 @@ export const Compare = () => {
                                     <tbody>
                                         <tr className="bg-300">
                                             <td className="p-2">Colors</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">DPI</td>
                                         </tr>
                                         <tr className="bg-400">
                                             <td className="p-2">Sensor</td>
@@ -241,38 +258,87 @@ export const Compare = () => {
                                     </tbody>
                                 ) : data.Type === "mousePad" ? (
                                     <tbody>
-                                        <tr>
-                                            <td>Mousepad</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Colors</td>
                                         </tr>
-                                        <tr>
-                                            <td>Mousepad</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Glide</td>
                                         </tr>
-                                        <tr>
-                                            <td>Mousepad</td>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Height</td>
+                                        </tr>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Length</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Material</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">
+                                                Stitched edges
+                                            </td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Thickness</td>
                                         </tr>
                                     </tbody>
                                 ) : data.Type === "CPU" ? (
                                     <tbody>
-                                        <tr>
-                                            <td>CPU</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Colors</td>
                                         </tr>
-                                        <tr>
-                                            <td>CPU</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">
+                                                Core speed base
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>CPU</td>
+                                        <tr className="bg-400">
+                                            <td className="p-2">
+                                                Core speed boost
+                                            </td>
+                                        </tr>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Cores</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Socket</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">TDP</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Threads</td>
                                         </tr>
                                     </tbody>
                                 ) : data.Type === "monitor" ? (
                                     <tbody>
-                                        <tr>
-                                            <td>monitor</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">Colors</td>
                                         </tr>
-                                        <tr>
-                                            <td>monitor</td>
+                                        <tr className="bg-300">
+                                            <td className="p-2">
+                                                Aspect ratio
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>monitor</td>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Free sync</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Gsync</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Panel tech</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">
+                                                Refresh rate
+                                            </td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Resolution</td>
+                                        </tr>
+                                        <tr className="bg-400">
+                                            <td className="p-2">Size</td>
                                         </tr>
                                     </tbody>
                                 ) : (
@@ -281,7 +347,11 @@ export const Compare = () => {
                             </table>
                         </div>
                         <div>
-                            <CompareSpec item={data} spec={spec} />
+                            <CompareSpec
+                                item={data}
+                                spec={spec}
+                                color={data.Color}
+                            />
                         </div>
                     </div>
                     <div className="flex">
