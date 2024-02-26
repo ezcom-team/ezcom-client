@@ -137,7 +137,7 @@ export const Compare = () => {
                                             <td>VGA</td>
                                         </tr>
                                     </tbody>
-                                ) : data.Type === "Headset" ? (
+                                ) : data.Type === "headset" ? (
                                     <tbody>
                                         <tr className="bg-300">
                                             <td className="py-2 px-1">
@@ -170,7 +170,7 @@ export const Compare = () => {
                                             </td>
                                         </tr>
                                     </tbody>
-                                ) : data.Type === "Keyboard" ? (
+                                ) : data.Type === "keyboard" ? (
                                     <tbody>
                                         <tr className="bg-300">
                                             <td className="p-2">Form factor</td>
@@ -197,7 +197,7 @@ export const Compare = () => {
                                             <td className="p-2">Width</td>
                                         </tr>
                                     </tbody>
-                                ) : data.Type === "Mouse" ? (
+                                ) : data.Type === "mouse" ? (
                                     <tbody>
                                         <tr className="bg-300">
                                             <td className="p-2">Colors</td>
