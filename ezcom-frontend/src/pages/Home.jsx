@@ -18,8 +18,8 @@ function Home() {
         <h1 className="text-3xl font-bold underline text-fuchsia-300">
           Hello world! fix {x}
         </h1>
-        <button className="text-red-500 " onClick={check}>
-          dev update
+        <button className="text-blue-600 " onClick={check}>
+          click
         </button>
       </div>
     </div>
