@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Loading } from "../Loading/Loading";
+import { ConfirmModal } from "./ConfirmModal";
 
 export const EditProductModal = ({ open, item, setIsOpen }) => {
     const [data, setData] = useState([]);
     const [spec, setSpec] = useState([]);
     const [selectedForm, setSelectedForm] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -21,7 +23,6 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                 );
 
                 setData(responseProduct.data);
-                removeColor();
                 setSpec(responseSpec.data);
                 if (responseProduct.data.Type === "mouse") {
                     setSelectedForm(mouse);
@@ -35,13 +36,33 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
         fetchData();
     }, [item.ID]);
 
-    const removeColor = () => {
-        // // ลบข้อมูล file color ออกจากข้อมูล
-        // const newData = { ...data, Color: [] };
-        // // เซ็ตข้อมูลใหม่โดยใช้ setData()
-        // setData(newData);
+    const closeModal = () => {
+        setIsOpen(false);
+    };
 
-        console.log("🚀 ~ removeColor ~ newData:", data);
+    const openConfirmModal = () => {
+        setIsConfirmModalOpen(true);
+    };
+
+    const closeConfirmModal = () => {
+        setIsConfirmModalOpen(false);
+    };
+
+    const confirmDelete = () => {
+        deleteProduct();
+        setIsConfirmModalOpen(false);
+        setIsOpen(false);
+    };
+
+    const deleteProduct = async () => {
+        try {
+            const response = await axios.delete(
+                `https://ezcom-backend-production-09b5.up.railway.app/products/${item.ID}`
+            );
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error sending request:", error);
+        }
     };
 
     console.log("🚀 ~ EditProductModal ~ itemID:", item.ID);
@@ -261,13 +282,13 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                     <div className="flex justify-center gap-5 mt-4">
                         <button
                             onClick={handleSubmit}
-                            className="w-40 p-2 transition bg-green-600 rounded hover:bg-green-700 text-200"
+                            className="w-40 p-2 transition bg-green-600 rounded hover:bg-green-400 text-200"
                         >
                             <span>Save</span>
                         </button>
                         <button
                             onClick={closeModal}
-                            className="w-40 p-2 transition rounded bg-primary hover:bg-orange-700 text-200"
+                            className="w-40 p-2 transition rounded border border-primary hover:bg-primary text-200"
                         >
                             Cancel
                         </button>
@@ -275,10 +296,6 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                 </form>
             </div>
         );
-    };
-
-    const closeModal = () => {
-        setIsOpen(false);
     };
 
     return (
@@ -290,18 +307,26 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                             <span>Edit product</span>
                         </div>
                         <div className="flex flex-col gap-4 p-2 mt-3 text-100">
-                            <div className="flex gap-4 p-4 rounded-sm bg-300">
-                                <div className="border border-300 rounded-l-md">
+                            <div className="grid grid-cols-3 p-4 rounded-sm bg-300">
+                                <div className="flex col-span-2 rounded-l-md">
                                     <img
                                         src={item.Image}
                                         className=" max-h-[100px]"
                                         alt="Product Image"
                                     />
-                                </div>
-                                <div className="flex gap-10">
-                                    <div className="flex flex-col justify-between text-2xl">
-                                        <div>{item.Name}</div>
+                                    <div className="flex my-auto m-[24px]">
+                                        <div className="flex text-2xl p-[8px]">
+                                            <div>{item.Name}</div>
+                                        </div>
                                     </div>
+                                </div>
+                                <div className="my-auto flex justify-center">
+                                    <button
+                                        onClick={openConfirmModal}
+                                        className=" bg-primary hover:bg-orange-400 rounded-lg text-xl p-[12px]"
+                                    >
+                                        Delete product
+                                    </button>
                                 </div>
                             </div>
                             <form>
@@ -315,6 +340,13 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                     )}
                                 </div>
                             </form>
+                            <div>
+                                <ConfirmModal
+                                    isOpen={isConfirmModalOpen}
+                                    onClose={closeConfirmModal}
+                                    onConfirm={confirmDelete}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
