@@ -12,6 +12,12 @@ import { PriceRange } from "../components/PriceRange";
 function Landing() {
     const [allData, setAllData] = useState([]);
     const [data, setData] = useState([]);
+    const [searchFilters, setSearchFilters] = useState([]);
+    const [typeFilters, setTypeFilters] = useState([]);
+    const [colorFilters, setColorFilters] = useState([]);
+    const [priceFilters, setPriceFilters] = useState([]);
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
@@ -29,24 +35,126 @@ function Landing() {
         fetchData();
     }, []);
 
-    const filterChangeHandler = (filtervalue) => {
-        console.log("Filtervalue = ", filtervalue);
-        if (filtervalue.length != 0) {
-            const newData = allData.filter((product) => {
-                return filtervalue.includes(product.Type);
-            });
-            setData(newData);
-        } else {
-            setData(allData);
-            console.log("clear");
-        }
+    // for adv filter
+
+    // const filterData = (data, filters) => {
+    //     return data.filter((product) => {
+    //         const advanceFilterMatch =
+    //             filters.advanceFilters.length === 0 ||
+    //             filters.advanceFilters.includes(product.Type);
+    //         const colorFilterMatch =
+    //             filters.colorFilters.length === 0 ||
+    //             filters.colorFilters.includes(product.Color);
+
+    //         return advanceFilterMatch & colorFilterMatch;
+    //     });
+    // };
+
+    // const filterChangeHandler = (filterValue) => {
+    //     const newData = filterData(allData, {
+    //         advanceFilters: filterValue,
+    //         colorFilters: colorFilters,
+    //     });
+    //     setData(newData);
+    // };
+
+    // const handleAdvanceFilterChange = ({ advanceFilter, colorFilters }) => {
+    //     console.log("Adv Filtervalue = ", advanceFilter);
+    //     console.log("Color Filters = ", colorFilters);
+
+    //     const newData = allData.filter((product) => (
+    //         (advanceFilter.length === 0 || advanceFilter.includes(product.Type)) &&
+    //         (colorFilters.length === 0 || colorFilters.includes(product.Color))
+    //     ));
+
+    //     setData(newData);
+    // };
+
+    const handleSearchChange = (filterValue) => {
+        console.log("SearchValue = ", filterValue);
+        setSearchFilters(filterValue);
+
+        const newData = allData.filter((product) => {
+            const serachValue = filterValue.toLowerCase();
+
+            return (
+                (serachValue.length === 0 ||
+                    product.Name.toLowerCase().includes(serachValue)) &&
+                (typeFilters.length === 0 ||
+                    typeFilters.includes(product.Type)) &&
+                (colorFilters.length === 0 ||
+                    colorFilters.some((element) =>
+                        product.Color.includes(element)
+                    )) &&
+                (priceFilters.length === 0 ||
+                    (product.Price >= priceFilters[0] &&
+                        product.Price <= priceFilters[1]))
+            );
+        });
+        setData(newData);
+    };
+
+    const handleTypeChange = (filterValue) => {
+        console.log("Filtervalue = ", filterValue);
+        setTypeFilters(filterValue);
+
+        const newData = allData.filter((product) => {
+            return (
+                (searchFilters.length === 0 ||
+                    product.Name.toLowerCase().includes(searchFilters)) &&
+                (filterValue.length === 0 ||
+                    filterValue.includes(product.Type)) &&
+                (colorFilters.length === 0 ||
+                    colorFilters.some((element) =>
+                        product.Color.includes(element)
+                    )) &&
+                (priceFilters.length === 0 ||
+                    (product.Price >= priceFilters[0] &&
+                        product.Price <= priceFilters[1]))
+            );
+        });
+        setData(newData);
+    };
+
+    const handleColorChange = (color) => {
+        console.log("🚀 ~ colorChangeHandler ~ colorFilters:", color);
+        setColorFilters(color);
+
+        const newData = allData.filter((product) => {
+            return (
+                (searchFilters.length === 0 ||
+                    product.Name.toLowerCase().includes(searchFilters)) &&
+                (typeFilters.length === 0 ||
+                    typeFilters.includes(product.Type)) &&
+                (color.length === 0 ||
+                    color.some((element) => product.Color.includes(element))) &&
+                (priceFilters.length === 0 ||
+                    (product.Price >= priceFilters[0] &&
+                        product.Price <= priceFilters[1]))
+            );
+        });
+
+        setData(newData);
     };
 
     const priceChangeHandler = (price) => {
         console.log("Price = ", price);
-        const newData = allData.filter(
-            (product) => product.Price >= price[0] && product.Price <= price[1]
-        );
+        setPriceFilters(price);
+
+        const newData = allData.filter((product) => {
+            return (
+                (searchFilters.length === 0 ||
+                    product.Name.toLowerCase().includes(searchFilters)) &&
+                (typeFilters.length === 0 ||
+                    typeFilters.includes(product.Type)) &&
+                (colorFilters.length === 0 ||
+                    colorFilters.some((element) =>
+                        product.Color.includes(element)
+                    )) &&
+                (price.length === 0 ||
+                    (product.Price >= price[0] && product.Price <= price[1]))
+            );
+        });
         setData(newData);
     };
 
@@ -68,7 +176,10 @@ function Landing() {
             <div className=" w-full h-screen flex justify-center">
                 <div className="hidden md:block w-1/4 h-full mx-0 lg:mx-4">
                     <div className="my-5 flex justify-center">
-                        <Searchbar />
+                        <Searchbar onSearch={handleSearchChange} />
+                    </div>
+                    <div className="my-5 flex justify-center ">
+                        <Categories onFilterChange={handleTypeChange} />
                     </div>
                     <div className="my-5 flex justify-center">
                         <Categories onFilterChange={filterChangeHandler} />
