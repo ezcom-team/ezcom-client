@@ -1,11 +1,8 @@
 import React from "react";
-import { useState,useEffect } from "react";
-import Sidebar from "../components/Sidebar";
+import { useState, useEffect } from "react";
 import Nav from "../components/Nav";
-import Buy from "../components/Buy/Buy";
 import Selling from "../components/OrderAdmin/OrderAdmin";
 import Graph from "../components/Graph/Graph";
-import Productdetail from "../components/ProductDetail/ProductDetail";
 import Product from "../components/Product";
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -13,6 +10,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import axios from "axios";
 import Account from "../components/AccountAdmin/Account";
+import ModalEdit from '../components/Modal/ModalEdit';
 
 function Admin() {
   const labelsForFormA = [
@@ -31,7 +29,7 @@ function Admin() {
     // เพิ่ม label อื่น ๆ ตามต้องการ
   ];
 
-  const [activeComponent, setActiveComponent] = useState("Order");
+  
 
 
   const DynamicForm = ({ labels }) => (
@@ -55,14 +53,16 @@ function Admin() {
         create
       </button>
     </form>
-    );
+  );
 
-  
+
 
   const toggle = (component) => {
     setActiveComponent(component);
   };
   let CurrentComponent;
+
+  const [activeComponent, setActiveComponent] = useState("");
 
   switch (activeComponent) {
     case "Graph":
@@ -75,18 +75,30 @@ function Admin() {
       CurrentComponent = <Selling />;
       break;
     case "User":
-      CurrentComponent = <Account />;
+      CurrentComponent = <Account />
       break;
     default:
       CurrentComponent = null;
   }
 
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
+  const [user, setUser] = useState("");
+
+    
+    const openModalBuy = (user) => {
+      setUser(user)
+      setisBuyModalOpen(true);
+    };
+
+    // console.log("id admin page: "+id)
 
   return (
     <div>
       <Nav />
-
+      
       <div className="flex flex-row min-h-full">
+
         {/* Left Sidebar */}
         <div className="w-64 mt-3 ">
           <div className="p-4">
@@ -94,20 +106,6 @@ function Admin() {
           </div>
           <div className="bg-400 text-white w-64 h-fit  left-0 overflow-y-auto rounded-s-lg rounded-e-lg">
             <div className="p-2x flex flex-col text-xl">
-
-              {/* <div className="mb-2">
-                <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Graph")}>Graph</a>
-              </div>
-              <div className="mb-2">
-                <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Product")}>Product</a>
-              </div>
-              <div className="mb-2">
-                <a href="#" className="text-100 hover:text-200" onClick={() => toggle("Order")}>Order</a>
-              </div>
-              <div className="mb-2">
-                <a href="#" className="text-100 hover:text-200" onClick={() => toggle("User")}>User</a>
-              </div> */}
-
               <a href="#" onClick={() => toggle("Graph")} className="w-full pl-10 bg-300 p-3 border-b-2 border-400 hover:text-200 hover:bg-400"><TrendingUpIcon /> Graph</a>
               <a href="#" onClick={() => toggle("Product")} className="w-full pl-10 bg-300 p-3 border-b-2 border-400 hover:text-200 hover:bg-400"><ShoppingBasketIcon /> Product</a>
               <a href="#" onClick={() => toggle("Order")} className="w-full pl-10 bg-300 p-3 border-b-2 border-400 hover:text-200 hover:bg-400"><ShoppingCartIcon /> Order</a>
@@ -126,7 +124,8 @@ function Admin() {
             <div className="flex-1 bg-300 text-blue-500 p-2 flex items-center justify-center rounded-lg text-5xl">11005 <span className="text-100 ml-2 text-4xl"> users</span></div>
           </div>
           <div className="mt-10 w-full p-0">
-            {CurrentComponent}
+            {/* {CurrentComponent} */}
+            {activeComponent === "Graph" ? (<Graph/>) : activeComponent === "Product" ? (<Product/>) : activeComponent === "Order" ? (<Selling/>) : activeComponent === "User" ? (<Account openModalBuy={openModalBuy} />) : (<></>)}
           </div>
         </div>
       </div>
@@ -135,5 +134,3 @@ function Admin() {
 }
 
 export default Admin;
-
-    
