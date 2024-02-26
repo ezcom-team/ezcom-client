@@ -278,7 +278,7 @@ function Product() {
     );
   };
 
-  const [selectedForm, setSelectedForm] = useState(null);
+  const [selectedForm, setSelectedForm] = useState(labelsForFormMouse);
 
   const showFormMouse = () => {
     setSelectedForm(labelsForFormMouse);
@@ -303,9 +303,8 @@ function Product() {
   };
   return (
     <div className="flex flex-col items-center justify-center flex-1 gap-4 text-200">
-      <div className="text-4xl text-100">create new product</div>
-
-      <p className="text-xl">เลือกประเภท</p>
+      <div className="text-4xl">create new product</div>
+      {/* <p className="text-xl">เลือกประเภท</p> */}
       <div className="flex flex-row justify-center min-w-full gap-8">
         <button
           type="button"
@@ -319,14 +318,14 @@ function Product() {
           class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           onClick={showFormHeadset}
         >
-          head set
+          headset
         </button>
         <button
           type="button"
           class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           onClick={showFormMousePad}
         >
-          mouse pad
+          mousePad
         </button>
         <button
           type="button"
@@ -357,7 +356,6 @@ function Product() {
           monitor
         </button>
       </div>
-      <hr className=" min-w-[300px]" />
       {selectedForm && <DynamicForm labels={selectedForm} />}
     </div>
   );

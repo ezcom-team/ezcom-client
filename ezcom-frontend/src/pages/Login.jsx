@@ -9,6 +9,10 @@ import { setUser } from "../store/userSlice";
 import "./login.css";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
+
 const instance = axios.create({
   baseURL: "https://ezcom-backend-production-09b5.up.railway.app",
   withCredentials: true, // ตรวจสอบการตั้งค่านี้
@@ -28,6 +32,13 @@ function Login() {
     setEmail(e.target.value);
   };
 
+  function success (text){
+    toast.success(text);
+  } 
+  function fail (text){
+    toast.error(text);
+  } 
+
   const handlePasswordChange = e => {
     setPassword(e.target.value);
   };
@@ -43,6 +54,7 @@ function Login() {
       console.log(response.data);
       // ตรวจสอบการตอบกลับจาก API
       if (response.status === 200) {
+        success("Login Success")
         const cookieValue = document.cookie;
         console.log(response.data.user);
         setDataUser(response.data.user);
@@ -80,9 +92,11 @@ function Login() {
         navigate("/landing");
       } else {
         // ดำเนินการเมื่อมีข้อผิดพลาดจาก API
+        fail("Login Fail")
         console.error("Login failed");
       }
     } catch (error) {
+      fail("Error")
       // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
       console.error("Error sending request:", error);
     }
@@ -118,6 +132,10 @@ function Login() {
   return (
     <div className="flex flex-col min-h-screen ">
       <Nav />
+        <ToastContainer
+          position="top-center"
+          theme="dark"
+        />
       <div className="flex flex-col items-center flex-1 pt-40 bg-back">
         <form
           onSubmit={handleSubmit}

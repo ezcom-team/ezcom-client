@@ -16,20 +16,19 @@ const Register = () => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
-  const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] = useState(false);
+  const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] =
+    useState(false);
 
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
 
   const handlePasswordChange = e => {
     setFormData({ ...formData, password: e.target.value });
-
   };
   const handleConfirmPasswordChange = e => {
     setConfirmPassword(e.target.value);
-  }
-
+  };
 
   const handleEmailChange = e => {
     setFormData({ ...formData, email: e.target.value });
@@ -70,6 +69,7 @@ const Register = () => {
 
       if (response.status === 200) {
         console.log(response.data);
+        setFormData({});
         navigate("/login");
       } else {
         console.error("Register failed");
@@ -127,12 +127,12 @@ const Register = () => {
   };
 
   const confirmPasswordInputStyle = {
-    border: isConfirmPasswordFocused ? "2px solid #ff6827" : "2px solid transparent",
+    border: isConfirmPasswordFocused
+      ? "2px solid #ff6827"
+      : "2px solid transparent",
     transition: "border-color .5s ease",
   };
 
-
-  
   return (
     <div className="flex flex-col items-center flex-1 pt-40 bg-back">
       <form
@@ -217,8 +217,8 @@ const Register = () => {
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder="Type your Password"
-              onFocus={handleConfirmPasswordFocus}
-              onBlur={handleConfirmPasswordBlur}
+                onFocus={handleConfirmPasswordFocus}
+                onBlur={handleConfirmPasswordBlur}
               />
             </div>
           </div>
@@ -233,7 +233,6 @@ const Register = () => {
             Register
           </button>
         </div>
-
 
         <div className="flex items-end justify-center gap-3 mt-28 text-ce">
           <div className="text-200">Already have an account? </div>

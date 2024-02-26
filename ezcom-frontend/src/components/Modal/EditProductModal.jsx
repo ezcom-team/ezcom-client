@@ -383,7 +383,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                         </button>
                         <button
                             onClick={closeModal}
-                            className="w-40 p-2 transition rounded border border-primary hover:bg-primary text-200"
+                            className="w-40 p-2 transition border rounded border-primary hover:bg-primary text-200"
                         >
                             Cancel
                         </button>
@@ -397,12 +397,12 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
         <div>
             {open && (
                 <div className="modal">
-                    <div className="bg-400 border-[2px] border-gray-600 rounded-lg p-[24px]">
-                        <div className="flex justify-center text-2xl text-100">
-                            <span>Edit product</span>
+                    <div className="bg-400 rounded-lg p-[24px]">
+                        <div className="flex justify-center text-2xl">
+                            <span>Edit Product</span>
                         </div>
                         <div className="flex flex-col gap-4 p-2 mt-3 text-100">
-                            <div className="grid grid-cols-3 p-4 rounded-sm bg-300">
+                            <div className="grid grid-cols-3 p-4 rounded-sm ">
                                 <div className="flex col-span-2 rounded-l-md">
                                     <img
                                         src={item.Image}
@@ -415,7 +415,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="my-auto flex justify-center">
+                                <div className="flex justify-center my-auto">
                                     <button
                                         onClick={openConfirmModal}
                                         className=" bg-primary hover:bg-orange-400 rounded-lg text-xl p-[12px]"
@@ -425,7 +425,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                 </div>
                             </div>
                             <form>
-                                <div className="p-4 bg-300 rounded-sm">
+                                <div className="p-4 rounded-lg bg-300">
                                     {selectedForm && (
                                         <DynamicForm
                                             labels={selectedForm}
