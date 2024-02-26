@@ -54,11 +54,13 @@ export const MoreCompareSpec = ({ item, spec }) => {
                     <div></div>
                 ) : item.Type === "keyboard" ? (
                     <></>
-                ) : item.Type === "vga" ? (
+                ) : item.Type === "GPU" ? (
                     <></>
-                ) : item.Type === "mousepad" ? (
+                ) : item.Type === "mousePad" ? (
                     <></>
-                ) : item.Type === "cpu" ? (
+                ) : item.Type === "CPU" ? (
+                    <></>
+                ) : item.Type === "monitor" ? (
                     <></>
                 ) : (
                     <>No data type</>

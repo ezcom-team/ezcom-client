@@ -129,7 +129,7 @@ function Productdetail({ product, spec }) {
                                     <th className="p-2">Specs</th>
                                 </tr>
                             </thead>
-                            {product.Type === "vga" ? (
+                            {product.Type === "GPU" ? (
                                 <tbody>
                                     <tr>
                                         <td>VGA</td>
@@ -227,7 +227,7 @@ function Productdetail({ product, spec }) {
                                         <td className="p-2">Width</td>
                                     </tr>
                                 </tbody>
-                            ) : product.Type === "mousepad" ? (
+                            ) : product.Type === "mousePad" ? (
                                 <tbody>
                                     <tr>
                                         <td>Mousepad</td>
@@ -239,7 +239,7 @@ function Productdetail({ product, spec }) {
                                         <td>Mousepad</td>
                                     </tr>
                                 </tbody>
-                            ) : product.Type === "cpu" ? (
+                            ) : product.Type === "CPU" ? (
                                 <tbody>
                                     <tr>
                                         <td>CPU</td>
@@ -249,6 +249,18 @@ function Productdetail({ product, spec }) {
                                     </tr>
                                     <tr>
                                         <td>CPU</td>
+                                    </tr>
+                                </tbody>
+                            ) : product.Type === "monitor" ? (
+                                <tbody>
+                                    <tr>
+                                        <td>monitor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>monitor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>monitor</td>
                                     </tr>
                                 </tbody>
                             ) : (

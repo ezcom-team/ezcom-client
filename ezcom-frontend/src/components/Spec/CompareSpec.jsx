@@ -98,11 +98,13 @@ export const CompareSpec = ({ item, spec }) => {
                             <div>{spec.Width}</div>
                         </div>
                     </div>
-                ) : item.Type === "vga" ? (
+                ) : item.Type === "GPU" ? (
                     <></>
-                ) : item.Type === "mousepad" ? (
+                ) : item.Type === "mousePad" ? (
                     <></>
-                ) : item.Type === "cpu" ? (
+                ) : item.Type === "CPU" ? (
+                    <></>
+                ) : item.Type === "monitor" ? (
                     <></>
                 ) : (
                     <>No data type</>

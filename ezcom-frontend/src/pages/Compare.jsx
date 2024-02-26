@@ -125,7 +125,7 @@ export const Compare = () => {
                                         <th className="p-2">Specs</th>
                                     </tr>
                                 </thead>
-                                {data.Type === "vga" ? (
+                                {data.Type === "GPU" ? (
                                     <tbody>
                                         <tr>
                                             <td>VGA</td>
@@ -239,7 +239,7 @@ export const Compare = () => {
                                             <td className="p-2">Width</td>
                                         </tr>
                                     </tbody>
-                                ) : data.Type === "mousepad" ? (
+                                ) : data.Type === "mousePad" ? (
                                     <tbody>
                                         <tr>
                                             <td>Mousepad</td>
@@ -251,7 +251,7 @@ export const Compare = () => {
                                             <td>Mousepad</td>
                                         </tr>
                                     </tbody>
-                                ) : data.Type === "cpu" ? (
+                                ) : data.Type === "CPU" ? (
                                     <tbody>
                                         <tr>
                                             <td>CPU</td>
@@ -261,6 +261,18 @@ export const Compare = () => {
                                         </tr>
                                         <tr>
                                             <td>CPU</td>
+                                        </tr>
+                                    </tbody>
+                                ) : data.Type === "monitor" ? (
+                                    <tbody>
+                                        <tr>
+                                            <td>monitor</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monitor</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monitor</td>
                                         </tr>
                                     </tbody>
                                 ) : (

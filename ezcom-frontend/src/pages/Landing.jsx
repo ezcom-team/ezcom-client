@@ -14,6 +14,7 @@ import { Loading } from "../components/Loading/Loading";
 function Landing() {
     const [allData, setAllData] = useState([]);
     const [data, setData] = useState([]);
+    const [searchFilters, setSearchFilters] = useState([]);
     const [typeFilters, setTypeFilters] = useState([]);
     const [colorFilters, setColorFilters] = useState([]);
     const [priceFilters, setPriceFilters] = useState([]);
@@ -72,12 +73,38 @@ function Landing() {
     //     setData(newData);
     // };
 
+    const handleSearchChange = (filterValue) => {
+        console.log("SearchValue = ", filterValue);
+        setSearchFilters(filterValue);
+
+        const newData = allData.filter((product) => {
+            const serachValue = filterValue.toLowerCase();
+
+            return (
+                (serachValue.length === 0 ||
+                    product.Name.toLowerCase().includes(serachValue)) &&
+                (typeFilters.length === 0 ||
+                    typeFilters.includes(product.Type)) &&
+                (colorFilters.length === 0 ||
+                    colorFilters.some((element) =>
+                        product.Color.includes(element)
+                    )) &&
+                (priceFilters.length === 0 ||
+                    (product.Price >= priceFilters[0] &&
+                        product.Price <= priceFilters[1]))
+            );
+        });
+        setData(newData);
+    };
+
     const handleTypeChange = (filterValue) => {
         console.log("Filtervalue = ", filterValue);
         setTypeFilters(filterValue);
 
         const newData = allData.filter((product) => {
             return (
+                (searchFilters.length === 0 ||
+                    product.Name.toLowerCase().includes(searchFilters)) &&
                 (filterValue.length === 0 ||
                     filterValue.includes(product.Type)) &&
                 (colorFilters.length === 0 ||
@@ -98,6 +125,8 @@ function Landing() {
 
         const newData = allData.filter((product) => {
             return (
+                (searchFilters.length === 0 ||
+                    product.Name.toLowerCase().includes(searchFilters)) &&
                 (typeFilters.length === 0 ||
                     typeFilters.includes(product.Type)) &&
                 (color.length === 0 ||
@@ -117,6 +146,8 @@ function Landing() {
 
         const newData = allData.filter((product) => {
             return (
+                (searchFilters.length === 0 ||
+                    product.Name.toLowerCase().includes(searchFilters)) &&
                 (typeFilters.length === 0 ||
                     typeFilters.includes(product.Type)) &&
                 (colorFilters.length === 0 ||
@@ -148,7 +179,7 @@ function Landing() {
             <div className=" w-full h-screen flex justify-center">
                 <div className="hidden md:block w-1/4 h-full mx-0 lg:mx-4">
                     <div className="my-5 flex justify-center">
-                        <Searchbar />
+                        <Searchbar onSearch={handleSearchChange} />
                     </div>
                     <div className="my-5 flex justify-center ">
                         <Categories onFilterChange={handleTypeChange} />
