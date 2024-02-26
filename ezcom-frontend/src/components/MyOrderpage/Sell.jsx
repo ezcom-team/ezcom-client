@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import SellCard from "./SellCard";
 import axios from "axios";
+import { Loading } from "../Loading/Loading";
 
 const Sell = () => {
     const [mySellOrder, setMySellOrder] = useState([]);
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const token = localStorage.getItem("access-token");
@@ -19,6 +22,7 @@ const Sell = () => {
                 );
                 console.log(response.data);
                 setMySellOrder(response.data);
+                setLoading(false);
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -28,8 +32,8 @@ const Sell = () => {
     }, []);
 
     return (
-        <div className="h-full  min-w-full  gap-2 bg-400 p-5 rounded-md">
-            <div className="grid grid-cols-[30%_12%_10%_10%_20%_10%]  text-100 rounded-md">
+        <div className="h-full min-w-full gap-2 p-5 rounded-md bg-400">
+            <div className="grid grid-cols-[30%_12%_10%_10%_20%_10%]  text-100 rounded-md pb-2">
                 <div className="flex pl-[36px]">Items</div>
                 <div className="flex justify-center">Price</div>
                 <div className="flex justify-center">Condition</div>
@@ -37,17 +41,25 @@ const Sell = () => {
                 <div className="flex justify-center">Create Time</div>
                 <div className="flex justify-center">Status</div>
             </div>
-            <hr class="h-[2px]  border-0 bg-300"></hr>
-            {mySellOrder ? (
-                <div>
-                    {mySellOrder.map((sellOrder) => (
-                        <SellCard order={sellOrder} />
-                    ))}
+            <hr class="h-[2px]  border-0 bg-300" />
+            {loading ? (
+                <div className="">
+                    <Loading />
                 </div>
             ) : (
-                <div className="text-100 flex justify-center mt-[64px]">
-                    No sell order
-                </div>
+                <>
+                    {mySellOrder ? (
+                        <div>
+                            {mySellOrder.map((sellOrder) => (
+                                <SellCard order={sellOrder} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-100 flex justify-center mt-[64px]">
+                            No sell order
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );
