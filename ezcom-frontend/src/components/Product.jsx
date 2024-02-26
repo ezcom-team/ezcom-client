@@ -99,6 +99,7 @@ function Product() {
     { id: "g_sync", text: "G_Sync", type: "text" },
     { id: "panel_tech", text: "Panel_Tech", type: "text" },
     { id: "resolution", text: "Resolution", type: "text" },
+    { id: "refresh_rate", text: "Refresh_Rate", type: "text" },
     { id: "freeSync", text: "FreeSync", type: "text" },
   ];
   const sendData = async formData => {
