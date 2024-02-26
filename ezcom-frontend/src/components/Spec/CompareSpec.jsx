@@ -107,7 +107,7 @@ export const CompareSpec = ({ item, spec }) => {
                 ) : item.Type === "monitor" ? (
                     <></>
                 ) : (
-                    <></>
+                    <>No data type</>
                 )}
             </div>
         </div>

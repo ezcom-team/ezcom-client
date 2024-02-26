@@ -21,10 +21,9 @@ function Product() {
     { id: "width", text: "Width", type: "text" },
     { id: "price", text: "Price", type: "text" },
     { id: "quantity", text: "Quantity", type: "text" },
-    // เพิ่ม label อื่น ๆ ตามต้องการ
   ];
 
-  const labelsForFormMousepad = [
+  const labelsForFormHeadset = [
     { id: "image", text: "Image", type: "file" },
     { id: "type", text: "Type", type: "text" },
     { id: "name", text: "Name", type: "text" },
@@ -36,7 +35,72 @@ function Product() {
     { id: "microphone", text: "Microphone", type: "text" },
     { id: "noise_cancelling", text: "Noise_cancelling", type: "text" },
     { id: "weight", text: "Weight", type: "text" },
-    // เพิ่ม label อื่น ๆ ตามต้องการ
+  ];
+  const labelsForFormGPU = [
+    { id: "image", text: "Image", type: "file" },
+    { id: "type", text: "Type", type: "text" },
+    { id: "name", text: "Name", type: "text" },
+    { id: "color", text: "Color", type: "text" },
+    { id: "desc", text: "Desc", type: "text" },
+    { id: "nvidia_cuda_cores", text: "NVIDIA_CUDA_Cores", type: "text" },
+    { id: "memory_size", text: "Memory_Size", type: "text" },
+    { id: "boost_clock", text: "Boost_Clock", type: "text" },
+    { id: "memory_type", text: "Memory_Type", type: "text" },
+  ];
+  const labelsForFormCPU = [
+    { id: "image", text: "Image", type: "file" },
+    { id: "type", text: "Type", type: "text" },
+    { id: "name", text: "Name", type: "text" },
+    { id: "color", text: "Color", type: "text" },
+    { id: "desc", text: "Desc", type: "text" },
+    { id: "socket", text: "Socket", type: "text" },
+    { id: "threads", text: "Threads", type: "text" },
+    { id: "core_speed_base", text: "Core_Speed_Base", type: "text" },
+    { id: "cores", text: "Cores", type: "text" },
+    { id: "TDP", text: "TDP", type: "text" },
+    { id: "core_speed_boost", text: "Core_Speed_Boost", type: "text" },
+  ];
+  const labelsForFormKeyboard = [
+    { id: "image", text: "Image", type: "file" },
+    { id: "type", text: "Type", type: "text" },
+    { id: "name", text: "Name", type: "text" },
+    { id: "color", text: "Color", type: "text" },
+    { id: "desc", text: "Desc", type: "text" },
+    { id: "form_factor", text: "Form_Factor", type: "text" },
+    { id: "PCB", text: "PCB", type: "text" },
+    { id: "height", text: "Height", type: "text" },
+    { id: "legth", text: "Legth", type: "text" },
+    { id: "switches", text: "Switches", type: "text" },
+    { id: "RGB", text: "RGB", type: "text" },
+    { id: "width", text: "Width", type: "text" },
+    { id: "weight", text: "Weight", type: "text" },
+  ];
+  const labelsForFormMousepad = [
+    { id: "image", text: "Image", type: "file" },
+    { id: "type", text: "Type", type: "text" },
+    { id: "name", text: "Name", type: "text" },
+    { id: "color", text: "Color", type: "text" },
+    { id: "desc", text: "Desc", type: "text" },
+    { id: "height", text: "Height", type: "text" },
+    { id: "thickness", text: "Thickness", type: "text" },
+    { id: "material", text: "Material", type: "text" },
+    { id: "length", text: "Length", type: "text" },
+    { id: "stitched_edges", text: "Stitched_edges", type: "text" },
+    { id: "glide", text: "Glide", type: "text" },
+  ];
+  const labelsForFormMonitor = [
+    { id: "image", text: "Image", type: "file" },
+    { id: "type", text: "Type", type: "text" },
+    { id: "name", text: "Name", type: "text" },
+    { id: "color", text: "Color", type: "text" },
+    { id: "desc", text: "Desc", type: "text" },
+    { id: "size", text: "Size", type: "text" },
+    { id: "aspect_ratio", text: "Aspect_Ratio", type: "text" },
+    { id: "g_sync", text: "G_Sync", type: "text" },
+    { id: "panel_tech", text: "Panel_Tech", type: "text" },
+    { id: "resolution", text: "Resolution", type: "text" },
+    { id: "refresh_rate", text: "Refresh_Rate", type: "text" },
+    { id: "freeSync", text: "FreeSync", type: "text" },
   ];
   const sendData = async formData => {
     console.log("form data :", formData);
@@ -215,11 +279,26 @@ function Product() {
 
   const [selectedForm, setSelectedForm] = useState(null);
 
-  const showFormA = () => {
+  const showFormMouse = () => {
     setSelectedForm(labelsForFormMouse);
   };
-  const showFormB = () => {
+  const showFormMousePad = () => {
     setSelectedForm(labelsForFormMousepad);
+  };
+  const showFormHeadset = () => {
+    setSelectedForm(labelsForFormHeadset);
+  };
+  const showFormKeyboard = () => {
+    setSelectedForm(labelsForFormKeyboard);
+  };
+  const showFormCPU = () => {
+    setSelectedForm(labelsForFormCPU);
+  };
+  const showFormGPU = () => {
+    setSelectedForm(labelsForFormGPU);
+  };
+  const showFormMonitor = () => {
+    setSelectedForm(labelsForFormMonitor);
   };
   return (
     <div className="flex flex-col items-center justify-center flex-1 gap-4 text-200">
@@ -230,16 +309,51 @@ function Product() {
         <button
           type="button"
           class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100"
-          onClick={showFormA}
+          onClick={showFormMouse}
         >
           mouse
         </button>
         <button
           type="button"
           class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          onClick={showFormB}
+          onClick={showFormHeadset}
         >
-          head phone
+          head set
+        </button>
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          onClick={showFormMousePad}
+        >
+          mouse pad
+        </button>
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          onClick={showFormKeyboard}
+        >
+          keyboard
+        </button>
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          onClick={showFormGPU}
+        >
+          GPU
+        </button>
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          onClick={showFormCPU}
+        >
+          CPU
+        </button>
+        <button
+          type="button"
+          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          onClick={showFormMonitor}
+        >
+          monitor
         </button>
       </div>
       <hr className=" min-w-[300px]" />
