@@ -17,7 +17,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                     `https://ezcom-backend-production-09b5.up.railway.app/products/${item.ID}`
                 );
                 const responseSpec = await axios.get(
-                    `https://ezcom-backend-production-09b5.up.railway.app/products/spec/${"Mouse"}/${
+                    `https://ezcom-backend-production-09b5.up.railway.app/products/spec/${responseProduct.data.Type}/${
                         responseProduct.data.Specs
                     }`
                 );
