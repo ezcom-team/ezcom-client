@@ -129,7 +129,7 @@ function Productdetail({ product, spec }) {
                                     <th className="p-2">Specs</th>
                                 </tr>
                             </thead>
-                            {product.Type === "VGA" ? (
+                            {product.Type === "GPU" ? (
                                 <tbody>
                                     <tr>
                                         <td>VGA</td>
@@ -141,7 +141,7 @@ function Productdetail({ product, spec }) {
                                         <td>VGA</td>
                                     </tr>
                                 </tbody>
-                            ) : product.Type === "Headset" ? (
+                            ) : product.Type === "headset" ? (
                                 <tbody>
                                     <tr className="bg-300">
                                         <td className="p-2">Cable Length</td>
@@ -164,7 +164,7 @@ function Productdetail({ product, spec }) {
                                         <td className="p-2">Weight</td>
                                     </tr>
                                 </tbody>
-                            ) : product.Type === "Keyboard" ? (
+                            ) : product.Type === "keyboard" ? (
                                 <tbody>
                                     <tr className="bg-300">
                                         <td className="p-2">Form_Factor</td>
@@ -191,7 +191,7 @@ function Productdetail({ product, spec }) {
                                         <td className="p-2">Width</td>
                                     </tr>
                                 </tbody>
-                            ) : product.Type === "Mouse" ? (
+                            ) : product.Type === "mouse" ? (
                                 <tbody>
                                     <tr className="bg-300">
                                         <td className="p-2">Colors</td>
@@ -227,7 +227,7 @@ function Productdetail({ product, spec }) {
                                         <td className="p-2">Width</td>
                                     </tr>
                                 </tbody>
-                            ) : product.Type === "Mousepad" ? (
+                            ) : product.Type === "mousePad" ? (
                                 <tbody>
                                     <tr>
                                         <td>Mousepad</td>
@@ -249,6 +249,18 @@ function Productdetail({ product, spec }) {
                                     </tr>
                                     <tr>
                                         <td>CPU</td>
+                                    </tr>
+                                </tbody>
+                            ) : product.Type === "monitor" ? (
+                                <tbody>
+                                    <tr>
+                                        <td>monitor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>monitor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>monitor</td>
                                     </tr>
                                 </tbody>
                             ) : (

@@ -6,7 +6,15 @@ export const Categories = ({ onFilterChange }) => {
     const [open, setOpen] = useState(true);
     const [filter, setFilter] = useState([]);
 
-    const types = ["VGA", "Headset", "Keyboard", "Mouse", "Mousepad", "CPU"];
+    const types = [
+        "GPU",
+        "headset",
+        "keyboard",
+        "mouse",
+        "mousePad",
+        "CPU",
+        "monitor",
+    ];
 
     const handleOpen = () => {
         setOpen(!open);
