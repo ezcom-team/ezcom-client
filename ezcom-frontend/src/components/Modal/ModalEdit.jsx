@@ -18,8 +18,57 @@ const ModalEdit = ({ user, isBuyModalOpen, setisBuyModalOpen }) => {
     data.append("role",formData.Role)
     data.append("file",formData.File)
     e.preventDefault()
-    console.log("formDataSubmit",data)
+    // console.log("formDataSubmit",data)
+    console.log("formDataSubmit",formData)
+    sendData(data);
   }
+
+  const sendData = async (data) => {
+    console.log("form data :", data);
+    const token = localStorage.getItem("access-token");
+    try {
+        console.log("color is " + " : " + data.color);
+        // สร้าง request ด้วย Axios
+
+        const response = await axios.put(
+            `https://ezcom-backend-production-09b5.up.railway.app/user/${user.ID}`,
+            data,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: token,
+                },
+            }
+        );
+        console.log(response.data);
+    } catch (error) {
+        // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
+        console.error("Error sending request:", error);
+    }
+};
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     let data = new FormData(); // สร้าง FormData ใหม่
+
+//     labels.map((label) => {
+//         // temp = label.id;
+//         console.log("check : ", label.id, formData[label.text]);
+//         if (label.id === "color") {
+//             colors.forEach((element) => {
+//                 data.append(label.id, element);
+//             });
+//         } else data.append(label.id, formData[label.text]);
+//     });
+//     data.append("specs", item.Specs);
+//     console.log("check : ", "specs", item.Specs);
+
+//     // ส่ง FormData ไปยังเซิร์ฟเวอร์
+//     console.log("before sens :", data);
+//     sendData(data);
+//     setIsOpen(false);
+// };
 
   const handleInputChange = (event) =>{
     setFormData({

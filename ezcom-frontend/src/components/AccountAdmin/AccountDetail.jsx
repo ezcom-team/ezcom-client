@@ -17,7 +17,7 @@ const AccountDetail = ({ user, openModalBuy }) => {
 
     return (
 
-        <div className="grid grid-cols-[15%_30%_15%_15%_10%] bg-300 text-200 py-3 mb-1 ">
+        <div className="grid grid-cols-[15%_25%_25%_15%_10%_10%] bg-300 text-200 py-3 mb-1 ">
             <div className="flex align-middle pl-2">
                 <div className="my-auto flex gap-2 text-2xl text-primary j">
                     <div className="flex justify-center">{userid}</div>
@@ -49,7 +49,7 @@ const AccountDetail = ({ user, openModalBuy }) => {
             </div>
 
             <div className="flex align-middle">
-                <div className="my-auto flex gap-2 round">
+                <button className="my-auto flex gap-2 round">
                     {/* Add onClick event to open the modal */}
                     <a className="border-[2px] border-primary px-8 py-2 rounded-md hover:bg-orange-600"
                         onClick={() => openModalEdit(user)}
@@ -58,7 +58,20 @@ const AccountDetail = ({ user, openModalBuy }) => {
                         Edit
                     </a>
 
-                </div>
+                </button>
+            </div>
+
+            <div className="flex align-middle">
+                <button className="my-auto flex gap-2 round">
+                    {/* Add onClick event to open the modal */}
+                    <a className="border-[2px] border-red-700 px-8 py-2 rounded-md hover:bg-red-600"
+                        onClick={() => openModalEdit(user)}
+
+                    >
+                        Cancel
+                    </a>
+
+                </button>
             </div>
 
             <ModalEdit
