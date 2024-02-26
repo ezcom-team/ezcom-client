@@ -1,78 +1,81 @@
-import React, { PureComponent } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import React, { useEffect, useState } from "react";
+import { CardAllProduct } from "../CardAllProduct/CardAllProduct";
+import { Loading } from "../Loading/Loading";
+import axios from "axios";
+import { EditProductModal } from "../Modal/EditProductModal";
 
 const Graph = () => {
+    const [allProduct, setAllProduct] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
+    const [item, setItem] = useState("");
 
-  const data = [
-    {
-      name: '',
-      Price: 19000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: '26 Aug',
-      Price: 19500,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: '30 Aug',
-      Price: 31000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: '7 Sep',
-      Price: 37000,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: '14 Sep',
-      Price: 13000,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: '21 Sep',
-      Price: 26000,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: '28 Sep',
-      Price: 24500, 
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
-  return(
-    <div className="max-w-[75vw] mx-auto mt-10 bg-b2 p-10 rounded-md">
-      <ResponsiveContainer width="100%" aspect={3}>
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" tick={{fill:"#fff"}} />
-          <YAxis tick={{fill:"#fff"}}/>
-          <Tooltip />
-          <Legend />
-          {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={3} activeDot={{ r: 8 }} /> */}
-          <Line type="monotone" dataKey="Price" stroke="#82ca9d"strokeWidth={3} />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
-  )
-}
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get(
+                    "https://ezcom-backend-production-09b5.up.railway.app/products/"
+                );
+                setAllProduct(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Fetch Error", error);
+            }
+        }
+
+        fetchData();
+    }, []);
+
+    const openEditModal = (item) => {
+        setItem(item);
+        setOpenModal(!openModal);
+    };
+
+    console.log("🚀 ~ Graph ~ allProduct:", allProduct);
+
+    return (
+        <div className="mx-auto mt-10 bg-b2 p-10 rounded-md">
+            <div>
+                {openModal ? (
+                    <>
+                        <EditProductModal
+                            open={openEditModal}
+                            item={item}
+                            setIsOpen={openEditModal}
+                        />
+                    </>
+                ) : (
+                    <></>
+                )}
+            </div>
+            <div>
+                {loading ? (
+                    <div className="my-[120px] w-3/4 h-full overflow-y-scroll place-items-center md:place-content-start">
+                        <Loading />
+                    </div>
+                ) : (
+                    <>
+                        {allProduct != null ? (
+                            <div className="h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                                {allProduct.map((item) => (
+                                    <div onClick={() => openEditModal(item)}>
+                                        <CardAllProduct
+                                            img={item.Image}
+                                            name={item.Name}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="bg-400 w-3/4 h-full overflow-y-scroll grid place-items-center md:place-content-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                                No product
+                            </div>
+                        )}
+                    </>
+                )}
+            </div>
+        </div>
+    );
+};
 
 export default Graph;
