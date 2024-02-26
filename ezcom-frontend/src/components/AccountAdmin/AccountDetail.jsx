@@ -15,7 +15,7 @@ const AccountDetail = ({ user, openModalBuy }) => {
   console.log(" accountde" + user);
 
   return (
-    <div className="grid grid-cols-[15%_25%_25%_15%_10%_10%] bg-300 py-3 mb-1 ">
+    <div className="grid grid-cols-[20%_25%_25%_10%_10%_10%]  bg-300 py-3 mb-1 rounded-md ">
       <div className="flex pl-2 align-middle">
         <div className="flex gap-2 my-auto text-xs text-100 j">
           <div className="flex justify-center">{user.ID}</div>
@@ -43,7 +43,7 @@ const AccountDetail = ({ user, openModalBuy }) => {
         </div>
       </div>
 
-      <div className="flex align-middle">
+      <div className="flex justify-center align-middle">
         <button className="flex gap-2 my-auto round">
           <a
             className="px-4 py-1 text-base text-green-600 rounded-md bg-300 px-auto py-auto hover:bg-green-600 hover:text-100"

@@ -3,7 +3,7 @@ import axios from "axios";
 import AccountDetail from "./AccountDetail";
 import ModalEdit from "../Modal/ModalEdit";
 
-const Account = ({openModalBuy}) => {
+const Account = ({ openModalBuy }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -34,8 +34,7 @@ const Account = ({openModalBuy}) => {
 
   return (
     <div className="max-w-[75vw] mx-auto mt-10 ">
-      <div className="grid grid-cols-[15%_25%_25%_15%_10%_10%] mb-4 text-200 text-base">
-      
+      <div className="grid grid-cols-[20%_25%_25%_10%_10%_10%] mb-4 text-200 text-base">
         <div className="ml-5">id</div>
         <div className="">name</div>
         <div className="">email</div>
@@ -44,8 +43,10 @@ const Account = ({openModalBuy}) => {
       </div>
       {users ? (
         <div>
-          {users.map((user) =>
-            user.Name ? <AccountDetail user={user} openModalBuy={openModalBuy}/> : null
+          {users.map(user =>
+            user.Name ? (
+              <AccountDetail user={user} openModalBuy={openModalBuy} />
+            ) : null
           )}
         </div>
       ) : (
