@@ -17,15 +17,25 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                     `https://ezcom-backend-production-09b5.up.railway.app/products/${item.ID}`
                 );
                 const responseSpec = await axios.get(
-                    `https://ezcom-backend-production-09b5.up.railway.app/products/spec/${responseProduct.data.Type}/${
-                        responseProduct.data.Specs
-                    }`
+                    `https://ezcom-backend-production-09b5.up.railway.app/products/spec/${responseProduct.data.Type}/${responseProduct.data.Specs}`
                 );
 
                 setData(responseProduct.data);
                 setSpec(responseSpec.data);
                 if (responseProduct.data.Type === "mouse") {
                     setSelectedForm(mouse);
+                } else if (responseProduct.data.Type === "keyboard") {
+                    setSelectedForm(keyboard);
+                } else if (responseProduct.data.Type === "mousePad") {
+                    setSelectedForm(mousePad);
+                } else if (responseProduct.data.Type === "headset") {
+                    setSelectedForm(headset);
+                } else if (responseProduct.data.Type === "GPU") {
+                    setSelectedForm(GPU);
+                } else if (responseProduct.data.Type === "CPU") {
+                    setSelectedForm(CPU);
+                } else if (responseProduct.data.Type === "monitor") {
+                    setSelectedForm(monitor);
                 }
                 setLoading(false);
             } catch (error) {
@@ -74,6 +84,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
         { id: "name", text: "Name", type: "text" },
         { id: "color", text: "Color", type: "text" },
         { id: "desc", text: "Desc", type: "text" },
+        { id: "dpi", text: "DPI", type: "text" },
         { id: "sensor", text: "Sensor", type: "text" },
         { id: "buttonSwitch", text: "ButtonSwitch", type: "text" },
         { id: "connection", text: "Connection", type: "text" },
@@ -84,7 +95,91 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
         { id: "shape", text: "Shape", type: "text" },
         { id: "height", text: "Height", type: "text" },
         { id: "width", text: "Width", type: "text" },
-        // เพิ่ม label อื่น ๆ ตามต้องการ
+    ];
+
+    const keyboard = [
+        { id: "image", text: "Image", type: "file" },
+        { id: "type", text: "Type", type: "text" },
+        { id: "name", text: "Name", type: "text" },
+        { id: "color", text: "Color", type: "text" },
+        { id: "desc", text: "Desc", type: "text" },
+        { id: "form_factor", text: "Form_Factor", type: "text" },
+        { id: "PCB", text: "PCB", type: "text" },
+        { id: "height", text: "Height", type: "text" },
+        { id: "length", text: "Length", type: "text" },
+        { id: "switches", text: "Switches", type: "text" },
+        { id: "RGB", text: "RGB", type: "text" },
+        { id: "width", text: "Width", type: "text" },
+        { id: "weight", text: "Weight", type: "text" },
+    ];
+
+    const mousePad = [
+        { id: "image", text: "Image", type: "file" },
+        { id: "type", text: "Type", type: "text" },
+        { id: "name", text: "Name", type: "text" },
+        { id: "color", text: "Color", type: "text" },
+        { id: "desc", text: "Desc", type: "text" },
+        { id: "height", text: "Height", type: "text" },
+        { id: "thickness", text: "Thickness", type: "text" },
+        { id: "material", text: "Material", type: "text" },
+        { id: "length", text: "Length", type: "text" },
+        { id: "stitched_edges", text: "Stitched_edges", type: "text" },
+        { id: "glide", text: "Glide", type: "text" },
+    ];
+
+    const headset = [
+        { id: "image", text: "Image", type: "file" },
+        { id: "type", text: "Type", type: "text" },
+        { id: "name", text: "Name", type: "text" },
+        { id: "color", text: "Color", type: "text" },
+        { id: "desc", text: "Desc", type: "text" },
+        { id: "headset_type", text: "Headset_type", type: "text" },
+        { id: "cable_length", text: "Cable_length", type: "text" },
+        { id: "connection", text: "Connection", type: "text" },
+        { id: "microphone", text: "Microphone", type: "text" },
+        { id: "noise_cancelling", text: "Noise_cancelling", type: "text" },
+        { id: "weight", text: "Weight", type: "text" },
+    ];
+
+    const GPU = [
+        { id: "image", text: "Image", type: "file" },
+        { id: "type", text: "Type", type: "text" },
+        { id: "name", text: "Name", type: "text" },
+        { id: "color", text: "Color", type: "text" },
+        { id: "desc", text: "Desc", type: "text" },
+        { id: "nvidia_cuda_cores", text: "NVIDIA_CUDA_Cores", type: "text" },
+        { id: "memory_size", text: "Memory_Size", type: "text" },
+        { id: "boost_clock", text: "Boost_Clock", type: "text" },
+        { id: "memory_type", text: "Memory_Type", type: "text" },
+    ];
+
+    const CPU = [
+        { id: "image", text: "Image", type: "file" },
+        { id: "type", text: "Type", type: "text" },
+        { id: "name", text: "Name", type: "text" },
+        { id: "color", text: "Color", type: "text" },
+        { id: "desc", text: "Desc", type: "text" },
+        { id: "socket", text: "Socket", type: "text" },
+        { id: "threads", text: "Threads", type: "text" },
+        { id: "core_speed_base", text: "Core_Speed_Base", type: "text" },
+        { id: "cores", text: "Cores", type: "text" },
+        { id: "TDP", text: "TDP", type: "text" },
+        { id: "core_speed_boost", text: "Core_Speed_Boost", type: "text" },
+    ];
+
+    const monitor = [
+        { id: "image", text: "Image", type: "file" },
+        { id: "type", text: "Type", type: "text" },
+        { id: "name", text: "Name", type: "text" },
+        { id: "color", text: "Color", type: "text" },
+        { id: "desc", text: "Desc", type: "text" },
+        { id: "size", text: "Size", type: "text" },
+        { id: "aspect_ratio", text: "Aspect_Ratio", type: "text" },
+        { id: "g_sync", text: "G_Sync", type: "text" },
+        { id: "panel_tech", text: "Panel_Tech", type: "text" },
+        { id: "resolution", text: "Resolution", type: "text" },
+        { id: "refresh_rate", text: "Refresh_Rate", type: "text" },
+        { id: "free_sync", text: "FreeSync", type: "text" },
     ];
 
     const DynamicForm = ({ labels, initialData, initialSpec }) => {
