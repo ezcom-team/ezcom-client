@@ -1,197 +1,192 @@
 import React from "react";
 
 export const CompareSpec = ({ item, spec, color }) => {
-    // console.log(item.Specs)
-    // console.log(typeof(item.Specs))
-
-    // console.log('spec = ', spec)
-
-    return (
-        <div>
-            <div className="w-[320px] max-w-[400px] ml-1 bg-back">
-                <div className="mt-12 flex p-2 bg-300 justify-center">
-                    {item.Color !== undefined ? (
-                        <>
-                            {color.map((color, index) => (
-                                <div
-                                    className="max-w-[50px] w-[32px] h-[32px] rounded-full mx-[8px]"
-                                    style={{ backgroundColor: color }}
-                                />
-                            ))}
-                        </>
-                    ) : (
-                        <div>No color</div>
-                    )}
-                </div>
-                {item.Type === "mouse" ? (
-                    <div className="max-w-[350px] h-auto text-100 bg-300">
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.DPI}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Sensor}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.ButtonSwitch}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Connection}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Length}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Weight}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.PollingRate}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.ButtonForce}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Shape}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Height}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Width}</div>
-                        </div>
-                    </div>
-                ) : item.Type === "headset" ? (
-                    <div className="max-w-[350px] h-auto text-100 bg-300">
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Cable_Length}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Connection}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Headset_Type}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Microphone}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Noise_Cancelling}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Weight}</div>
-                        </div>
-                    </div>
-                ) : item.Type === "keyboard" ? (
-                    <div className="max-w-[350px] h-auto text-100 bg-300">
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Form_Factor}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Height}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Length}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.PCB}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.RGB}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Switches}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Weight}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Width}</div>
-                        </div>
-                    </div>
-                ) : item.Type === "GPU" ? (
-                    <div className="max-w-[350px] h-auto text-100 bg-300">
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Boost_Clock}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Memory_Size}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Memory_Type}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.NVIDIA_CUDA_Cores}</div>
-                        </div>
-                    </div>
-                ) : item.Type === "mousePad" ? (
-                    <div className="max-w-[350px] h-auto text-100 bg-300">
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Glide}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Height}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Length}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Material}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Stitched_edges}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Thickness}</div>
-                        </div>
-                    </div>
-                ) : item.Type === "CPU" ? (
-                    <div className="max-w-[350px] h-auto text-100 bg-300">
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Core_Speed_Base}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Core_Speed_Boost}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Cores}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Socket}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.TDP}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Threads}</div>
-                        </div>
-                    </div>
-                ) : item.Type === "monitor" ? (
-                    <div className="max-w-[350px] h-auto text-100 bg-300">
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.Aspect_Ratio}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.FreeSync}</div>
-                        </div>
-                        <div className="flex p-2 bg-300 justify-center">
-                            <div>{spec.G_Sync}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Panel_Tech}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Refresh_Rate}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Resolution}</div>
-                        </div>
-                        <div className="flex p-2 bg-400 justify-center">
-                            <div>{spec.Size}</div>
-                        </div>
-                    </div>
-                ) : (
-                    <div>No data type</div>
-                )}
+  return (
+    <div>
+      <div className="w-[320px] text-base">
+        <div className="flex justify-center pt-[40px]">
+          {item.Color !== undefined ? (
+            <div className="flex justify-center w-[320px] bg-300 ">
+              {color.map((color, index) => (
+                <div
+                  className="max-w-[50px] w-[32px] h-[32px] my-[4px] rounded-full mx-[8px]"
+                  style={{ backgroundColor: color }}
+                />
+              ))}
             </div>
+          ) : (
+            <div>No color</div>
+          )}
         </div>
-    );
+        {item.Type === "mouse" ? (
+          <div className="max-w-[350px] text-100 ">
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Sensor}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.ButtonSwitch}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Connection}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Length}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Weight}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.PollingRate}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.ButtonForce}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Shape}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Height}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Width}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.DPI}</div>
+            </div>
+          </div>
+        ) : item.Type === "headset" ? (
+          <div className="max-w-[350px] h-auto text-100">
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Cable_Length}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Connection}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Headset_Type}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Microphone}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Noise_Cancelling}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Weight}</div>
+            </div>
+          </div>
+        ) : item.Type === "keyboard" ? (
+          <div className="max-w-[350px] h-auto text-100">
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Form_Factor}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Height}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Length}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.PCB}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.RGB}</div>
+            </div>
+            <div className="flex justify-center align-middle p-2 h-[40px] overflow-scroll bg-300">
+              <div>{spec.Switches}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Weight}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Width}</div>
+            </div>
+          </div>
+        ) : item.Type === "GPU" ? (
+          <div className="max-w-[350px] h-auto text-100">
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Boost_Clock}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Memory_Size}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Memory_Type}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.NVIDIA_CUDA_Cores}</div>
+            </div>
+          </div>
+        ) : item.Type === "mousePad" ? (
+          <div className="max-w-[350px] h-auto text-100 ">
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Glide}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Height}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Length}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Material}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Stitched_edges}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Thickness}</div>
+            </div>
+          </div>
+        ) : item.Type === "CPU" ? (
+          <div className="max-w-[350px] h-auto text-100 ">
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Core_Speed_Base}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Core_Speed_Boost}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Cores}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Socket}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.TDP}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Threads}</div>
+            </div>
+          </div>
+        ) : item.Type === "monitor" ? (
+          <div className="max-w-[350px] h-auto text-100 ">
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Aspect_Ratio}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.FreeSync}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.G_Sync}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Panel_Tech}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Refresh_Rate}</div>
+            </div>
+            <div className="flex justify-center p-2 bg-300">
+              <div>{spec.Resolution}</div>
+            </div>
+            <div className="flex justify-center p-2 ">
+              <div>{spec.Size}</div>
+            </div>
+          </div>
+        ) : (
+          <div>No data type</div>
+        )}
+      </div>
+    </div>
+  );
 };
