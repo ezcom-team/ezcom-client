@@ -45,6 +45,7 @@ const History = () => {
         <>
           {matchOrder.map(order => (
             <HistoryCard
+              orderID={order.ID}
               productImg={
                 order.Product_img != ""
                   ? order.Product_img
@@ -53,7 +54,7 @@ const History = () => {
               price={order.Price}
               // need fix img
               traderImg={
-                order.Seller_id === userId ? order.BuyerName : order.SellerName
+                order.Seller_id === userId ? order.Buyer_img : order.Seller_img
               }
               trader={
                 order.Buyer_id === formattedUserId
