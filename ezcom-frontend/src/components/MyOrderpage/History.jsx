@@ -63,6 +63,8 @@ const History = () => {
               }
               time={order.CreatedAt}
               status={order.Status}
+              order={order}
+              userId={formattedUserId}
             />
           ))}
         </>

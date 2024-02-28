@@ -1,6 +1,7 @@
 import p1 from "../../img/p1.jpg";
 import axios from "axios";
-
+import TrackingNumber from "../Modal/TrackingNumber";
+import { useState } from "react";
 const HistoryCard = ({
   orderID,
   productImg,
@@ -9,15 +10,18 @@ const HistoryCard = ({
   trader,
   time,
   status,
+  order,
+  userId,
 }) => {
   const isoTimestamp = time;
   const dateObject = new Date(isoTimestamp);
   const formattedTime = dateObject.toLocaleString();
-  const statusDone = status == "done";
+  const statusDone = status === "done" && order.Buyer_id === userId;
+  const statusPrepare = status === "prepare" && order.Seller_id === userId;
+  const [showSentModal, setShowSentModal] = useState(false);
 
   const receivedhandler = async () => {
     const token = localStorage.getItem("access-token");
-    console.log("=======", orderID);
     try {
       const response = await axios.put(
         `https://ezcom-backend-production-09b5.up.railway.app/order/matched-order/received`,
@@ -35,9 +39,18 @@ const HistoryCard = ({
       console.error("Fetch Error", error);
     }
   };
+  const senthandler = () => {
+    setShowSentModal(true);
+  };
 
   return (
     <div className="grid grid-cols-[12%_12%_12%_40%_20%] bg-300 py-3 mb-1  text-100 rounded-md">
+      {showSentModal ? (
+        <TrackingNumber orderID={orderID} setShowSentModal={setShowSentModal} />
+      ) : (
+        <></>
+      )}
+
       <div className="flex align-middle">
         <div className="h-20 ml-5">
           <img src={productImg} className="max-w-full max-h-full" />
@@ -72,7 +85,17 @@ const HistoryCard = ({
             onClick={receivedhandler}
             className="ml-2 text-green-800 bg-green-500 h-[30px] p-1 rounded-md hover:bg-300 hover:text-200"
           >
-            received
+            Received
+          </button>
+        ) : (
+          <></>
+        )}
+        {statusPrepare ? (
+          <button
+            onClick={senthandler}
+            className="ml-2 text-green-800 bg-green-500 h-[30px] p-1 rounded-md hover:bg-300 hover:text-200"
+          >
+            Sent
           </button>
         ) : (
           <></>
