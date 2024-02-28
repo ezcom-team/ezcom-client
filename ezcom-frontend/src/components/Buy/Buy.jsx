@@ -46,7 +46,7 @@ const Buy = ({ pid }) =>{
                 </div> : 
                 <div>
                     {buyOrders.map((order) => (
-                        <BuyDetail conditions={order.Condition} colors={order.Color} buyerName={order.Buyer_name} price={order.Price} />
+                        <BuyDetail conditions={order.Condition} buyerImg={order.Buyer_img} colors={order.Color} buyerName={order.Buyer_name} price={order.Price} />
                     ))}
                 </div>
             }
