@@ -64,7 +64,7 @@ const OrderAdmin = () => {
   console.log(order);
   return (
     <div className=" max-w-[85vw] mx-auto  p-2">
-      <div className="grid grid-cols-[40%_15%_10%_10%_15%] mb-4 text-200">
+      <div className="grid grid-cols-[50%_10%_10%_10%_20%] mb-4 text-200">
         <div className="flex justify-center ml-5">Item</div>
         <div className="">Price</div>
         <div className="">Type</div>
