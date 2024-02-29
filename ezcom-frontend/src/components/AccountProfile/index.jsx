@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import pic from "../../img/p1.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { useSelector } from "react-redux"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function index() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,12 @@ function index() {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  function success(text) {
+    toast.success(text);
+  }
+  function fail(text) {
+    toast.error(text);
+  }
 
   useEffect(() => {
     setStoredUser(JSON.parse(localStorage.getItem("user-name")));
@@ -36,14 +43,17 @@ function index() {
           },
         }
       );
+      success("login already");
       console.log(response.data);
     } catch (error) {
+      fail("not login yet");
       console.error("Fetch Error", error);
     }
   };
 
   return (
     <div className="relative inline-block text-left ">
+      <ToastContainer position="top-center" theme="dark" />
       {storedUser ? (
         <button
           onClick={toggleDropdown}
@@ -74,7 +84,7 @@ function index() {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } absolute right-0 mt-2 w-48 bg-300 rounded-lg shadow-lg transition-opacity duration-300 ease-in-out`}
+        } absolute right-0 mt-2 w-48 bg-400 rounded-lg shadow-lg transition-opacity duration-300 ease-in-out`}
       >
         <ul className="py-2">
           <li>

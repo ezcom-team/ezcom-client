@@ -26,13 +26,14 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "password" || name === "confirmPassword") {
       setFormData({ ...formData, [name]: value });
     } else {
       setFormData({ ...formData, [name]: value });
-    }
+
   };
 
   const isPasswordMatch = () => {
@@ -77,6 +78,7 @@ const Register = () => {
 
       if (response.status === 200) {
         console.log("resposedata:", response.data);
+
         navigate("/login");
       } else {
         console.error("Register failed");
@@ -85,6 +87,7 @@ const Register = () => {
       console.error("Error sending request:", error);
     }
   };
+
 
   return (
     <div className="flex flex-col items-center flex-1 pt-20 bg-back">
@@ -207,7 +210,6 @@ const Register = () => {
             value={formData.address}
           ></textarea>
         </div>
-
         <div className="mb-6">
           <label
             htmlFor="password"

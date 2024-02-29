@@ -13,10 +13,10 @@ export const CardItem = props => {
           </div>
           <div className="text-sm text-center text-100">
             <div>{props.name}</div>
-            <div>
+            <div className="text-200">
               ฿ <span className="text-primary">{props.price}.-</span>
             </div>
-            <div>({props.quantity}) items</div>
+            <div className="text-200">({props.quantity}) items</div>
           </div>
         </div>
       </div>
