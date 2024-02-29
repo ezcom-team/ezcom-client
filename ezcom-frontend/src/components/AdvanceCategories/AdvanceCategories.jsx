@@ -5,9 +5,14 @@ export const AdvanceCategories = ({
     onTypeChange,
     onColorChange,
     onNumberChange,
+    onCheckboxChange,
+    // checkboxValue,
+    // setCheckboxValue,
 }) => {
     const [typeFilters, setTypeFilters] = useState("");
     const [color, setColor] = useState([]);
+    const [noise, setNoise] = useState([]);
+    const [checkboxValue, setCheckboxValue] = useState({});
 
     //Number input state
     const [inputValue, setInputValue] = useState({});
@@ -26,6 +31,11 @@ export const AdvanceCategories = ({
     ];
 
     const handleTypeFilter = (event) => {
+        const items = document.getElementsByName("checkbox");
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].type == "checkbox") items[i].checked = false;
+        }
+
         setTypeFilters(event.target.value);
         onTypeChange({
             typeFilters: event.target.value,
@@ -51,6 +61,9 @@ export const AdvanceCategories = ({
                 Weight: [-999, 999_999],
                 Cable_Length: [-999, 999_999],
             });
+            setCheckboxValue({
+                Noise_Cancelling: ["Yes", "No"],
+            });
         } else if (event.target.value === "keyboard") {
             setInputValue({
                 Width: [-999, 999_999],
@@ -59,6 +72,9 @@ export const AdvanceCategories = ({
                 Length: [-999, 999_999],
                 Form_Factor: [-999, 999_999],
             });
+            setCheckboxValue({
+                RGB: [],
+            });
         } else if (event.target.value === "mouse") {
             setInputValue({
                 Width: [-999, 999_999],
@@ -66,14 +82,31 @@ export const AdvanceCategories = ({
                 Weight: [-999, 999_999],
                 Length: [-999, 999_999],
             });
+            setCheckboxValue({
+                Shape: [],
+            });
         } else if (event.target.value === "mousePad") {
             setInputValue({
                 Height: [-999, 999_999],
                 Length: [-999, 999_999],
                 Thickness: [-999, 999_999],
             });
+            setCheckboxValue({
+                Stitched_edges: [],
+                Glide: [],
+            });
+        } else if (event.target.value === "monitor") {
+            setCheckboxValue({
+                Aspect_Ratio: [],
+                Refresh_Rate: [],
+                Resolution: [],
+                FreeSync: [],
+                G_Sync: [],
+            });
         }
     };
+    // [black, white, red]
+    colors.map((color) => {});
 
     const handleColorChange = (selectedColor) => {
         if (color.includes(selectedColor)) {
@@ -83,12 +116,16 @@ export const AdvanceCategories = ({
             onColorChange({
                 typeFilters,
                 colorFilters: color.filter((item) => item !== selectedColor),
+                numberValue: inputValue,
+                checkValue: checkboxValue,
             });
         } else {
             setColor((prevColor) => [...prevColor, selectedColor]);
             onColorChange({
                 typeFilters,
                 colorFilters: [...color, selectedColor],
+                numberValue: inputValue,
+                checkValue: checkboxValue,
             });
         }
     };
@@ -102,7 +139,8 @@ export const AdvanceCategories = ({
         setColor([]);
         onTypeChange({ typeFilters: "", colorFilters: "" });
         onColorChange({ typeFilters: "", colorFilters: "" });
-        onNumberChange({});
+        // onNumberChange({});
+        // onCheckboxChange({});
     };
 
     const onNumberInputChange = ({ id, min, max }) => {
@@ -118,10 +156,43 @@ export const AdvanceCategories = ({
                 ...prevInputValue,
                 [id]: [min, max],
             };
-            onNumberChange(id, updatedInputValue);
+            setInputValue(updatedInputValue);
+            onNumberChange(
+                typeFilters,
+                color,
+                updatedInputValue,
+                checkboxValue
+            );
             return updatedInputValue;
         });
     };
+
+    const handleCheckboxChange = async (e) => {
+        const updatedCheckboxValue = (() => {
+            // console.log("eeeee", checkboxValue[e.target.id], e.target.value);
+            if (checkboxValue[e.target.id].includes(e.target.value)) {
+                let index = checkboxValue[e.target.id].indexOf(e.target.value);
+                if (index !== -1) {
+                    checkboxValue[e.target.id].splice(index, 1);
+                }
+                return {
+                    ...checkboxValue,
+                    [e.target.id]: checkboxValue[e.target.id],
+                };
+            } else {
+                return {
+                    ...checkboxValue,
+                    [e.target.id]: [
+                        ...checkboxValue[e.target.id],
+                        e.target.value,
+                    ],
+                };
+            }
+        })();
+        setCheckboxValue(updatedCheckboxValue);
+        onCheckboxChange(typeFilters, color, inputValue, updatedCheckboxValue);
+    };
+    // console.log("🚀 ~ handleCheckboxChange ~ setCheckboxValue:", checkboxValue);
 
     const submitFilter = () => {};
 
@@ -134,7 +205,7 @@ export const AdvanceCategories = ({
                             <select
                                 value={typeFilters}
                                 onChange={handleTypeFilter}
-                                className="text-black bg-300 cursor-pointer h-[24px] rounded text-center"
+                                className="text-100 bg-400 cursor-pointer h-[24px] rounded text-center"
                             >
                                 <option value="">Select type</option>
                                 <option value="GPU">GPU</option>
@@ -154,15 +225,13 @@ export const AdvanceCategories = ({
                                         {colors.map((color) => (
                                             <div className="flex">
                                                 <input
-                                                    value={color.includes(
-                                                        color
-                                                    )}
+                                                    value={color}
                                                     onChange={() =>
                                                         handleColorChange(color)
                                                     }
                                                     name="checkbox"
                                                     type="checkbox"
-                                                    className="mr-[8px]"
+                                                    className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
                                                 />
                                                 <div>{color}</div>
                                             </div>
@@ -225,27 +294,46 @@ export const AdvanceCategories = ({
                                     </div>
                                 </div>
                             ) : typeFilters === "headset" ? (
-                                <div>
-                                    <TextInput
-                                        id={"Weight"}
-                                        title={"Weight"}
-                                        unit={"g"}
-                                        onChange={onNumberInputChange}
-                                    />
-
-                                    <TextInput
-                                        id={"Cable_Length"}
-                                        title={"Cable length"}
-                                        unit={"cm"}
-                                        onChange={onNumberInputChange}
-                                    />
-                                    <div className="flex">
-                                        <input
-                                            name="checkbox"
-                                            type="checkbox"
-                                            className="mr-[8px]"
+                                <div className="flex gap-[48px]">
+                                    <div>
+                                        <TextInput
+                                            id={"Weight"}
+                                            title={"Weight"}
+                                            unit={"g"}
+                                            onChange={onNumberInputChange}
                                         />
-                                        <div>Noise Cancelling</div>
+
+                                        <TextInput
+                                            id={"Cable_Length"}
+                                            title={"Cable length"}
+                                            unit={"cm"}
+                                            onChange={onNumberInputChange}
+                                        />
+                                    </div>
+                                    <div className="p-[8px]">
+                                        <div className="text-200">
+                                            Noise Cancelling
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Noise_Cancelling"
+                                                type="checkbox"
+                                                value="Yes"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>Yes</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Noise_Cancelling"
+                                                type="checkbox"
+                                                value="No"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>No</div>
+                                        </div>
                                     </div>
                                 </div>
                             ) : typeFilters === "keyboard" ? (
@@ -287,40 +375,27 @@ export const AdvanceCategories = ({
                                         </div>
                                     </div>
                                     <div className="p-[8px]">
+                                        <div className="text-200">RGB</div>
                                         <div className="flex">
                                             <input
+                                                id="RGB"
                                                 name="checkbox"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                value="Yes"
+                                                onChange={handleCheckboxChange}
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
                                             />
-                                            <div>RGB</div>
-                                        </div>
-                                        <div className="text-200 mt-[32px]">
-                                            Switches
-                                        </div>
-                                        <div className="flex">
-                                            <input
-                                                name="checkbox"
-                                                type="checkbox"
-                                                className="mr-[8px]"
-                                            />
-                                            <div>Lekker</div>
+                                            <div>Yes</div>
                                         </div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="RGB"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                value="No"
+                                                onChange={handleCheckboxChange}
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
                                             />
-                                            <div>xxx</div>
-                                        </div>
-                                        <div className="flex">
-                                            <input
-                                                name="checkbox"
-                                                type="checkbox"
-                                                className="mr-[8px]"
-                                            />
-                                            <div>xx</div>
+                                            <div>No</div>
                                         </div>
                                     </div>
                                 </div>
@@ -360,27 +435,23 @@ export const AdvanceCategories = ({
                                         <div>Shape</div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="Shape"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                value="Ergonomic"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
                                             />
                                             <div>Ergonomic</div>
                                         </div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="Shape"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                value="Ambidextrous"
+                                                onChange={handleCheckboxChange}
                                             />
                                             <div>Ambidextrous</div>
-                                        </div>
-                                        <div className="flex">
-                                            <input
-                                                name="checkbox"
-                                                type="checkbox"
-                                                className="mr-[8px]"
-                                            />
-                                            <div>Ergonomic</div>
                                         </div>
                                     </div>
                                 </div>
@@ -409,38 +480,59 @@ export const AdvanceCategories = ({
                                         </div>
                                     </div>
                                     <div className="p-[8px]">
+                                        <div className="text-200">
+                                            Stitched edges
+                                        </div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="Stitched_edges"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                value="Yes"
+                                                onChange={handleCheckboxChange}
                                             />
-                                            <div>Stitched edges</div>
+                                            <div>Yes</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Stitched_edges"
+                                                type="checkbox"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                value="No"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>No</div>
                                         </div>
                                         <div className="text-200 mt-[32px]">
                                             Glide
                                         </div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="Glide"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                value="High"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
                                             />
                                             <div>High</div>
                                         </div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="Glide"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                value="Medium"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
                                             />
                                             <div>Medium</div>
                                         </div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="Glide"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                value="Low"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
                                             />
                                             <div>Low</div>
                                         </div>
@@ -450,88 +542,203 @@ export const AdvanceCategories = ({
                                 <div className="flex gap-[48px]">
                                     <div>
                                         <div className="p-[8px]">
-                                            <select
-                                                value={typeFilters}
-                                                onChange={handleTypeFilter}
-                                                className="text-200 bg-300 cursor-pointer h-[24px] rounded text-center"
-                                            >
-                                                <option value="">
-                                                    Aspect Ratio
-                                                </option>
-                                                <option value="21:9">
-                                                    21:9
-                                                </option>
-                                                <option value="16:9">
-                                                    16:9
-                                                </option>
-                                                <option value="4:3">4:3</option>
-                                            </select>
-                                        </div>
-                                        <div className="p-[8px]">
-                                            <select
-                                                value={typeFilters}
-                                                onChange={handleTypeFilter}
-                                                className="text-200 bg-300 cursor-pointer h-[24px] rounded text-center"
-                                            >
-                                                <option value="">
-                                                    Refresh rate
-                                                </option>
-                                                <option value="240Hz">
-                                                    240Hz
-                                                </option>
-                                                <option value="144Hz">
-                                                    144Hz
-                                                </option>
-                                                <option value="120Hz">
-                                                    120Hz
-                                                </option>
-                                                <option value="75Hz">
-                                                    75Hz
-                                                </option>
-                                                <option value="60Hz">
-                                                    60Hz
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div className="p-[8px]">
-                                            <select
-                                                value={typeFilters}
-                                                onChange={handleTypeFilter}
-                                                className="text-200 bg-300 cursor-pointer h-[24px] rounded text-center"
-                                            >
-                                                <option value="">
-                                                    Resolution
-                                                </option>
-                                                <option value="8k">8k</option>
-                                                <option value="16:9">4k</option>
-                                                <option value="1440p">
-                                                    1440p
-                                                </option>
-                                                <option value="1080p">
-                                                    1080p
-                                                </option>
-                                                <option value="720p">
-                                                    720p
-                                                </option>
-                                            </select>
+                                            <div className="text-200">
+                                                Aspect Ratio
+                                            </div>
+                                            <div className="flex">
+                                                <input
+                                                    id="Aspect_Ratio"
+                                                    type="checkbox"
+                                                    value="21:9"
+                                                    className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                    onChange={
+                                                        handleCheckboxChange
+                                                    }
+                                                />
+                                                <div>21:9</div>
+                                            </div>
+                                            <div className="flex">
+                                                <input
+                                                    id="Aspect_Ratio"
+                                                    type="checkbox"
+                                                    value="16:9"
+                                                    className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                    onChange={
+                                                        handleCheckboxChange
+                                                    }
+                                                />
+                                                <div>16:9</div>
+                                            </div>
+                                            <div className="flex">
+                                                <input
+                                                    id="Aspect_Ratio"
+                                                    type="checkbox"
+                                                    value="4:3"
+                                                    className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                    onChange={
+                                                        handleCheckboxChange
+                                                    }
+                                                />
+                                                <div>4:3</div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="p-[8px]">
+                                        <div className="text-200">
+                                            Refresh rate
+                                        </div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="Refresh_Rate"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                value="240Hz"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
                                             />
-                                            <div>Free sync</div>
+                                            <div>240Hz</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Refresh_Rate"
+                                                type="checkbox"
+                                                value="144Hz"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>144Hz</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Refresh_Rate"
+                                                type="checkbox"
+                                                value="120Hz"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>120Hz</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Refresh_Rate"
+                                                type="checkbox"
+                                                value="75Hz"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>75Hz</div>
                                         </div>
                                         <div className="flex">
                                             <input
                                                 name="checkbox"
                                                 type="checkbox"
-                                                className="mr-[8px]"
+                                                value="60Hz"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
                                             />
-                                            <div>Gsync</div>
+                                            <div>60Hz</div>
+                                        </div>
+                                    </div>
+                                    <div className="p-[8px]">
+                                        <div className="text-200">
+                                            Resolution
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Resolution"
+                                                type="checkbox"
+                                                value="8k"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>8k</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Resolution"
+                                                type="checkbox"
+                                                value="4k"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>4k</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Resolution"
+                                                type="checkbox"
+                                                value="1440p"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>1440p</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Resolution"
+                                                type="checkbox"
+                                                value="1080p"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>1080p</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Resolution"
+                                                type="checkbox"
+                                                value="720p"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>720p</div>
+                                        </div>
+                                    </div>
+                                    <div className="p-[8px]">
+                                        <div className="text-200">
+                                            Free sync
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="FreeSync"
+                                                type="checkbox"
+                                                value="Yes"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>Yes</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="FreeSync"
+                                                type="checkbox"
+                                                value="No"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>No</div>
+                                        </div>
+                                        <div className="text-200 mt-[32px]">
+                                            Gsync
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Gsync"
+                                                type="checkbox"
+                                                value="Yes"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>Yes</div>
+                                        </div>
+                                        <div className="flex">
+                                            <input
+                                                id="Gsync"
+                                                type="checkbox"
+                                                value="No"
+                                                className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
+                                                onChange={handleCheckboxChange}
+                                            />
+                                            <div>No</div>
                                         </div>
                                     </div>
                                 </div>
@@ -541,14 +748,9 @@ export const AdvanceCategories = ({
                         </div>
                         <div className="flex justify-center">
                             <button
-                                className="mx-[12px] px-[24px] py-[8px] transition bg-green-600 rounded hover:bg-green-400 text-200"
-                                onClick={submitFilter}
-                            >
-                                Save
-                            </button>
-                            <button
                                 className="mx-[12px] px-[24px] py-[8px] transition border rounded border-primary hover:bg-primary text-200"
-                                onClick={handleClearFilter}
+                                // value=""
+                                onClick={handleTypeFilter}
                             >
                                 Clear
                             </button>
