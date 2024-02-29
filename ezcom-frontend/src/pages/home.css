@@ -1,0 +1,20 @@
+#p1 {
+    position:relative;
+    top: 200px;
+    right: 170px;
+    width: 200px;
+    z-index: 999;
+}
+
+#p2{
+    position: absolute;
+    
+}
+
+#p3 {
+    position:relative;
+    bottom:  100px;
+    left: 200px;
+    width: 200px;
+    z-index: 999;
+}

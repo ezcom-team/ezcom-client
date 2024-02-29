@@ -3,30 +3,30 @@ const OrderDetailAdmin = ({ order }) => {
   let name = "";
   let textColorClass = "";
 
-  if (order.Seller_name) {
-    type = "Buy";
-  } else if (order.Buyer_name) {
-    type = "Sell";
-  } else {
-    type = "No transaction information available";
-  }
+  // if (order.Seller_name) {
+  //   type = "Buy";
+  // } else if (order.Buyer_name) {
+  //   type = "Sell";
+  // } else {
+  //   type = "No transaction information available";
+  // }
 
-  if (order.Seller_name) {
-    name = order.Seller_name;
-  } else if (order.Buyer_name) {
-    name = order.Buyer_name;
-  } else {
-    type = "No transaction information available";
-  }
+  // if (order.Seller_name) {
+  //   name = order.Seller_name;
+  // } else if (order.Buyer_name) {
+  //   name = order.Buyer_name;
+  // } else {
+  //   type = "No transaction information available";
+  // }
 
-  if (type === "Sell") {
-    textColorClass = "text-red-500";
-  } else if (type === "Buy") {
-    textColorClass = "text-green-500";
-  }
+  // if (type === "Sell") {
+  //   textColorClass = "text-red-500";
+  // } else if (type === "Buy") {
+  //   textColorClass = "text-green-500";
+  // }
 
   return (
-    <div className="grid grid-cols-[50%_10%_10%_10%_20%] bg-300 text-200 py-3 mb-1 ">
+    <div className="grid grid-cols-[40%_15%_10%_10%_15%_10%] bg-300 text-200 py-3 mb-1 ">
       <div className="flex pl-5 align-middle">
         <div className="h-20 ml-5">
           <img src={order.Product_img} className="max-w-full max-h-full" />
@@ -45,15 +45,15 @@ const OrderDetailAdmin = ({ order }) => {
           <div className="my-auto ">{order.Price}</div>
         </div>
       </div>
-      <div className="flex pl-4 align-middle">
-        <div className="my-auto text-base ">
-          <div className={textColorClass}>{type}</div>
+      <div className="flex align-middle">
+        <div className="my-auto text-base text-100">
+          <div className={textColorClass}>{order.BuyerName}</div>
         </div>
       </div>
 
       <div className="flex align-middle">
         <div className="my-auto text-base text-100">
-          <div className="">{name}</div>
+          <div className="">{order.SellerName}</div>
         </div>
       </div>
 
@@ -63,7 +63,7 @@ const OrderDetailAdmin = ({ order }) => {
         </div>
       </div>
 
-      {/* <div className="flex align-middle">
+      <div className="flex align-middle">
         <div className="flex gap-2 my-auto round">
           <a
             className="border-[2px] border-primary px-8 py-2 rounded-md hover:bg-orange-600"
@@ -72,7 +72,7 @@ const OrderDetailAdmin = ({ order }) => {
             Edit
           </a>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

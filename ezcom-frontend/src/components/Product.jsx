@@ -9,6 +9,7 @@ function Product() {
     { id: "name", text: "Name", type: "text" },
     { id: "color", text: "Color", type: "text" },
     { id: "desc", text: "Desc", type: "text" },
+    { id: "dpi", text: "DPI", type: "text" },
     { id: "sensor", text: "Sensor", type: "text" },
     { id: "buttonSwitch", text: "ButtonSwitch", type: "text" },
     { id: "connection", text: "Connection", type: "text" },
@@ -69,7 +70,7 @@ function Product() {
     { id: "form_factor", text: "Form_Factor", type: "text" },
     { id: "PCB", text: "PCB", type: "text" },
     { id: "height", text: "Height", type: "text" },
-    { id: "legth", text: "Legth", type: "text" },
+    { id: "length", text: "Length", type: "text" },
     { id: "switches", text: "Switches", type: "text" },
     { id: "RGB", text: "RGB", type: "text" },
     { id: "width", text: "Width", type: "text" },
@@ -100,8 +101,9 @@ function Product() {
     { id: "panel_tech", text: "Panel_Tech", type: "text" },
     { id: "resolution", text: "Resolution", type: "text" },
     { id: "refresh_rate", text: "Refresh_Rate", type: "text" },
-    { id: "freeSync", text: "FreeSync", type: "text" },
+    { id: "free_sync", text: "FreeSync", type: "text" },
   ];
+
   const sendData = async formData => {
     console.log("form data :", formData);
     try {
@@ -119,6 +121,7 @@ function Product() {
       );
       console.log(response.data);
     } catch (error) {
+      showToast(false,"Error sending request")
       // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
       console.error("Error sending request:", error);
     }
@@ -168,6 +171,8 @@ function Product() {
           });
         } else data.append(label.id, formData[label.id]);
       });
+
+      
 
       // labels.map(label => {
       //   if (label.id === "color") {

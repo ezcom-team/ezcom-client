@@ -16,11 +16,12 @@ import Detail from "./pages/Detail.jsx";
 import MyOrder from "./pages/MyOrderPage.jsx";
 import Admin from "./pages/Admin";
 import Progress from "./pages/ProgressPage.jsx";
-import Register from "./pages/ResgisterPage.jsx";
+import Register from "./pages/RegisterPage.jsx";
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile.jsx";
 import { Compare } from "./pages/Compare";
 import { AdvanceFilter } from "./pages/AdvanceFilter.jsx";
 
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
     {
         path: "/Register",
         element: <Register />,
+    },
+    {
+        path: "/Profile",
+        element: <Profile />,
     },
 ]);
 

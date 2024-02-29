@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Buy from "../Buy/Buy";
 import Sell from "../Sell/Sell";
 
-import Graph from "../Graph/Graph";
+import Graph from "../RealGraph/RealGraph";
 
 
 
