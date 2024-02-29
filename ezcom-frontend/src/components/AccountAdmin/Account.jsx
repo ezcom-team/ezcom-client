@@ -33,7 +33,7 @@ const Account = ({ openModalBuy }) => {
   }, []);
 
   return (
-    <div className="max-w-[75vw] mx-auto mt-10 ">
+    <div className="max-w-[75vw] mx-auto p-2">
       <div className="grid grid-cols-[20%_25%_25%_10%_10%_10%] mb-4 text-200 text-base">
         <div className="ml-5">id</div>
         <div className="">name</div>
