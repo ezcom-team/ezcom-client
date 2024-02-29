@@ -84,7 +84,7 @@ function index() {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } absolute right-0 mt-2 w-48 bg-300 rounded-lg shadow-lg transition-opacity duration-300 ease-in-out`}
+        } absolute right-0 mt-2 w-48 bg-400 rounded-lg shadow-lg transition-opacity duration-300 ease-in-out`}
       >
         <ul className="py-2">
           <li>
