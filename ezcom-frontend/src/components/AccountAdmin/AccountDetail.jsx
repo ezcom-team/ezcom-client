@@ -60,7 +60,7 @@ const AccountDetail = ({ user, openModalBuy }) => {
             className="px-4 py-1 text-base text-red-600 rounded-md bg-300 px-auto py-auto hover:bg-red-600 hover:text-100"
             onClick={() => openModalEdit(user)}
           >
-            cancel
+            delete
           </a>
         </button>
       </div>
