@@ -5,62 +5,69 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // const FormData = require('form-daata');
 const Register = () => {
-  let data = new FormData();
   const [formData, setFormData] = useState({
+    fname: "",
+    lname: "",
     name: "",
     email: "",
     password: "",
     role: "user",
+    address: "",
+    phone: "",
   });
 
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isUsernameFocused, setIsUsernameFocused] = useState(false);
-  const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] = useState(false);
+  const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] =
+    useState(false);
 
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const handlePasswordChange = e => {
-    setFormData({ ...formData, password: e.target.value });
-
-  };
-  const handleConfirmPasswordChange = e => {
-    setConfirmPassword(e.target.value);
-  }
-
-
-  const handleEmailChange = e => {
-    setFormData({ ...formData, email: e.target.value });
-  };
-
-  const handleUsernameChange = e => {
-    setFormData({ ...formData, name: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "password" || name === "confirmPassword") {
+      setFormData({ ...formData, [name]: value });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const isPasswordMatch = () => {
-    return formData.password === confirmPassword;
+    return formData.password === formData.confirmPassword;
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting form with data:", formData);
-    data.append("name", formData.name);
-    data.append("email", formData.email);
-    data.append("password", formData.password);
-    data.append("role", formData.role);
 
-    if (!isPasswordMatch()) {
-      console.log("Passwords do not match");
-      return;
-    }
+    // Concatenate first name and last name into a single field
+    const fullName = `${formData.fname} ${formData.lname}`;
+    const fullAddress = `${formData.address} ${formData.zip}`;
+
+    // console.log("fullname", fullName)
+    // Create a new object with the updated formData
+    const updatedFormData = {
+      ...formData,
+      name: fullName,
+      address: fullAddress,
+    };
+    console.log("Updateformdata: ", updatedFormData);
+
+    delete updatedFormData.confirmPassword;
+    delete updatedFormData.zip;
+
+    // Remove fname and lname from updatedFormData
+    delete updatedFormData.fname;
+    delete updatedFormData.lname;
 
     try {
-      console.log("string" + " : " + formData.name);
+      // console.log("string" + " : " + updatedFormData.name);
       const response = await axios.post(
         "https://ezcom-backend-production-09b5.up.railway.app/auth/register",
-        formData,
+        updatedFormData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -69,7 +76,7 @@ const Register = () => {
       );
 
       if (response.status === 200) {
-        console.log(response.data);
+        console.log("resposedata:", response.data);
         navigate("/login");
       } else {
         console.error("Register failed");
@@ -79,167 +86,196 @@ const Register = () => {
     }
   };
 
-  const handleEmailFocus = () => {
-    setIsEmailFocused(true);
-  };
-
-  const handleEmailBlur = () => {
-    setIsEmailFocused(false);
-  };
-
-  const handlePasswordFocus = () => {
-    setIsPasswordFocused(true);
-  };
-
-  const handlePasswordBlur = () => {
-    setIsPasswordFocused(false);
-  };
-
-  const handleUsernameFocus = () => {
-    setIsUsernameFocused(true);
-  };
-
-  const handleUsernameBlur = () => {
-    setIsUsernameFocused(false);
-  };
-
-  const handleConfirmPasswordFocus = () => {
-    setIsConfirmPasswordFocused(true);
-  };
-
-  const handleConfirmPasswordBlur = () => {
-    setIsConfirmPasswordFocused(false);
-  };
-
-  const emailInputStyle = {
-    border: isEmailFocused ? "2px solid #ff6827" : "2px solid transparent",
-    transition: "border-color .5s ease",
-  };
-
-  const passwordInputStyle = {
-    border: isPasswordFocused ? "2px solid #ff6827" : "2px solid transparent",
-    transition: "border-color .5s ease",
-  };
-
-  const usernameInputStyle = {
-    border: isUsernameFocused ? "2px solid #ff6827" : "2px solid transparent",
-    transition: "border-color .5s ease",
-  };
-
-  const confirmPasswordInputStyle = {
-    border: isConfirmPasswordFocused ? "2px solid #ff6827" : "2px solid transparent",
-    transition: "border-color .5s ease",
-  };
-
-
-  
   return (
-    <div className="flex flex-col items-center flex-1 pt-40 bg-back">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-400 min-w-[500px] rounded-md p-10 mb-10"
-      >
-        <div className="mb-10 ">
-          <h2 class="text-100 flex justify-center text-3xl ">Register</h2>
-        </div>
-        <div className="flex flex-col gap-6">
-          <div
-            className="flex flex-col gap-1 px-4 py-2 rounded-md bg-300 "
-            style={emailInputStyle}
-          >
-            <label htmlFor="email" className="text-200">
-              Email:
+    <div className="flex flex-col items-center flex-1 pt-20 bg-back">
+      <form className="bg-400 p-10 rounded-lg " onSubmit={handleSubmit}>
+        <div className="flex justify-center text-2xl text-orange-500 mb-6">Register</div>
+        <div className="grid gap-6 mb-6 md:grid-cols-2">
+          <div>
+            <label
+              htmlFor="first_name"
+              className="block mb-2 text-sm font-medium text-200 dark:text-white"
+            >
+              First name
             </label>
             <input
-              className="pl-2 font-semibold"
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleEmailChange}
-              placeholder="Type Your Email"
-              onFocus={handleEmailFocus}
-              onBlur={handleEmailBlur}
-            />
-          </div>
-
-          <div
-            className="flex flex-col gap-1 px-4 py-2 rounded-md bg-300 "
-            style={usernameInputStyle}
-          >
-            <label htmlFor="email" className="text-200">
-              Username:
-            </label>
-            <input
-              className="pl-2 font-semibold"
               type="text"
-              id="username"
-              value={formData.name}
-              onChange={handleUsernameChange}
-              placeholder="Type Your Username"
-              onFocus={handleUsernameFocus}
-              onBlur={handleUsernameBlur}
+              id="first_name"
+              name="fname"
+              className="bg-300 border border-gray-300 text-100 text-sm rounded-lg   block w-full p-2.5 da"
+              placeholder="John"
+              required
+              onChange={handleChange}
+              value={formData.fname}
             />
           </div>
-
-          <div className="flex flex-col gap-1">
-            <div
-              className="flex flex-col gap-1 px-4 py-2 rounded-md bg-300"
-              style={passwordInputStyle}
+          <div>
+            <label
+              htmlFor="last_name"
+              className="block mb-2 text-sm font-medium text-200 dark:text-white"
             >
-              <label htmlFor="password" className="text-200">
-                Password:
+              Last name
+            </label>
+            <input
+              type="text"
+              id="last_name"
+              name="lname"
+              className="bg-300 border border-gray-300 text-100 text-sm rounded-lg  block w-full p-2.5 "
+              placeholder="Doe"
+              required
+              onChange={handleChange}
+              value={formData.lname}
+            />
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <label
+            htmlFor="email"
+            className="block mb-2 text-sm font-medium text-200 "
+          >
+            Email address
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="bg-300 border border-gray-300 text-100 text-sm rounded-lg  block w-full p-2.5  "
+            placeholder="john.doe@company.com"
+            required
+            onChange={handleChange}
+            value={formData.email}
+          />
+        </div>
+
+        <div className="mt-6">
+          <div className="grid gap-6 mb-6 md:grid-cols-2">
+            <div>
+              <label
+                htmlFor="phone"
+                className="block mb-2 text-sm font-medium text-200 dark:text-white"
+              >
+                Phone number
               </label>
               <input
-                className="pl-2 font-semibold"
-                type="password"
-                id="password"
-                value={formData.password}
-                onChange={handlePasswordChange}
-                placeholder="Type your Password"
-                onFocus={handlePasswordFocus}
-                onBlur={handlePasswordBlur}
+                type="tel"
+                id="phone"
+                name="phone"
+                className="bg-300 border border-gray-300 text-100 text-sm rounded-lg block w-full p-2.5 "
+                placeholder="085xxxxxxx"
+                pattern="[0-9]{10}"
+                required
+                onChange={handleChange}
+                value={formData.phone}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="zip"
+                className="block mb-2 text-sm font-medium text-200 dark:text-white"
+              >
+                Post Code
+              </label>
+              <input
+                type="text"
+                id="zip"
+                name="zip"
+                pattern="[0-9]{5}"
+                className="bg-300 border border-gray-300 text-100 text-sm rounded-lg  block w-full p-2.5 "
+                placeholder=""
+                required
+                onChange={handleChange}
+                value={formData.zip}
               />
             </div>
           </div>
+        </div>
+        <div className="mb-6">
+          <label
+            htmlFor="message"
+            className="block mb-2 text-sm font-medium text-200 dark:text-white"
+          >
+            Address
+          </label>
+          <textarea
+            id="message"
+            name="address"
+            rows="4"
+            className="block p-2.5 w-full text-sm text-200 bg-300 rounded-lg   "
+            placeholder="Write your thoughts here..."
+            onChange={handleChange}
+            value={formData.address}
+          ></textarea>
+        </div>
 
-          <div className="flex flex-col gap-1">
-            <div
-              className="flex flex-col gap-1 px-4 py-2 rounded-md bg-300"
-              style={confirmPasswordInputStyle}
-            >
-              <label htmlFor="password" className="text-200">
-                Confirm-Password:
-              </label>
-              <input
-                className="pl-2 font-semibold"
-                type="password"
-                id="confirmpassword"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
-                placeholder="Type your Password"
-              onFocus={handleConfirmPasswordFocus}
-              onBlur={handleConfirmPasswordBlur}
-              />
-            </div>
+        <div className="mb-6">
+          <label
+            htmlFor="password"
+            className="block mb-2 text-sm font-medium text-200 dark:text-white"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="bg-300 border border-gray-300 text-100 text-sm rounded-lg   block w-full p-2.5 "
+            placeholder="•••••••••"
+            required
+            onChange={handleChange}
+            value={formData.password}
+          />
+        </div>
+        <div className="mb-6">
+          <label
+            htmlFor="confirm_password"
+            className="block mb-2 text-sm font-medium text-200 dark:text-white"
+          >
+            Confirm password
+          </label>
+          <input
+            type="password"
+            id="confirm_password"
+            name="confirmPassword"
+            className="bg-300 border border-gray-300 text-100 text-sm rounded-lg   block w-full p-2.5 "
+            placeholder="•••••••••"
+            required
+            onChange={handleChange}
+            value={formData.confirmPassword}
+          />
+        </div>
+        <div className="flex items-start mb-6">
+          <div className="flex items-center h-5">
+            <input
+              id="remember"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 border border-gray-300 rounded bg-300 "
+              required
+            />
           </div>
-          {isPasswordMatch() ? (
-            <div className="text-400">{"-"}</div>
-          ) : (
-            <div className="text-red-600">Passwords do not match</div>
-          )}
+          <label
+            htmlFor="remember"
+            className="ms-2 text-sm font-medium text-200 "
+          >
+            I agree with the{" "}
+            <a
+              href="javascript:void(0)"
+              className="text-primary hover:underline "
+            >
+              terms and conditions
+            </a>
+            .
+          </label>
         </div>
-        <div className="flex justify-center mt-7 ">
-          <button className="flex min-w-[100%] justify-center bg-primary rounded-xl py-3 mt-3 text-100 text-2xl">
-            Register
-          </button>
-        </div>
-
-
-        <div className="flex items-end justify-center gap-3 mt-28 text-ce">
-          <div className="text-200">Already have an account? </div>
-          <Link to="/login" className="text-xl text-primary">
-            Sign in
-          </Link>
+        <div>
+        <button
+          type="submit"
+          className="text-white bg-primary hover:bg-orange-700  font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center "
+          
+        >
+          Submit
+        </button>
         </div>
       </form>
     </div>

@@ -3,13 +3,23 @@ import { CardAllProduct } from "../CardAllProduct/CardAllProduct";
 import { Loading } from "../Loading/Loading";
 import axios from "axios";
 import { EditProductModal } from "../Modal/EditProductModal";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Graph = () => {
     const [allProduct, setAllProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     const [openModal, setOpenModal] = useState(false);
     const [item, setItem] = useState("");
+    
+    function showToast(bool, text) {
+        if (bool) {
+            toast.success(text)
+        }
+        else
+            toast.error(text)
 
+    }
     useEffect(() => {
         async function fetchData() {
             try {
@@ -18,7 +28,9 @@ const Graph = () => {
                 );
                 setAllProduct(response.data);
                 setLoading(false);
+
             } catch (error) {
+                showToast(false, "Fetch Error")
                 console.error("Fetch Error", error);
             }
         }
@@ -35,6 +47,9 @@ const Graph = () => {
 
     return (
         <div className="mx-auto mt-10 bg-b2 p-10 rounded-md">
+            <ToastContainer
+                position="top-center"
+            />
             <div>
                 {openModal ? (
                     <>
