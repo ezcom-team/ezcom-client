@@ -87,7 +87,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col items-center flex-1 pt-20 bg-back">
+    <div className="flex flex-col items-center flex-1 pt-10 bg-back">
       <form className="bg-400 p-10 rounded-lg " onSubmit={handleSubmit}>
         <div className="flex justify-center text-2xl text-orange-500 mb-6">Register</div>
         <div className="grid gap-6 mb-6 md:grid-cols-2">

@@ -10,6 +10,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import axios from "axios";
 import Account from "../components/AccountAdmin/Account";
+
+import MatchedOrder from "../components/MatchedOrderAdmin/MatchedOrder";
 import ModalEdit from "../components/Modal/ModalEdit";
 
 function Admin() {
@@ -17,6 +19,10 @@ function Admin() {
   const [items, setItems] = useState("0");
   const [orders, setOrders] = useState("0");
   const [users, setUsers] = useState("0");
+
+
+function Admin() {
+  const [activeComponent, setActiveComponent] = useState("Graph");
 
   const toggle = (component) => {
     setActiveComponent(component);
@@ -35,6 +41,9 @@ function Admin() {
       break;
     case "User":
       CurrentComponent = <Account />;
+      break;
+    case "MatchedOrder":
+      CurrentComponent = <MatchedOrder />;
       break;
     default:
       CurrentComponent = null;
@@ -134,6 +143,13 @@ function Admin() {
               </a>
               <a
                 href="#"
+                onClick={() => toggle("MatchedOrder")}
+                className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
+              >
+                <ShoppingCartIcon /> MatchedOrder
+              </a>
+              <a
+                href="#"
                 onClick={() => toggle("User")}
                 className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
@@ -162,5 +178,5 @@ function Admin() {
     </div>
   );
 }
-
+}
 export default Admin;

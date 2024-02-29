@@ -1,85 +1,76 @@
-import React, { useState } from 'react';
-import ModalEdit from '../Modal/ModalEdit';
-
+import React, { useState } from "react";
+import ModalEdit from "../Modal/ModalEdit";
 
 const AccountDetail = ({ user, openModalBuy }) => {
-    const userid = user.ID.slice(-5);
-    const [isBuyModalOpen, setisBuyModalOpen] = useState(false);
+  const userid = user.ID.slice(-5);
+  const [isBuyModalOpen, setisBuyModalOpen] = useState(false);
 
-    const openModalEdit = () => {
-        setisBuyModalOpen(true)
-    }
+  const openModalEdit = () => {
+    setisBuyModalOpen(true);
+  };
 
-    if (!user.File) {
-        user.File = "https://media.discordapp.net/attachments/1161860132708286487/1203693258178301952/067a2c0aa638eda14ce4e86b9a9318a9.png?ex=65e47ab4&is=65d205b4&hm=fb9107410c39e8ff9ddc8e2028d4bd2e7d23f18d12984cb1604f3a0904fccf4c&=&format=webp&quality=lossless&width=495&height=676"
-    }
-    console.log(" accountde" + user)
+  if (!user.File) {
+    user.File = "https://github.com/identicons/sumetsm.png";
+  }
+  console.log(" accountde" + user);
 
-    return (
-
-        <div className="grid grid-cols-[15%_25%_25%_15%_10%_10%] bg-300 text-200 py-3 mb-1 ">
-            <div className="flex align-middle pl-2">
-                <div className="my-auto flex gap-2 text-2xl text-primary j">
-                    <div className="flex justify-center">{userid}</div>
-                </div>
-            </div>
-
-            <div className="flex align-middle ">
-                <div className="h-20 ml-5">
-                    <img src={user.File} className='max-h-full max-w-full' />
-                </div>
-                <div className="my-auto ">
-                    <div className='ml-2 text-xl'>
-                        {user.Name}
-                    </div>
-
-                </div>
-            </div>
-
-            <div className="flex align-middle">
-                <div className="my-auto text-100 text-2xl">
-                    <div className="">{user.Email}</div>
-                </div>
-            </div>
-
-            <div className="flex align-middle">
-                <div className="my-auto flex gap-2">
-                    <div className="my-auto ">{user.Role}</div>
-                </div>
-            </div>
-
-            <div className="flex align-middle">
-                <button className="my-auto flex gap-2 round">
-                    {/* Add onClick event to open the modal */}
-                    <a className="border-[2px] border-primary px-8 py-2 rounded-md hover:bg-orange-600"
-                        onClick={() => openModalEdit(user)}
-
-                    >
-                        Edit
-                    </a>
-
-                </button>
-            </div>
-
-            <div className="flex align-middle">
-                <button className="my-auto flex gap-2 round">
-                    {/* Add onClick event to open the modal */}
-                    <a className="border-[2px] border-red-700 px-8 py-2 rounded-md hover:bg-red-600"
-                        onClick={() => openModalEdit(user)}
-
-                    >
-                        Cancel
-                    </a>
-
-                </button>
-            </div>
-
-            <ModalEdit
-                user={user}
-                isBuyModalOpen={isBuyModalOpen}
-                setisBuyModalOpen={setisBuyModalOpen}
-            />
+  return (
+    <div className="grid grid-cols-[20%_25%_25%_10%_10%_10%]  bg-300 py-3 mb-1 rounded-md ">
+      <div className="flex pl-2 align-middle">
+        <div className="flex gap-2 my-auto text-xs text-100 j">
+          <div className="flex justify-center">{user.ID}</div>
         </div>
-    )
-}
+      </div>
+
+      <div className="flex align-middle ">
+        <div className="w-10 h-10">
+          <img src={user.File} className="max-w-full max-h-full" />
+        </div>
+        <div className="my-auto ">
+          <div className="ml-2 text-base text-100">{user.Name}</div>
+        </div>
+      </div>
+
+      <div className="flex align-middle">
+        <div className="my-auto text-base text-100">
+          <div className="">{user.Email}</div>
+        </div>
+      </div>
+
+      <div className="flex align-middle">
+        <div className="flex gap-2 my-auto">
+          <div className="my-auto text-base text-100">{user.Role}</div>
+        </div>
+      </div>
+
+      <div className="flex justify-center align-middle">
+        <button className="flex gap-2 my-auto round">
+          <a
+            className="px-4 py-1 text-base text-green-600 rounded-md bg-300 px-auto py-auto hover:bg-green-600 hover:text-100"
+            onClick={() => openModalEdit(user)}
+          >
+            edit
+          </a>
+        </button>
+      </div>
+
+      <div className="flex align-middle">
+        <button className="flex gap-2 my-auto round">
+          <a
+            className="px-4 py-1 text-base text-red-600 rounded-md bg-300 px-auto py-auto hover:bg-red-600 hover:text-100"
+            onClick={() => openModalEdit(user)}
+          >
+            delete
+          </a>
+        </button>
+      </div>
+
+      <ModalEdit
+        user={user}
+        isBuyModalOpen={isBuyModalOpen}
+        setisBuyModalOpen={setisBuyModalOpen}
+      />
+    </div>
+  );
+};
 export default AccountDetail;
