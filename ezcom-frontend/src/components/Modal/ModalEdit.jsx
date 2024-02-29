@@ -4,7 +4,14 @@ import "./style.css";
 
 const ModalEdit = ({ user, isBuyModalOpen, setisBuyModalOpen }) => {
   const [formData, setFormData] = useState(user);
+  function showToast(bool, text) {
+    if (bool) {
+      toast.success(text)
+    }
+    else
+      toast.error(text)
 
+  }
   const closeModal = () => {
     setisBuyModalOpen(false);
   };
@@ -40,8 +47,10 @@ const ModalEdit = ({ user, isBuyModalOpen, setisBuyModalOpen }) => {
       );
       console.log(response.data);
     } catch (error) {
-      // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
-      console.error("Error sending request:", error);
+      showToast(false,"Error sending request")
+        // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
+        console.error("Error sending request:", error);
+
     }
   };
 

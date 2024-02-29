@@ -103,6 +103,7 @@ function Product() {
     { id: "refresh_rate", text: "Refresh_Rate", type: "text" },
     { id: "free_sync", text: "FreeSync", type: "text" },
   ];
+
   const sendData = async formData => {
     console.log("form data :", formData);
     try {
@@ -120,6 +121,7 @@ function Product() {
       );
       console.log(response.data);
     } catch (error) {
+      showToast(false,"Error sending request")
       // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
       console.error("Error sending request:", error);
     }
@@ -169,6 +171,8 @@ function Product() {
           });
         } else data.append(label.id, formData[label.id]);
       });
+
+      
 
       // labels.map(label => {
       //   if (label.id === "color") {

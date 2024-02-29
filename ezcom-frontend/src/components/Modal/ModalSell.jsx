@@ -7,6 +7,15 @@ const ModalSell = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
   const [color, setColor] = useState("");
   const [condition, setCondition] = useState("");
 
+  function showToast(bool, text) {
+    if (bool) {
+      toast.success(text)
+    }
+    else
+      toast.error(text)
+
+  }
+
   const handleConditionChange = (event) => {
     setCondition(event.target.value);
   };
@@ -50,6 +59,7 @@ const ModalSell = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
       );
       console.log("Created order", response.data);
     } catch (error) {
+      showToast(false,"Fetch Error")
       console.log("error is ....");
       console.error("Fetch Error", error);
     }

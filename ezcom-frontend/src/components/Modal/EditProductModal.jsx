@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Loading } from "../Loading/Loading";
 import { ConfirmModal } from "./ConfirmModal";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const EditProductModal = ({ open, item, setIsOpen }) => {
     const [data, setData] = useState([]);
@@ -10,6 +12,14 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
     const [loading, setLoading] = useState(true);
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
+    function showToast(bool, text) {
+        if (bool) {
+            toast.success(text)
+        }
+        else
+            toast.error(text)
+
+    }
     useEffect(() => {
         async function fetchData() {
             try {
@@ -38,7 +48,10 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                     setSelectedForm(monitor);
                 }
                 setLoading(false);
+                showToast(true,"Success")
+
             } catch (error) {
+                showToast(false,"Fetch Error")
                 console.error("Fetch Error", error);
             }
         }
@@ -70,8 +83,12 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                 `https://ezcom-backend-production-09b5.up.railway.app/products/${item.ID}`
             );
             console.log(response.data);
+            showToast(true,"Success from")
+
         } catch (error) {
             console.error("Error sending request:", error);
+            showToast(false,"Error sending request")
+
         }
     };
 
@@ -238,6 +255,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
             // ส่ง FormData ไปยังเซิร์ฟเวอร์
             console.log("before sens :", data);
             sendData(data);
+            showToast(true,"Success before sent")
             setIsOpen(false);
         };
 
@@ -257,9 +275,12 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                     }
                 );
                 console.log(response.data);
+                showToast(true,"Success sent data")
             } catch (error) {
                 // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
                 console.error("Error sending request:", error);
+                showToast(false,"Error sending request:")
+
             }
         };
 
@@ -267,6 +288,9 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
 
         return (
             <div>
+                <ToastContainer
+                position="top-center"
+            />
                 <form onSubmit={handleSubmit}>
                     {loading ? (
                         <Loading />
@@ -395,6 +419,9 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
 
     return (
         <div>
+             <ToastContainer
+                position="top-center"
+            />
             {open && (
                 <div className="modal">
                     <div className="bg-400 rounded-lg p-[24px]">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import pic from "../../img/p1.jpg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -89,8 +89,9 @@ function index() {
         <ul className="py-2">
           <li>
             <a
-              href="#"
+              href="/profile"
               className="block px-4 py-2 text-slate-300 hover:bg-gray-100"
+              
             >
               Profile
             </a>
