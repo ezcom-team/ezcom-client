@@ -13,7 +13,7 @@ function Product() {
     { id: "sensor", text: "Sensor", type: "text" },
     { id: "buttonSwitch", text: "ButtonSwitch", type: "text" },
     { id: "connection", text: "Connection", type: "text" },
-    { id: "legth", text: "Legth", type: "text" },
+    { id: "length", text: "Length", type: "text" },
     { id: "weight", text: "Weight", type: "text" },
     { id: "pollingRate", text: "PollingRate", type: "text" },
     { id: "buttonForce", text: "ButtonForce", type: "text" },
