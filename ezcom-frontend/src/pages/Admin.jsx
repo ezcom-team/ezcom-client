@@ -20,11 +20,7 @@ function Admin() {
   const [orders, setOrders] = useState("0");
   const [users, setUsers] = useState("0");
 
-
-function Admin() {
-  const [activeComponent, setActiveComponent] = useState("Graph");
-
-  const toggle = (component) => {
+  const toggle = component => {
     setActiveComponent(component);
   };
   let CurrentComponent;
@@ -65,7 +61,6 @@ function Admin() {
         console.log(usersResponse.data.length);
         setUsers(usersResponse.data.length);
 
-
         const itemsResponse = await axios.get(
           `https://ezcom-backend-production-09b5.up.railway.app/products/`,
           {
@@ -77,7 +72,6 @@ function Admin() {
         console.log(itemsResponse.data);
         setItems(itemsResponse.data.length);
 
-
         const itembuyResponse = await axios.get(
           `https://ezcom-backend-production-09b5.up.railway.app/order/buys`,
           {
@@ -87,7 +81,6 @@ function Admin() {
           }
         );
         console.log("itembuy data:", itembuyResponse.data);
-      
 
         const itemsellResponse = await axios.get(
           `https://ezcom-backend-production-09b5.up.railway.app/order/sells`,
@@ -98,11 +91,11 @@ function Admin() {
           }
         );
         console.log("itemsell data:", itemsellResponse.data);
-      
-        const totalLength = itembuyResponse.data.length + itemsellResponse.data.length;
+
+        const totalLength =
+          itembuyResponse.data.length + itemsellResponse.data.length;
         console.log("Total length:", totalLength);
-        setOrders(totalLength)
-        
+        setOrders(totalLength);
       } catch (error) {
         console.error("Fetch Error", error);
       }
@@ -177,6 +170,5 @@ function Admin() {
       </div>
     </div>
   );
-}
 }
 export default Admin;
