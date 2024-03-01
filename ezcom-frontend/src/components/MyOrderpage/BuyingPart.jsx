@@ -20,7 +20,6 @@ const Buying = () => {
                         },
                     }
                 );
-                //   console.log(response.data)
                 setMyBuyOrder(response.data);
                 setLoading(false);
             } catch (error) {
@@ -33,17 +32,17 @@ const Buying = () => {
 
     return (
         <div className="h-full min-w-full gap-2 p-5 rounded-md bg-400">
-            <div className="grid grid-cols-[30%_10%_8%_18%_18%_12%]  text-200 rounded-md pb-2">
-                <div className="flex pl-[36px]">Items</div>
+            <div className="grid grid-cols-[30%_10%_8%_18%_18%_15%]  text-200 rounded-md pb-2">
+                <div className="flex justify-center">Items</div>
                 <div className="flex justify-center">Price</div>
                 <div className="flex justify-center">Condition</div>
                 <div className="flex justify-center">Color</div>
                 <div className="flex justify-center">Create Time</div>
                 <div className="flex justify-center">Status</div>
             </div>
-            <hr class="h-[2px]  border-0 bg-300"></hr>
+            <hr className="h-[2px] border-0 bg-300"></hr>
             {loading ? (
-                <div className="">
+                <div>
                     <Loading />
                 </div>
             ) : (
