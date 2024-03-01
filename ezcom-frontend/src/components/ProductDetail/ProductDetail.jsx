@@ -6,6 +6,15 @@ import { Link } from "react-router-dom";
 import { CompareSpec } from "../Spec/CompareSpec.jsx";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import {
+    cpuDetails,
+    gpuDetails,
+    headsetDetails,
+    keyboardDetails,
+    monitorDetails,
+    mouseDetails,
+    mousePadDetails,
+} from "./SpecDetail.jsx";
 
 function Productdetail({ product, spec }) {
     const [isBuyModalOpen, setisBuyModalOpen] = useState(false);
@@ -22,6 +31,16 @@ function Productdetail({ product, spec }) {
 
     const openMoreDetail = () => {
         setIsMoreDetail(!isMoreDetail);
+    };
+
+    const details = {
+        GPU: gpuDetails,
+        headset: headsetDetails,
+        keyboard: keyboardDetails,
+        mouse: mouseDetails,
+        mousePad: mousePadDetails,
+        CPU: cpuDetails,
+        monitor: monitorDetails,
     };
 
     return (
@@ -103,7 +122,7 @@ function Productdetail({ product, spec }) {
             <div className="w-100%">
                 <div className="flex justify-center">
                     <button
-                        className="mt-[24px] text-200 p-4 flex justify-start text-lg rounded-md border-[2px] border-300 hover:bg-300 duration-500"
+                        className="mt-[24px] text-200 p-4 flex justify-start rounded-md border-[2px] border-300 hover:bg-300 duration-500"
                         onClick={openMoreDetail}
                     >
                         รายละเอียดสินค้า
@@ -122,188 +141,28 @@ function Productdetail({ product, spec }) {
                 </div>
 
                 {isMoreDetail ? (
-                    <div className="flex justify-center text-200 border-[2px] border-300 rounded-md p-[12px] text-2xl mt-[24px]">
-                        <table className="">
-                            <thead className="text-primary">
-                                <tr className="bg-400">
-                                    <th className="p-2">Specs</th>
-                                </tr>
-                            </thead>
-                            {product.Type === "GPU" ? (
-                                <tbody>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Boost clock</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Memory size</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Memory type</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">
-                                            NVIDIA CUDA cores
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            ) : product.Type === "headset" ? (
-                                <tbody>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Cable Length</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Connection</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Headset Type</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Microphone</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">
-                                            Noise Cancelling
-                                        </td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Weight</td>
-                                    </tr>
-                                </tbody>
-                            ) : product.Type === "keyboard" ? (
-                                <tbody>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Form factor</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Height</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Length</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">PCB</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">RGB</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Switches</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Weight</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Width</td>
-                                    </tr>
-                                </tbody>
-                            ) : product.Type === "mouse" ? (
-                                <tbody>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Colors</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Sensor</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Button switch</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Connection</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Length</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Weight</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Polling rate</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Button force</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Shape</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Height</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Width</td>
-                                    </tr>
-                                </tbody>
-                            ) : product.Type === "mousePad" ? (
-                                <tbody>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Glide</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Height</td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Length</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Material</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Stitched edges</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Thickness</td>
-                                    </tr>
-                                </tbody>
-                            ) : product.Type === "CPU" ? (
-                                <tbody>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Core speed base</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">
-                                            Core speed boost
-                                        </td>
-                                    </tr>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Cores</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Socket</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">TDP</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Threads</td>
-                                    </tr>
-                                </tbody>
-                            ) : product.Type === "monitor" ? (
-                                <tbody>
-                                    <tr className="bg-300">
-                                        <td className="p-2">Aspect ratio</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Free sync</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Gsync</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Panel tech</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Refresh rate</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Resolution</td>
-                                    </tr>
-                                    <tr className="bg-400">
-                                        <td className="p-2">Size</td>
-                                    </tr>
-                                </tbody>
-                            ) : (
-                                <div>No data type</div>
-                            )}
-                        </table>
+                    <div className="flex justify-center text-200 border-[2px] border-300 rounded-md p-[12px] mt-[24px]">
+                        <div className="">
+                            <div className="text-primary">
+                                <div className="bg-400">
+                                    <div className="p-2 flex justify-center">Specs</div>
+                                </div>
+                            </div>
+                            <div>
+                                {details[product.Type].map((detail, index) => (
+                                    <div
+                                        key={index}
+                                        className={
+                                            index % 2 === 0
+                                                ? "h-10 flex justify-center p-2 bg-300"
+                                                : "h-10 flex justify-center p-2"
+                                        }
+                                    >
+                                        <div>{detail}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                         <CompareSpec
                             item={product}
                             spec={spec}
