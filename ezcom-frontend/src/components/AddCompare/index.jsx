@@ -34,6 +34,7 @@ export const AddCompare = ({
 
     //Callback
     onUpdateSelectedItemId(newSelectedItemId);
+    setSelectedItemId("")
   }, [selectedItemId]);
 
   const handleClose = () => {
