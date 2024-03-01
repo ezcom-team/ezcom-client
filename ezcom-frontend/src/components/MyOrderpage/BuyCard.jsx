@@ -1,5 +1,6 @@
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BuyCard = ({ order }) => {
     const isoTimestamp = order.CreatedAt;
@@ -26,15 +27,21 @@ const BuyCard = ({ order }) => {
     }
 
     const cancelOrder = async () => {
+        const token = localStorage.getItem("access-token");
         try {
             const response = await axios.delete(
-                `https://ezcom-backend-production-09b5.up.railway.app/order/${order.ID}`
+                `https://ezcom-backend-production-09b5.up.railway.app/order/buy/${order.ID}`,
+                {
+                    headers: {
+                        Authorization: token,
+                    },
+                }
             );
             console.log(response.data);
-            showToast(true, "Success from");
+            showToast(true, "Success");
         } catch (error) {
             console.error("Error sending request:", error);
-            showToast(false, "Error sending request");
+            showToast(false, "Error");
         }
     };
 
