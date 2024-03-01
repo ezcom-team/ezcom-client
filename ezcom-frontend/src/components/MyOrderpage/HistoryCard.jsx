@@ -44,7 +44,7 @@ const HistoryCard = ({
     };
 
     return (
-        <div className="grid grid-cols-[15%_25%_25%_15%_20%] bg-300 py-3 mb-1  text-200 rounded-md">
+        <div className="grid grid-cols-[15%_25%_25%_15%_20%] bg-300 py-3 mb-1 mt-3 text-200 rounded-md">
             {showSentModal ? (
                 <TrackingNumber
                     orderID={orderID}
