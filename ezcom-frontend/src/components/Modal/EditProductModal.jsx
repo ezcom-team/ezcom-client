@@ -250,6 +250,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                 } else data.append(label.id, formData[label.text]);
             });
             data.append("specs", item.Specs);
+            data.append("pID", spec.PID)
             console.log("check : ", "specs", item.Specs);
 
             // ส่ง FormData ไปยังเซิร์ฟเวอร์
