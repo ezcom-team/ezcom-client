@@ -22,17 +22,19 @@ const ModalEdit = ({ user, isBuyModalOpen, setisBuyModalOpen }) => {
     data.append("email", formData.Email);
     data.append("role", formData.Role);
     data.append("file", formData.File);
+    data.append("address", user.Address);
+    data.append("phoneNumber", user.PhoneNumber);
+    data.append("createdAt", user.CreatedAt);
     e.preventDefault();
     // console.log("formDataSubmit",data)
     console.log("formDataSubmit", formData);
-    // sendData(data);
+    sendData(data);
   };
 
   const sendData = async data => {
     console.log("form data :", data);
     const token = localStorage.getItem("access-token");
     try {
-      console.log("color is " + " : " + data.color);
       // สร้าง request ด้วย Axios
 
       const response = await axios.put(

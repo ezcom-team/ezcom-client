@@ -122,14 +122,14 @@ function Admin() {
                 onClick={() => toggle("Graph")}
                 className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
-                <TrendingUpIcon /> Graph
+                <TrendingUpIcon /> Products
               </a>
               <a
                 href="#"
                 onClick={() => toggle("Product")}
                 className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
-                <ShoppingBasketIcon /> Product
+                <ShoppingBasketIcon /> Create Product
               </a>
               <a
                 href="#"
@@ -143,14 +143,14 @@ function Admin() {
                 onClick={() => toggle("MatchedOrder")}
                 className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
-                <ShoppingCartIcon /> MatchedOrder
+                <ShoppingCartIcon /> Matched Order
               </a>
               <a
                 href="#"
                 onClick={() => toggle("User")}
                 className="w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400"
               >
-                <AccountCircleIcon /> User
+                <AccountCircleIcon /> Manage User
               </a>
             </div>
           </div>
