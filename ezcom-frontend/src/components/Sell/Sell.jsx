@@ -56,7 +56,7 @@ const Sell = ({ pid }) => {
         <div className="text-100 flex justify-center m-[140px]">No order</div>
       ) : (
         <div>
-          {sellOrders.map((order) => (
+          {sellOrders.sort((a, b) => b.Price - a.Price).map((order) => (
             <SellDetail
               condition={order.Condition}
               color={order.Color}

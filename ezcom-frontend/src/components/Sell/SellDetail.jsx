@@ -35,13 +35,13 @@ const SellDetail = ({ condition, color, sellerName, price }) => {
                 </div>
             </div>
             <div className="flex align-middle pl-4">
-                <div className="my-auto text-2xl">
+                <div className="my-auto text-base">
                     <div className="my-auto ">{sellerName}</div>
                 </div>
             </div>
 
             <div className="flex align-middle">
-                <div className="my-auto text-primary text-2xl">
+                <div className="my-auto text-primary text-base">
                     <div className=""> ฿ {price}</div>
                 </div>
             </div>
