@@ -16,7 +16,7 @@ import {
     mousePadDetails,
 } from "./SpecDetail.jsx";
 
-function Productdetail({ product, spec }) {
+function Productdetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
     const [isBuyModalOpen, setisBuyModalOpen] = useState(false);
     const [isSellModalOpen, setisSellModalOpen] = useState(false);
     const [isMoreDetail, setIsMoreDetail] = useState(false);
@@ -63,19 +63,19 @@ function Productdetail({ product, spec }) {
                         <div className="grid justify-items-center ">
                             <div className="mb-2">ราคาขายต่ำสุด</div>
                             <div className="text-3xl text-100">
-                                {product.Price}
+                                ฿ {product.Price}
                             </div>
                         </div>
                         <div className="grid justify-items-center ">
                             <div className="mb-2">ราคารับซื้อสูงสุด</div>
                             <div className="text-3xl  text-100">
-                                {data.priceLowSell}
+                                ฿ {highestBuyOrder}
                             </div>
                         </div>
                         <div className="grid justify-items-center ">
                             <div className="mb-2">ราคาขายล่าสุด</div>
                             <div className=" text-3xl  text-100">
-                                {data.priceLastSell}
+                                ฿ {recentMatchedOrder}
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,9 @@ function Productdetail({ product, spec }) {
                         <div className="">
                             <div className="text-primary">
                                 <div className="bg-400">
-                                    <div className="p-2 flex justify-center">Specs</div>
+                                    <div className="p-2 flex justify-center">
+                                        Specs
+                                    </div>
                                 </div>
                             </div>
                             <div>
