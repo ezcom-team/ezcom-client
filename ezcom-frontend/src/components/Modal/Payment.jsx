@@ -41,7 +41,7 @@ const CreditCardForm = ({
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission logic (e.g., send data to payment gateway)
-        const alldata = `${cardNumber} ${cardHolder} ${expiryDateMonth} ${expiryDateYear} ${cvv} ${amount}`;
+        const alldata = `${cardNumber} ${cardHolder} ${expiryDateMonth} ${expiryDateYear} ${cvv}`;
         console.log("____alldata___", alldata);
 
         const updatedFormData = {

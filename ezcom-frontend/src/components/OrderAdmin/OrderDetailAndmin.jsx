@@ -2,6 +2,9 @@ const OrderDetailAdmin = ({ order }) => {
   let type = "";
   let name = "";
   let textColorClass = "";
+  const isoTimestamp = order.CreatedAt;
+  const dateObject = new Date(isoTimestamp);
+  const formattedTime = dateObject.toLocaleString();
 
   if (order.Seller_name) {
     type = "Buy";
@@ -42,7 +45,7 @@ const OrderDetailAdmin = ({ order }) => {
 
       <div className="flex align-middle">
         <div className="flex gap-2 my-auto text-base text-primary">
-          <div className="my-auto ">{order.Price}</div>
+          <div className="my-auto ">฿ {order.Price}</div>
         </div>
       </div>
       <div className="flex pl-4 align-middle">
@@ -59,20 +62,9 @@ const OrderDetailAdmin = ({ order }) => {
 
       <div className="flex align-middle">
         <div className="flex gap-2 my-auto text-sm">
-          <div className="my-auto ">{order.CreatedAt}</div>
+          <div className="my-auto ">{formattedTime}</div>
         </div>
       </div>
-
-      {/* <div className="flex align-middle">
-        <div className="flex gap-2 my-auto round">
-          <a
-            className="border-[2px] border-primary px-8 py-2 rounded-md hover:bg-orange-600"
-            href="#"
-          >
-            Edit
-          </a>
-        </div>
-      </div> */}
     </div>
   );
 };
