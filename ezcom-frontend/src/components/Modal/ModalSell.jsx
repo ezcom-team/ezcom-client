@@ -79,7 +79,7 @@ const ModalSell = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
       {isBuyModalOpen && (
         <div className="modal ">
           <div className="bg-400 ">
-            <div className="flex justify-center text-100 text-2xl">
+            <div className="flex justify-center text-100 text-base">
               <span>Sell order</span>
             </div>
             {/* <span className="close-btn " onClick={closeModalSell}>
@@ -102,10 +102,10 @@ const ModalSell = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
                   </div>
                   <div className="flex flex-col justify-between">
                     <div>{product.Name}</div>
-                    <div className=" text-green-600 text-2xl">
+                    <div className=" text-green-600 text-base">
                       {product.Price}
                     </div>
-                    <div className=" text-primary text-xl">{product.Price}</div>
+                    <div className=" text-primary text-base">{product.Price}</div>
                   </div>
                 </div>
               </div>
