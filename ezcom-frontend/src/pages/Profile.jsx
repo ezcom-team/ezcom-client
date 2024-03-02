@@ -8,7 +8,6 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 function Profile () {
     const [user, setUser] = useState({});
-    // const [phone, setphone] = useState("");
     
     useEffect(() => {
         async function fetchData() {
@@ -23,10 +22,9 @@ function Profile () {
                     }
                 );
                 console.log(response.data);
-                const formattedPhoneNumber = response.data.PhoneNumber ? `${user.phoneNumber.slice(0, 2)}-${user.phoneNumber.slice(2, 6)}-${user.phoneNumber.slice(6)}` : '';
+                let formattedPhoneNumber = user.phoneNumber ? `${user.phoneNumber.slice(0, 2)}-${user.phoneNumber.slice(2, 6)}-${user.phoneNumber.slice(6)}` : '';
                 console.log("----------",formattedPhoneNumber);
                 setUser(response.data);
-                // setSpec(responseSpec.data);
             } catch (error) {
                 console.error("Fetch Error", error);
             }

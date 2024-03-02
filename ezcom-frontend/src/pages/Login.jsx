@@ -60,6 +60,10 @@ function Login() {
         setDataUser(response.data.user);
         dispatch(setUser(response.data.user));
         localStorage.setItem(
+          "user-role",
+          JSON.stringify(response.data.user.Role)
+        );
+        localStorage.setItem(
           "user-id",
           JSON.stringify(response.data.user.ID)
         );
@@ -67,6 +71,7 @@ function Login() {
           "user-name",
           JSON.stringify(response.data.user.Name)
         );
+        
         if (response.data.user.File === "") {
           localStorage.setItem(
             "user-image",
