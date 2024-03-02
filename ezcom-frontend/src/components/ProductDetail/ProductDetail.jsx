@@ -52,7 +52,7 @@ function Productdetail({ product, spec }) {
                 <div className="flex flex-col gap-3 bg-400 p-5 rounded-r-md">
                     {/* Product Details */}
                     <div className="">
-                        <div className="text-3xl text-100 mb-2">
+                        <div className="text-base text-100 mb-2">
                             {product.Name}
                         </div>
                         <div className="text-200">{product.Type}</div>
@@ -62,19 +62,19 @@ function Productdetail({ product, spec }) {
                     <div className="grid grid-cols-3 justify-items-center text-200">
                         <div className="grid justify-items-center ">
                             <div className="mb-2">ราคาขายต่ำสุด</div>
-                            <div className="text-3xl text-100">
+                            <div className="text-base text-100">
                                 {product.Price}
                             </div>
                         </div>
                         <div className="grid justify-items-center ">
                             <div className="mb-2">ราคารับซื้อสูงสุด</div>
-                            <div className="text-3xl  text-100">
+                            <div className="text-base  text-100">
                                 {data.priceLowSell}
                             </div>
                         </div>
                         <div className="grid justify-items-center ">
                             <div className="mb-2">ราคาขายล่าสุด</div>
-                            <div className=" text-3xl  text-100">
+                            <div className=" text-base  text-100">
                                 {data.priceLastSell}
                             </div>
                         </div>
@@ -83,7 +83,7 @@ function Productdetail({ product, spec }) {
                     <hr className="h-1 my-3 border-0 bg-300 mb-6"></hr>
 
                     {/* Buttons */}
-                    <div className="flex gap-1 mb-6 text-100 text-xl ">
+                    <div className="flex gap-1 mb-6 text-100 text-base ">
                         <button
                             id="test"
                             className="flex-grow-0 w-72 border-[2px] border-green-600 py-3 rounded-md hover:bg-green-600 duration-500"

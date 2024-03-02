@@ -55,7 +55,7 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
         </div>
       </div>
       <div className="flex align-middle">
-        <div className="my-auto text-2xl text-primary">
+        <div className="my-auto text-base text-primary">
           <div className=""> ฿ {price}</div>
         </div>
       </div>
