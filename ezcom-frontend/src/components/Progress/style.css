@@ -3,12 +3,13 @@
 }
 
 .step-item:not(:first-child):before {
-  @apply content-[''] bg-100 absolute w-full h-[4px] right-[50%] bottom-[35px] 
-  -translate-y-2/4;
+  @apply content-[''] bg-300 absolute w-[100px] h-[5px] right-[65%] bottom-[35px] -translate-y-2/4 rounded-lg;
+  z-index: 1; /* Set a higher z-index for the pseudo-element */
 }
 
 .step {
-    @apply w-10 h-10 flex items-center justify-center z-10 relative bg-300 rounded-full font-semibold text-200 
+    @apply w-10 h-10 flex items-center justify-center z-10 relative bg-300 rounded-full font-semibold text-200;
+    z-index: 2; /* Set a higher z-index for the .step element */
 }
 
 .active .step {
@@ -30,6 +31,3 @@
 .stepText {
     @apply text-100 mt-10
 }
-
-
- 

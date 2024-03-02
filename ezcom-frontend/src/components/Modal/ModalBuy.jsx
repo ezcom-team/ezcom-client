@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./style.css";
+import Payment from "./Payment"
 
 const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
   const [price, setPrice] = useState();
   const [color, setColor] = useState([]);
   const [condition, setCondition] = useState([]);
+  const [data, setData] = useState([]);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
+  isPaymentModalOpen
   function showToast(bool, text) {
     if (bool) {
       toast.success(text)
@@ -39,6 +43,7 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
   const handleSubmit = () => {
     createOrder();
     setisBuyModalOpen(false);
+    setIsPaymentModalOpen(true);
   };
 
   const closeModal = () => {
@@ -53,27 +58,29 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
       color,
       product_id: product.ID,
     };
-    console.log("my buy order ");
-    console.log(dataToSend);
-    try {
-      const response = await axios.post(
-        `https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
-        dataToSend,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      console.log("Created order", response.data);
-    } catch (error) {
-      showToast(false, "Fetch Error")
-      console.log("error is ....");
-      console.error("Fetch Error", error);
-    }
+    // console.log("my buy order ");
+    // console.log(dataToSend);
+    setData(dataToSend)
+    // console.log(data)
+    // try {
+    //   const response = await axios.post(
+    //     `https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
+    //     dataToSend,
+    //     {
+    //       headers: {
+    //         Authorization: token,
+    //       },
+    //     }
+    //   );
+    //   console.log("Created order", response.data);
+    // } catch (error) {
+    //   showToast(false, "Fetch Error")
+    //   console.log("error is ....");
+    //   console.error("Fetch Error", error);
+    // }
 
     resetDataToSend();
-    window.location.reload();
+    // window.location.reload();
   }
 
   const resetDataToSend = () => {
@@ -84,6 +91,11 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
 
   return (
     <div>
+      {isPaymentModalOpen && (
+        <div className="modal">
+        <Payment dataToSend={data} isPaymentModalOpen={isPaymentModalOpen} setIsPaymentModalOpen={setIsPaymentModalOpen}/>
+        </div>
+      )}
       {isBuyModalOpen && (
         <div className="modal ">
           <div className="bg-400 ">
@@ -213,5 +225,6 @@ const ModalBuy = ({ product, isBuyModalOpen, setisBuyModalOpen }) => {
     </div>
   );
 };
+
 
 export default ModalBuy;
