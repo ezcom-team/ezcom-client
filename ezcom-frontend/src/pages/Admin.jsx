@@ -20,7 +20,11 @@ function Admin() {
   const [orders, setOrders] = useState("0");
   const [users, setUsers] = useState("0");
 
-  const toggle = component => {
+
+// function Admin() {
+//   const [activeComponent, setActiveComponent] = useState("Graph");
+
+  const toggle = (component) => {
     setActiveComponent(component);
   };
   let CurrentComponent;
