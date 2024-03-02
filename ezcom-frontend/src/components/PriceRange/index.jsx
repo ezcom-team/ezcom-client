@@ -22,7 +22,7 @@ export const PriceRange = ({ onPriceChange }) => {
 
     return (
         <div>
-            <div className="w-40 lg:w-60 xl:w-72 px-2.5 py-3 lg:p-3 bg-300 text-200 rounded-lg flex flex-col">
+            <div className="w-[160px] lg:w-[200px] xl:w-[240px] px-2.5 py-3 lg:p-3 bg-300 text-200 rounded-lg flex flex-col">
                 <div
                     onClick={handleOpen}
                     className="flex justify-between align-middle text-md md:text-base lg:text-base"

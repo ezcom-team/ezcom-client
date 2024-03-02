@@ -111,11 +111,13 @@ function Productdetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
                         product={product}
                         isBuyModalOpen={isBuyModalOpen}
                         setisBuyModalOpen={setisBuyModalOpen}
+                        highestBuyOrder={highestBuyOrder}
                     />
                     <ModalSell
                         product={product}
                         isBuyModalOpen={isSellModalOpen}
                         setisBuyModalOpen={setisSellModalOpen}
+                        highestBuyOrder={highestBuyOrder}
                     />
                 </div>
             </div>

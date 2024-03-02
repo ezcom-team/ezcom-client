@@ -4,6 +4,7 @@ import Productdetail from "../components/ProductDetail/Productdetail";
 import BuyOrSellOrTrade from "../components/HeaderDetailPage/BuyOrSellOrTrade";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Loading } from "../components/Loading/Loading.jsx";
 
 function Detail() {
     const { id } = useParams();
@@ -14,6 +15,8 @@ function Detail() {
 
     const [highestPrice, setHighestPrice] = useState(0);
     const [recentPrice, setRecentPrice] = useState(null);
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const token = localStorage.getItem("access-token");
@@ -34,7 +37,7 @@ function Detail() {
                     }
                 );
                 const responeMatchedOrder = await axios.get(
-                    `https://ezcom-backend-production-09b5.up.railway.app/order/matched-order`,
+                    `https://ezcom-backend-production-09b5.up.railway.app/order/matched-order/${id}`,
                     {
                         headers: {
                             Authorization: token,
@@ -45,16 +48,13 @@ function Detail() {
                 setSpec(responseSpec.data);
                 setOrder(responeOrder.data);
                 setMatchedOrder(responeMatchedOrder.data);
-                console.log(
-                    "🚀 ~ fetchData ~ responeMatchedOrder.data:",
-                    responeMatchedOrder.data
-                );
-                console.log(
-                    "🚀 ~ fetchData ~ responeOrder.data:",
-                    responeOrder.data
-                );
                 highestBuyOrder(responeOrder.data);
                 recentMatchedOrder(responeMatchedOrder.data);
+                setLoading(false);
+                console.log(
+                    "🚀 ~ fetchData ~ responeMatchedOrder:",
+                    responeMatchedOrder.data
+                );
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -66,11 +66,13 @@ function Detail() {
     console.log(data);
 
     const highestBuyOrder = (orders) => {
-        for (const order of orders) {
-            const currentPrice = order.Price;
+        if (orders !== null) {
+            for (const order of orders) {
+                const currentPrice = order.Price;
 
-            if (currentPrice > highestPrice) {
-                setHighestPrice(currentPrice);
+                if (currentPrice > highestPrice) {
+                    setHighestPrice(currentPrice);
+                }
             }
         }
     };
@@ -79,12 +81,14 @@ function Detail() {
         let mostRecentOrder = null;
         let mostRecentDate = new Date(0);
 
-        for (const order of matchedOrders) {
-            const createdAt = new Date(order.CreatedAt);
+        if (matchedOrders !== null) {
+            for (const order of matchedOrders) {
+                const createdAt = new Date(order.CreatedAt);
 
-            if (createdAt > mostRecentDate) {
-                mostRecentDate = createdAt;
-                mostRecentOrder = order;
+                if (createdAt > mostRecentDate) {
+                    mostRecentDate = createdAt;
+                    mostRecentOrder = order;
+                }
             }
         }
 
@@ -95,13 +99,21 @@ function Detail() {
     return (
         <div className="bg-back">
             <Nav />
-            <Productdetail
-                product={data}
-                spec={spec}
-                highestBuyOrder={highestPrice}
-                recentMatchedOrder={recentPrice}
-            />
-            <BuyOrSellOrTrade pid={id} />
+            {loading === false ? (
+                <div>
+                    <Productdetail
+                        product={data}
+                        spec={spec}
+                        highestBuyOrder={highestPrice}
+                        recentMatchedOrder={recentPrice}
+                    />
+                    <BuyOrSellOrTrade pid={id} />
+                </div>
+            ) : (
+                <div className="mt-[200px]">
+                    <Loading />
+                </div>
+            )}
         </div>
     );
 }

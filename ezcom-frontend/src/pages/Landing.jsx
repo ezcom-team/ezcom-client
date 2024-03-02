@@ -131,17 +131,7 @@ function Landing() {
     return (
         <div className="w-full">
             <Nav />
-            <div className="flex justify-center w-full h-auto">
-                <div className="w-3/4 py-5 lg:py-10">
-                    {/* <PromoteSlider /> */}
-                </div>
-            </div>
-            {/* <div className="flex justify-between w-full h-16 lg:h-24 md:justify-end">
-                <div className="flex justify-center m-5 md:hidden">
-                    <Hamburger className='z-50' />
-                </div>
-            </div> */}
-            <div className="flex justify-center w-full h-screen ">
+            <div className="flex justify-center w-full h-screen">
                 <div className="hidden w-1/4 h-full mx-0 md:block lg:mx-4">
                     <div className="flex justify-center my-5">
                         <Searchbar onSearch={handleSearchChange} />
