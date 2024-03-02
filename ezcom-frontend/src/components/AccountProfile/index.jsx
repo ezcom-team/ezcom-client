@@ -9,6 +9,8 @@ function index() {
   const [isOpen, setIsOpen] = useState(false);
   const [storedUser, setStoredUser] = useState("");
   const [storedUserImage, setStoredUserImage] = useState("");
+  const [storedUserRole, setStoredUserRole] = useState("");
+  const [userRole, setUserRole] = useState(false);
   const navigate = useNavigate();
 
   const toggleDropdown = () => {
@@ -24,6 +26,7 @@ function index() {
   useEffect(() => {
     setStoredUser(JSON.parse(localStorage.getItem("user-name")));
     setStoredUserImage(JSON.parse(localStorage.getItem("user-image")));
+    setStoredUserRole(JSON.parse(localStorage.getItem("user-role")));
   }, []);
 
   const logoutHandler = () => {
@@ -41,10 +44,24 @@ function index() {
           headers: {
             Authorization: token,
           },
+        } 
+      );
+
+      const responseRole = await axios.get(
+        `https://ezcom-backend-production-09b5.up.railway.app/user/user`,
+        {
+          headers: {
+            Authorization: token,
+          },
         }
       );
       success("login already");
       console.log(response.data);
+      console.log("Role",responseRole.data.Role)
+
+      if (responseRole.data.Role === "admin")
+      setUserRole(true)
+
     } catch (error) {
       fail("not login yet");
       console.error("Fetch Error", error);
@@ -82,16 +99,27 @@ function index() {
 
       {/* Apply transition classes to create animation */}
       <div
-        className={`${
-          isOpen ? "block" : "hidden"
-        } absolute right-0 mt-2 w-48 bg-400 rounded-lg shadow-lg transition-opacity duration-300 ease-in-out`}
+        className={`${isOpen ? "block" : "hidden"
+          } absolute right-0 mt-2 w-48 bg-400 rounded-lg shadow-lg transition-opacity duration-300 ease-in-out`}
       >
         <ul className="py-2">
+          {storedUserRole == 'admin' && (
+            <li>
+            <a
+              href="/admin"
+              className="block px-4 py-2 text-slate-300 hover:bg-gray-100"
+
+            >
+              Admin
+            </a>
+          </li>
+          )}
+          
           <li>
             <a
               href="/profile"
               className="block px-4 py-2 text-slate-300 hover:bg-gray-100"
-              
+
             >
               Profile
             </a>
