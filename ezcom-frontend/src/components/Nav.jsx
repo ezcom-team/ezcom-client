@@ -74,16 +74,6 @@ function Nav() {
 
                     <Link
                         className={
-                            selectedButton === "login"
-                                ? "selected"
-                                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
-                        }
-                        to="/login"
-                    >
-                        Login
-                    </Link>
-                    <Link
-                        className={
                             selectedButton === "myorder"
                                 ? "selected"
                                 : " hover:bg-primary px-[5px] py-[2px] rounded-md"

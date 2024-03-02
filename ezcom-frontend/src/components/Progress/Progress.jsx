@@ -48,7 +48,7 @@ const ProcessPage = () => {
                     {/* Display card for each order */}
                     <div className="p-4 mb-4 overflow-auto h-[900px]">
                         <div className="flex justify-center text-2xl text-200">
-                            รายการที่ต้องได้รับ
+                        must be received
                         </div>
                         {matchedOrder !== null ? (
                             <>

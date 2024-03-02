@@ -5,7 +5,9 @@ import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import SellIcon from "@mui/icons-material/Sell";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
-
+import VerifiedIcon from '@mui/icons-material/Verified';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import WarehouseIcon from '@mui/icons-material/Warehouse';
 const ProgressStep = ({ status }) => {
     const steps = ["Prepare", "Verify", "Delivery", "Done"];
     const [currentStep, setCurrentStep] = useState(0);
@@ -54,22 +56,34 @@ const ProgressStep = ({ status }) => {
                 {steps?.map((step, i) => (
                     <div
                         key={i}
-                        className={`step-item ${
-                            currentStep === i + 1 && "active"
-                        } ${(i + 1 < currentStep || complete) && "complete"}`}
+                        className={`step-item ${currentStep === i + 1 && "active"
+                            } ${(i + 1 < currentStep || complete) && "complete"}`}
                     >
                         <div className="step">
                             {i + 1 < currentStep || complete ? (
                                 <DoneIcon fontSize="medium" />
                             ) : (
-                                i + 1
+                                (() => {
+                                    switch (i+1) {
+                                        case 1:
+                                            return <WarehouseIcon fontSize="medium" />
+                                        case 2:
+                                            return <VerifiedIcon />;
+                                        case 3:
+                                            return  <AirportShuttleIcon />;
+                                        case 4: 
+                                            return <LocationOnIcon fontSize="medium" />
+                                        
+                                    }
+                                })()
                             )}
                         </div>
+                        
                         <p className="text-200">{step}</p>
                     </div>
                 ))}
             </div>
-            <button
+            {/* <button
                 className="bg-gray-800 text-gray-100 p-2"
                 onClick={() => {
                     currentStep === steps.length
@@ -78,7 +92,7 @@ const ProgressStep = ({ status }) => {
                 }}
             >
                 {currentStep === steps.length ? "Done" : "Next"}
-            </button>
+            </button> */}
         </>
     );
 };

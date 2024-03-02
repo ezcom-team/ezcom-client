@@ -13,7 +13,7 @@ const Register = () => {
     password: "",
     role: "user",
     address: "",
-    phone: "",
+    phoneNumber: "",
   });
 
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -158,15 +158,15 @@ const Register = () => {
                 Phone number
               </label>
               <input
-                type="tel"
-                id="phone"
-                name="phone"
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
                 className="bg-300 border border-gray-300 text-100 text-sm rounded-lg block w-full p-2.5 "
                 placeholder="085xxxxxxx"
                 pattern="[0-9]{10}"
                 required
                 onChange={handleChange}
-                value={formData.phone}
+                value={formData.phoneNumber}
               />
             </div>
             <div>
