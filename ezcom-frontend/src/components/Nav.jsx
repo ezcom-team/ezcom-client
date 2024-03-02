@@ -4,99 +4,112 @@ import "./Nav.css";
 import AccountProfile from "./AccountProfile/index.jsx";
 
 function Nav() {
-  const location = useLocation();
-  const [selectedButton, setSelectedButton] = useState(null);
+    const location = useLocation();
+    const [selectedButton, setSelectedButton] = useState(null);
 
-  useEffect(() => {
-    const pathname = location.pathname;
-    let buttonName = null;
+    useEffect(() => {
+        const pathname = location.pathname;
+        let buttonName = null;
 
-    switch (pathname) {
-      case "/":
-        buttonName = "ezcom";
-        break;
-      case "/landing":
-        buttonName = "landing";
-        break;
-      case "/login":
-        buttonName = "login";
-        break;
-      case "/MyOrder":
-        buttonName = "myorder";
-        break;
-      case "/progress":
-        buttonName = "progress";
-        break;
-      default:
-        buttonName = null;
-    }
+        switch (pathname) {
+            case "/":
+                buttonName = "ezcom";
+                break;
+            case "/landing":
+                buttonName = "landing";
+                break;
+            case "/Filter":
+                buttonName = "filter";
+                break;
+            case "/login":
+                buttonName = "login";
+                break;
+            case "/MyOrder":
+                buttonName = "myorder";
+                break;
+            case "/progress":
+                buttonName = "progress";
+                break;
+            default:
+                buttonName = null;
+        }
 
-    setSelectedButton(buttonName);
-  }, [location]);
+        setSelectedButton(buttonName);
+    }, [location]);
 
-  return (
-    <nav className="bg-400 text-100 min-h-[60px] py-2 justify-center z-50 top-0 sticky w-[100%] shadow-2xl shadow-black">
-      <div className="flex w-[95%] justify-between">
-        <div className="flex ml-5 gap-7 box">
-          <Link
-            className={
-              selectedButton === "ezcom"
-                ? "selected"
-                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
-            }
-            to="/"
-          >
-            Ezcom
-          </Link>
-          <Link
-            className={
-              selectedButton === "landing"
-                ? "selected"
-                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
-            }
-            to="/landing"
-          >
-            Landing
-          </Link>
+    return (
+        <nav className="bg-400 text-100 min-h-[60px] py-2 justify-center w-[100%] sticky top-0 shadow-md shadow-black z-50">
+            <div className="flex w-[95%] justify-between">
+                <div className="flex ml-5 gap-7 box">
+                    <Link
+                        className={
+                            selectedButton === "ezcom"
+                                ? "selected"
+                                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
+                        }
+                        to="/"
+                    >
+                        Ezcom
+                    </Link>
+                    <Link
+                        className={
+                            selectedButton === "landing"
+                                ? "selected"
+                                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
+                        }
+                        to="/landing"
+                    >
+                        Landing
+                    </Link>
+                    <Link
+                        className={
+                            selectedButton === "filter"
+                                ? "selected"
+                                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
+                        }
+                        to="/Filter"
+                    >
+                        Filter
+                    </Link>
 
-          <Link
-            className={
-              selectedButton === "login"
-                ? "selected"
-                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
-            }
-            to="/login"
-          >
-            login
-          </Link>
-          <Link
-            className={
-              selectedButton === "myorder"
-                ? "selected"
-                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
-            }
-            to="/MyOrder"
-          >
-            My-Order
-          </Link>
+                    <Link
+                        className={
+                            selectedButton === "login"
+                                ? "selected"
+                                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
+                        }
+                        to="/login"
+                    >
+                        Login
+                    </Link>
+                    <Link
+                        className={
+                            selectedButton === "myorder"
+                                ? "selected"
+                                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
+                        }
+                        to="/MyOrder"
+                    >
+                        My-Order
+                    </Link>
 
-          <Link
-            className={
-              selectedButton === "progress"
-                ? "selected"
-                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
-            }
-            to="/Progress"
-          >
-            Progress
-          </Link>
-        </div>
-        <div>
-          <AccountProfile />
-        </div>
-      </div>
-    </nav>
-  );
+                    <Link
+                        className={
+                            selectedButton === "progress"
+                                ? "selected"
+                                : " hover:bg-primary px-[5px] py-[2px] rounded-md"
+                        }
+                        to="/progress"
+                    >
+                        Progress
+                    </Link>
+                </div>
+                <div>
+                    <AccountProfile />
+                </div>
+            </div>
+        </nav>
+    );
 }
 
 export default Nav;

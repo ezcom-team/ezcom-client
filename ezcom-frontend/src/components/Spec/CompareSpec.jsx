@@ -19,7 +19,7 @@ export const CompareSpec = ({ item, spec, color }) => {
           )}
         </div>
         {item.Type === "mouse" ? (
-          <div className="max-w-[350px] text-100 ">
+          <div className="max-w-[350px] text-200 ">
             <div className="flex justify-center p-2 ">
               <div>{spec.Sensor}</div>
             </div>
