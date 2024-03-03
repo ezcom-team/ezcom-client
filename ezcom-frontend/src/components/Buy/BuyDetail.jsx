@@ -52,15 +52,15 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
           },
         }
       );
-      console.log("Created order", response.data);
+      console.log("Created order ----", response.data);
     } catch (error) {
       // showToast(false, "Fetch Error")
       console.log("error is ....");
       console.error("Fetch Error", error);
     }
 
-    // resetDataToSend();
-    // window.location.reload();
+    resetDataToSend();
+    window.location.reload();
 
     
   }
