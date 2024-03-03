@@ -7,7 +7,7 @@ const OrderDetailAdmin = ({ order }) => {
     const formattedTime = dateObject.toLocaleString();
 
     return (
-        <div className="grid grid-cols-[40%_15%_10%_10%_15%_10%] bg-300 text-200 py-3 mb-1 ">
+        <div className="grid grid-cols-[40%_15%_10%_10%_15%_10%] bg-300 text-200 py-3 mb-[8px] rounded">
             <div className="flex pl-5 align-middle">
                 <div className="h-20 ml-5">
                     <img
@@ -46,17 +46,6 @@ const OrderDetailAdmin = ({ order }) => {
             <div className="flex align-middle">
                 <div className="flex gap-2 my-auto text-sm">
                     <div className="my-auto ">{formattedTime}</div>
-                </div>
-            </div>
-
-            <div className="flex align-middle">
-                <div className="flex gap-2 my-auto round">
-                    <a
-                        className="border-[2px] border-primary px-8 py-2 rounded-md hover:bg-orange-600"
-                        href="#"
-                    >
-                        Edit
-                    </a>
                 </div>
             </div>
         </div>
