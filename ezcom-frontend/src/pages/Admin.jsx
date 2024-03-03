@@ -120,56 +120,51 @@ function Admin() {
                     <div className="left-0 w-64 overflow-y-auto text-white bg-400 h-fit rounded-s-lg rounded-e-lg">
                         <div className="flex flex-col text-xl p-2x">
                             <a
-                                href="#"
                                 onClick={() => toggle("Graph")}
                                 className={
                                     active === "Graph"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-200 hover:bg-400`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400`
+                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-orange-600 hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-orange-600 hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <TrendingUpIcon /> Products
                             </a>
                             <a
-                                href="#"
                                 onClick={() => toggle("Product")}
                                 className={
                                     active === "Product"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-200 hover:bg-400`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400`
+                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <ShoppingBasketIcon /> Create Product
                             </a>
                             <a
-                                href="#"
                                 onClick={() => toggle("Order")}
                                 className={
                                     active === "Order"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-200 hover:bg-400`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400`
+                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <ShoppingCartIcon /> Order
                             </a>
                             <a
-                                href="#"
                                 onClick={() => toggle("MatchedOrder")}
                                 className={
                                     active === "MatchedOrder"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-200 hover:bg-400`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400`
+                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <ShoppingCartIcon /> Matched Order
                             </a>
                             <a
-                                href="#"
                                 onClick={() => toggle("User")}
                                 className={
                                     active === "User"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-200 hover:bg-400`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-200 hover:bg-400`
+                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <AccountCircleIcon /> Manage User

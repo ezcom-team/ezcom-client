@@ -121,7 +121,7 @@ function index() {
                             <li>
                                 <a
                                     href="/profile"
-                                    className="block px-4 py-2 text-slate-300 hover:bg-gray-100"
+                                    className="block px-4 py-2 text-200 hover:bg-300"
                                 >
                                     Profile
                                 </a>
@@ -130,7 +130,7 @@ function index() {
                             <li>
                                 <a
                                     href="#"
-                                    className="block px-4 py-2 text-slate-300 hover:bg-gray-100"
+                                    className="block px-4 py-2 text-200 hover:bg-300"
                                     onClick={checkValidateHandler}
                                 >
                                     Check Validate
@@ -140,7 +140,7 @@ function index() {
                             <li>
                                 <a
                                     href="#"
-                                    className="block px-4 py-2 text-red-400 hover:bg-gray-100"
+                                    className="block px-4 py-2 text-red-400 hover:bg-300"
                                     onClick={logoutHandler}
                                 >
                                     Log out

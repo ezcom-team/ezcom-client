@@ -1,9 +1,12 @@
 import axios from "axios";
 import OrderDetailAdmin from "./OrderDetailAndmin";
 import { useState, useEffect } from "react";
+import { Loading } from "../Loading/Loading";
 
 const MatchedOrder = () => {
     const [order, setOrder] = useState([]);
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
@@ -19,6 +22,7 @@ const MatchedOrder = () => {
                 );
                 console.log(response.data);
                 setOrder(response.data);
+                setLoading(false)
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -34,15 +38,23 @@ const MatchedOrder = () => {
                 <div className="">Seller</div>
                 <div className="">Time</div>
             </div>
-            {order ? (
-                <div>
-                    {order.map((order) => (
-                        <OrderDetailAdmin order={order} />
-                    ))}
+            {loading ? (
+                <div className="my-[120px] h-full overflow-y-scroll place-items-center">
+                    <Loading />
                 </div>
             ) : (
-                <div className="text-100 flex justify-center mt-[64px]">
-                    No sell order
+                <div>
+                    {order ? (
+                        <div>
+                            {order.map((order) => (
+                                <OrderDetailAdmin order={order} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-100 flex justify-center mt-[64px]">
+                            No sell order
+                        </div>
+                    )}
                 </div>
             )}
         </div>

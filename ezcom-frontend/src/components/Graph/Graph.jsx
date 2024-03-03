@@ -43,7 +43,9 @@ const Graph = () => {
 
     return (
         <div className="mx-auto px-10 rounded-md">
-            <div className="text-200 flex justify-center mb-[24px]">All product</div>
+            <div className="text-200 flex justify-center mb-[24px]">
+                All product
+            </div>
             <ToastContainer position="top-center" />
             <div>
                 {openModal ? (
@@ -60,7 +62,7 @@ const Graph = () => {
             </div>
             <div>
                 {loading ? (
-                    <div className="my-[120px] w-3/4 h-full overflow-y-scroll place-items-center md:place-content-start">
+                    <div className="my-[120px] h-full overflow-y-scroll place-items-center">
                         <Loading />
                     </div>
                 ) : (
