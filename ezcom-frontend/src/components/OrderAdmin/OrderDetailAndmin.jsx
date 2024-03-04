@@ -29,7 +29,7 @@ const OrderDetailAdmin = ({ order }) => {
   }
 
   return (
-    <div className="grid grid-cols-[50%_10%_10%_10%_20%] bg-300 text-200 py-3 mb-[8px] rounded">
+    <div className="grid grid-cols-[50%_10%_10%_10%_20%] bg-300 text-200 py-3 mb-1 ">
       <div className="flex pl-5 align-middle">
         <div className="h-20 ml-5">
           <img src={order.Product_img} className="max-w-full max-h-full" />
