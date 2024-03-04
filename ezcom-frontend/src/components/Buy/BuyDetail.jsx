@@ -1,16 +1,7 @@
-import { useState } from "react";
 import p1 from "../../img/p1.jpg";
 
 const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
   // console.log(colors);
-
-  const [formData, setFormData] = useState({
-    conditions: conditions,
-    colors: colors,
-    buyerName: buyerName,
-    price: price,
-    buyerImg: buyerImg,
-  });
 
   const getBackgroundColor = condition => {
     switch (condition) {
@@ -24,46 +15,6 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
         return "bg-white";
     }
   };
-
-  const resetDataToSend = () => {
-    setFormData({
-      conditions: '',
-      colors: '',
-      buyerName: '',
-      price: '',
-      buyerImg: '',
-    })
-  };
-  // console.log("checkformdata",formData)
-  async function createOrder() {
-    const token = localStorage.getItem("access-token");
-    const dataToSend = {
-      ...formData
-    };
-    console.log("my sell order ");
-    console.log("datasent",dataToSend);
-    try {
-      const response = await axios.post(
-        `https://ezcom-backend-production-09b5.up.railway.app/order/sell`,
-        dataToSend,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      console.log("Created order ----", response.data);
-    } catch (error) {
-      // showToast(false, "Fetch Error")
-      console.log("error is ....");
-      console.error("Fetch Error", error);
-    }
-
-    resetDataToSend();
-    window.location.reload();
-
-    
-  }
 
   return (
     <div className="grid grid-cols-[15%_40%_15%_15%_15%] bg-300 py-3 mb-1 text-200 rounded-md">
@@ -112,7 +63,6 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
         <a
           className=" border-[2px] border-primary hover:bg-orange-600 px-8 py-2 rounded-md duration-500"
           href="#"
-          onClick={createOrder}
         >
           Sell
         </a>
