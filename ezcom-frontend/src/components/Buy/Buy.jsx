@@ -45,7 +45,7 @@ const Buy = ({ pid }) =>{
                     No order
                 </div> : 
                 <div>
-                    {buyOrders.map((order) => (
+                    {buyOrders.sort((a, b) => a.Price - b.Price).map((order) => (
                         <BuyDetail conditions={order.Condition} buyerImg={order.Buyer_img} colors={order.Color} buyerName={order.Buyer_name} price={order.Price} />
                     ))}
                 </div>
@@ -55,5 +55,3 @@ const Buy = ({ pid }) =>{
 }
 
 export default Buy;
-
-
