@@ -70,7 +70,7 @@ const CreditCardForm = ({ dataToSend, isPaymentModalOpen, setIsPaymentModalOpen 
           },
         }
       );
-      console.log("Created order", response.data);
+      console.log("Created order ----", response.data);
     } catch (error) {
       showToast(false, "Fetch Error");
       console.log("error is ....");

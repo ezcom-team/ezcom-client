@@ -59,8 +59,8 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
       console.error("Fetch Error", error);
     }
 
-    // resetDataToSend();
-    // window.location.reload();
+    resetDataToSend();
+    window.location.reload();
 
     
   }
