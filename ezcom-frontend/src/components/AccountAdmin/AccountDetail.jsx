@@ -15,7 +15,7 @@ const AccountDetail = ({ user, openModalBuy }) => {
   console.log(" accountde" + user);
 
   return (
-    <div className="grid grid-cols-[20%_25%_25%_10%_10%_10%]  bg-300 py-3 mb-1 rounded-md ">
+    <div className="grid grid-cols-[20%_25%_25%_10%_10%_10%]  bg-300 py-3 mb-[8px] rounded-md ">
       <div className="flex pl-2 align-middle">
         <div className="flex gap-2 my-auto text-xs text-100 j">
           <div className="flex justify-center">{user.ID}</div>
