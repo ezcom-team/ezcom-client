@@ -45,11 +45,24 @@ function ProductDetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
 
     return (
         <div className="mx-auto md:max-w-[95vw] lg:max-w-[85vw] xl:max-w-[75vw]">
-            <div className="w-100 md:grid md:grid-cols-2 mt-10">
-                <div className="border border-300 rounded-l-md p-4">
-                    <img src={product.Image} className="" alt="Product Image" />
+            <ModalBuy
+                        product={product}
+                        isBuyModalOpen={isBuyModalOpen}
+                        setisBuyModalOpen={setisBuyModalOpen}
+                        highestBuyOrder={highestBuyOrder}
+                    />
+                    <ModalSell
+                        product={product}
+                        isBuyModalOpen={isSellModalOpen}
+                        setisBuyModalOpen={setisSellModalOpen}
+                        highestBuyOrder={highestBuyOrder}
+                    />
+            <div className="w-100 md:grid md:grid-cols-2 mt-10 ">
+                <div className="border border-300 rounded-l-md flex justify-center align-bottom">
+                    <img src={product.Image} className="w-fit h-[330px] my-10 " alt="Product Image" />
                 </div>
-                <div className="flex flex-col gap-3 bg-400 p-5 rounded-r-md">
+                
+                <div className="flex flex-col gap-3  p-5 rounded-r-md justify-between">
                     {/* Product Details */}
                     <div className="">
                         <div className="text-3xl text-100 mb-2">
@@ -107,18 +120,7 @@ function ProductDetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
                     </div>
 
                     {/* Modal */}
-                    <ModalBuy
-                        product={product}
-                        isBuyModalOpen={isBuyModalOpen}
-                        setisBuyModalOpen={setisBuyModalOpen}
-                        highestBuyOrder={highestBuyOrder}
-                    />
-                    <ModalSell
-                        product={product}
-                        isBuyModalOpen={isSellModalOpen}
-                        setisBuyModalOpen={setisSellModalOpen}
-                        highestBuyOrder={highestBuyOrder}
-                    />
+                    
                 </div>
             </div>
             <div className="w-100%">
