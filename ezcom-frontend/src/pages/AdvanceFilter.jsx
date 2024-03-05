@@ -14,8 +14,8 @@ export const AdvanceFilter = () => {
     const [PID, setPID] = useState([]);
 
     const [colorValue, setColorValue] = useState([]);
-    const [numberValue, setNumberValue] = useState({});
-    const [checkboxValue, setCheckboxValue] = useState({});
+    const [numberValue, setNumberValue] = useState([]);
+    const [checkboxValue, setCheckboxValue] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -93,6 +93,13 @@ export const AdvanceFilter = () => {
         const box = {};
         let keys = Object.keys(filterKey);
         let countKey = keys.length;
+        if (keys) {
+            console.log("in if by range")
+            spec.map((item) => {
+                storedID.push(item.PID);
+            });
+            return storedID;
+        }
         spec.map((item) => {
             for (const key in filterKey) {
                 const itemValue = parseFloat(item[key]);
@@ -130,6 +137,13 @@ export const AdvanceFilter = () => {
         const box = {};
         let keys = Object.keys(filterKey);
         let countKey = keys.length;
+        if (Object.keys(filterKey).length == 0) {
+            console.log("in if by checkbox")
+            spec.map((item) => {
+                storedID.push(item.PID);
+            });
+            return storedID;
+        }
         spec.map((item) => {
             for (const key in filterKey) {
                 // console.log("fil keyyyyy", filterKey[key]);

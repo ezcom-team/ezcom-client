@@ -162,7 +162,7 @@ const ModalBuy = ({
                                     </div>
                                 </div>
                             </div>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-[30%_70%] p-4">
                                     <div className="flex justify-around ">
                                         Condition
@@ -259,6 +259,7 @@ const ModalBuy = ({
                                         type="number"
                                         onChange={handlePriceChange}
                                         className="px-1 pl-2 rounded-sm bg-300 text-100 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                        required
                                     ></input>
                                 </div>
                                 <div className="grid grid-cols-[30%_70%] p-4">

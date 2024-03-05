@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { CardItem } from "../cardItem/index";
 
 const CardDetail = ({ title, status }) => {
-    const steps = ["prepare", "verify", "delivery", "done"];
+    const steps = ["sent", "verify", "delivery", "done"];
 
     return (
         <div className=" bg-300 rounded-md w-5/6 ">
             <div className="flex flex-col gap-2 p-6 text-200 text-md">
                 <div className="flex justify-between mb-6  text-100 text-2xl ">
-                    {title === "prepare" ? (
+                    {title === "sent" ? (
                         <div>ผู้ขายจัดส่งสินค้ามายัง EZCOM</div>
                     ) : title === "verify" ? (
                         <div>กำลังตรวจสอบสินค้า</div>
@@ -20,13 +20,12 @@ const CardDetail = ({ title, status }) => {
                         <div>Error something wrong !</div>
                     )}
                     <span>
-                        status : 
+                        status :
                         {steps.indexOf(title) <= steps.indexOf(status) ? (
-                          <span className="text-primary">Done</span>
+                            <span className="text-primary">Done</span>
                         ) : (
-                          <span className="text-primary">Not done</span>
-                        )
-                        }
+                            <span className="text-primary">Not done</span>
+                        )}
                     </span>
                 </div>
                 <div className="flex ">

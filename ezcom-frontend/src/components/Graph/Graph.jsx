@@ -12,11 +12,6 @@ const Graph = () => {
     const [openModal, setOpenModal] = useState(false);
     const [item, setItem] = useState("");
 
-    function showToast(bool, text) {
-        if (bool) {
-            toast.success(text);
-        } else toast.error(text);
-    }
     useEffect(() => {
         async function fetchData() {
             try {
@@ -26,7 +21,6 @@ const Graph = () => {
                 setAllProduct(response.data);
                 setLoading(false);
             } catch (error) {
-                showToast(false, "Fetch Error");
                 console.error("Fetch Error", error);
             }
         }
@@ -39,14 +33,13 @@ const Graph = () => {
         setOpenModal(!openModal);
     };
 
-    console.log("🚀 ~ Graph ~ allProduct:", allProduct);
+    // console.log("🚀 ~ Graph ~ allProduct:", allProduct);
 
     return (
         <div className="mx-auto px-10 rounded-md">
-            <div className="text-200 flex justify-center mb-[24px]">
+            <div className="text-200 flex justify-center mb-[24px] text-4xl">
                 All product
             </div>
-            <ToastContainer position="top-center" />
             <div>
                 {openModal ? (
                     <>

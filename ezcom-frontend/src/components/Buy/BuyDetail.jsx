@@ -2,7 +2,7 @@ import { useState } from "react";
 import p1 from "../../img/p1.jpg";
 
 const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
-  // console.log(colors);
+    // console.log(colors);
 
   const [formData, setFormData] = useState({
     conditions: conditions,

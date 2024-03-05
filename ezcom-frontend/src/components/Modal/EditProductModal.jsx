@@ -220,6 +220,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                     ); // ลบค่าที่ถูก uncheck ออกจากอาร์เรย์
                 }
                 setColors(updatedArray);
+                console.log("color === ", updatedArray);
             } else {
                 setFormData({
                     ...formData,
@@ -303,7 +304,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                                     <input
                                                         id={`${label.id}-black`}
                                                         type="checkbox"
-                                                        name={label.id}
+                                                        name={label.text}
                                                         value="black"
                                                         onChange={
                                                             handleInputChange
@@ -321,7 +322,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                                     <input
                                                         id={`${label.id}-white`}
                                                         type="checkbox"
-                                                        name={label.id}
+                                                        name={label.text}
                                                         value="white"
                                                         onChange={
                                                             handleInputChange
@@ -339,7 +340,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                                     <input
                                                         id={`${label.id}-pink`}
                                                         type="checkbox"
-                                                        name={label.id}
+                                                        name={label.text}
                                                         value="pink"
                                                         onChange={
                                                             handleInputChange
@@ -357,7 +358,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                                     <input
                                                         id={`${label.id}-yellow`}
                                                         type="checkbox"
-                                                        name={label.id}
+                                                        name={label.text}
                                                         value="yellow"
                                                         onChange={
                                                             handleInputChange
@@ -375,7 +376,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                                     <input
                                                         id={`${label.id}-red`}
                                                         type="checkbox"
-                                                        name={label.id}
+                                                        name={label.text}
                                                         value="red"
                                                         onChange={
                                                             handleInputChange
@@ -393,7 +394,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                                     <input
                                                         id={`${label.id}-green`}
                                                         type="checkbox"
-                                                        name={label.id}
+                                                        name={label.text}
                                                         value="green"
                                                         onChange={
                                                             handleInputChange
@@ -411,7 +412,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                                     <input
                                                         id={`${label.id}-blue`}
                                                         type="checkbox"
-                                                        name={label.id}
+                                                        name={label.text}
                                                         value="blue"
                                                         onChange={
                                                             handleInputChange
@@ -429,7 +430,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                                     <input
                                                         id={`${label.id}-other`}
                                                         type="checkbox"
-                                                        name={label.id}
+                                                        name={label.text}
                                                         value="other"
                                                         onChange={
                                                             handleInputChange

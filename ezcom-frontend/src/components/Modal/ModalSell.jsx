@@ -132,6 +132,7 @@ const ModalSell = ({
                                                 value={condition}
                                                 onChange={handleConditionChange}
                                                 className="text-100 bg-300 pl-2 rounded"
+                                                required
                                             >
                                                 <option className="bg-400">
                                                     Select condition
@@ -197,6 +198,7 @@ const ModalSell = ({
                                         type="number"
                                         onChange={handlePriceChange}
                                         className="bg-300 rounded-sm text-100 px-1 pl-2 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                        required
                                     ></input>
                                 </div>
                                 <div className="grid grid-cols-[30%_70%] p-4 rounded-b-sm">
@@ -208,6 +210,7 @@ const ModalSell = ({
                                         onChange={handleColorChange}
                                         // style={{ height: "100px" }}
                                         className="text-100 bg-300 pl-2 rounded"
+                                        required
                                     >
                                         <option className="bg-400">
                                             Select color
