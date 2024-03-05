@@ -5,17 +5,17 @@ import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import SellIcon from "@mui/icons-material/Sell";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import CreateNewFolderIcon from "@mui/icons-material/CreateNewFolder";
-import VerifiedIcon from '@mui/icons-material/Verified';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import WarehouseIcon from '@mui/icons-material/Warehouse';
+import VerifiedIcon from "@mui/icons-material/Verified";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import WarehouseIcon from "@mui/icons-material/Warehouse";
 const ProgressStep = ({ status }) => {
-    const steps = ["Prepare", "Verify", "Delivery", "Done"];
+    const steps = ["Sent", "Verify", "Delivery", "Done"];
     const [currentStep, setCurrentStep] = useState(0);
     const [complete, setComplete] = useState(false);
 
     useEffect(() => {
         const setStep = () => {
-            if (status === "prepare") {
+            if (status === "sent") {
                 setCurrentStep(2);
             } else if (status === "verify") {
                 setCurrentStep(3);
@@ -56,29 +56,33 @@ const ProgressStep = ({ status }) => {
                 {steps?.map((step, i) => (
                     <div
                         key={i}
-                        className={`step-item ${currentStep === i + 1 && "active"
-                            } ${(i + 1 < currentStep || complete) && "complete"}`}
+                        className={`step-item ${
+                            currentStep === i + 1 && "active"
+                        } ${(i + 1 < currentStep || complete) && "complete"}`}
                     >
                         <div className="step">
                             {i + 1 < currentStep || complete ? (
                                 <DoneIcon fontSize="medium" />
                             ) : (
                                 (() => {
-                                    switch (i+1) {
+                                    switch (i + 1) {
                                         case 1:
-                                            return <WarehouseIcon fontSize="medium" />
+                                            return (
+                                                <WarehouseIcon fontSize="medium" />
+                                            );
                                         case 2:
                                             return <VerifiedIcon />;
                                         case 3:
-                                            return  <AirportShuttleIcon />;
-                                        case 4: 
-                                            return <LocationOnIcon fontSize="medium" />
-                                        
+                                            return <AirportShuttleIcon />;
+                                        case 4:
+                                            return (
+                                                <LocationOnIcon fontSize="medium" />
+                                            );
                                     }
                                 })()
                             )}
                         </div>
-                        
+
                         <p className="text-200">{step}</p>
                     </div>
                 ))}
@@ -98,4 +102,3 @@ const ProgressStep = ({ status }) => {
 };
 
 export default ProgressStep;
-

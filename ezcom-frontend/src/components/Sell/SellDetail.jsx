@@ -1,8 +1,6 @@
-import picProduct from '../../img/testPic.png'
-import p1 from '../../img/p1.jpg'
-import p2 from '../../img/p2.jpg'
 
-const SellDetail = ({ condition, color, sellerName, price }) => {
+
+const SellDetail = ({ condition, color, sellerName, price, sellerImg }) => {
 
     const getBackgroundColor = (condition) => {
         switch (condition) {
@@ -34,8 +32,14 @@ const SellDetail = ({ condition, color, sellerName, price }) => {
                         }}></div>
                 </div>
             </div>
-            <div className="flex align-middle pl-4">
-                <div className="my-auto text-base">
+            <div className="flex align-middle">
+                <div className="flex gap-2 my-auto">
+                    <div className="h-10 ">
+                        <img
+                            src={sellerImg}
+                            className="max-w-full max-h-full rounded-full"
+                        />
+                    </div>
                     <div className="my-auto ">{sellerName}</div>
                 </div>
             </div>

@@ -1,7 +1,9 @@
-import p1 from "../../img/p1.jpg";
 import axios from "axios";
 import TrackingNumber from "../Modal/TrackingNumber";
 import { useState } from "react";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
+import Verified from "@mui/icons-material/Verified";
 const HistoryCard = ({
     orderID,
     productImg,
@@ -12,6 +14,7 @@ const HistoryCard = ({
     status,
     order,
     userId,
+    verify,
 }) => {
     const isoTimestamp = time;
     const dateObject = new Date(isoTimestamp);
@@ -44,7 +47,7 @@ const HistoryCard = ({
     };
 
     return (
-        <div className="grid grid-cols-[15%_25%_25%_15%_20%] bg-300 py-3 mb-1 mt-3 text-200 rounded-md">
+        <div className="grid grid-cols-[25%_15%_25%_15%_20%] bg-300 py-3 mb-1 mt-3 text-200 rounded-md">
             {showSentModal ? (
                 <TrackingNumber
                     orderID={orderID}
@@ -55,8 +58,14 @@ const HistoryCard = ({
             )}
 
             <div className="flex justify-center align-middle">
-                <div className="h-20 ml-5">
+                <div className="h-20 ml-5 flex my-auto">
                     <img src={productImg} className="max-w-full max-h-full" />
+                    {verify === "Verified" && (
+                        <div className="flex my-auto pl-[8px]">
+                            <CheckCircleRounded className="text-blue-500 mr-[4px]" />
+                            Verified
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="flex justify-center align-middle">
@@ -85,8 +94,8 @@ const HistoryCard = ({
                 <div
                     className={
                         status === "sent"
-                            ? "my-auto bg-green-600 px-[16px] py-[8px] rounded-md"
-                            : "my-auto bg-primary px-[16px] py-[8px] rounded-md"
+                            ? "my-auto text-green-600 px-[16px] py-[8px] rounded-md"
+                            : "my-auto text-primary px-[16px] py-[8px] rounded-md"
                     }
                 >
                     {status}
@@ -104,9 +113,9 @@ const HistoryCard = ({
                 {statusPrepare ? (
                     <button
                         onClick={senthandler}
-                        className="ml-2 text-green-800 bg-green-500 h-[30px] p-1 rounded-md hover:bg-300 hover:text-200"
+                        className="ml-2 text-100 bg-green-500 h-[30px] p-1 rounded-md hover:bg-300 hover:text-200"
                     >
-                        Sent
+                        Send
                     </button>
                 ) : (
                     <></>

@@ -70,7 +70,6 @@ export const AdvanceCategories = ({
                 Height: [-999, 999_999],
                 Weight: [-999, 999_999],
                 Length: [-999, 999_999],
-                Form_Factor: [-999, 999_999],
             });
             setCheckboxValue({
                 RGB: [],
@@ -366,12 +365,6 @@ export const AdvanceCategories = ({
                                                 unit={"cm"}
                                                 onChange={onNumberInputChange}
                                             />
-                                            <TextInput
-                                                id={"Form_Factor"}
-                                                title={"Form Factor"}
-                                                unit={"%"}
-                                                onChange={onNumberInputChange}
-                                            />
                                         </div>
                                     </div>
                                     <div className="p-[8px]">
@@ -591,7 +584,7 @@ export const AdvanceCategories = ({
                                             <input
                                                 id="Refresh_Rate"
                                                 type="checkbox"
-                                                value="240Hz"
+                                                value="240"
                                                 className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
                                                 onChange={handleCheckboxChange}
                                             />
@@ -601,7 +594,7 @@ export const AdvanceCategories = ({
                                             <input
                                                 id="Refresh_Rate"
                                                 type="checkbox"
-                                                value="144Hz"
+                                                value="144"
                                                 className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
                                                 onChange={handleCheckboxChange}
                                             />
@@ -611,7 +604,7 @@ export const AdvanceCategories = ({
                                             <input
                                                 id="Refresh_Rate"
                                                 type="checkbox"
-                                                value="120Hz"
+                                                value="120"
                                                 className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
                                                 onChange={handleCheckboxChange}
                                             />
@@ -621,7 +614,7 @@ export const AdvanceCategories = ({
                                             <input
                                                 id="Refresh_Rate"
                                                 type="checkbox"
-                                                value="75Hz"
+                                                value="75"
                                                 className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
                                                 onChange={handleCheckboxChange}
                                             />
@@ -629,9 +622,9 @@ export const AdvanceCategories = ({
                                         </div>
                                         <div className="flex">
                                             <input
-                                                name="checkbox"
+                                                id="Refresh_Rate"
                                                 type="checkbox"
-                                                value="60Hz"
+                                                value="60"
                                                 className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
                                                 onChange={handleCheckboxChange}
                                             />
@@ -722,7 +715,7 @@ export const AdvanceCategories = ({
                                         </div>
                                         <div className="flex">
                                             <input
-                                                id="Gsync"
+                                                id="G_Sync"
                                                 type="checkbox"
                                                 value="Yes"
                                                 className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"
@@ -732,7 +725,7 @@ export const AdvanceCategories = ({
                                         </div>
                                         <div className="flex">
                                             <input
-                                                id="Gsync"
+                                                id="G_Sync"
                                                 type="checkbox"
                                                 value="No"
                                                 className="mr-[8px] bg-transparent cursor-pointer accent-primary opacity-40 checked:opacity-100"

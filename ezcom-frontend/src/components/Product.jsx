@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Product() {
     const labelsForFormMouse = [
@@ -120,10 +122,14 @@ function Product() {
                 }
             );
             console.log(response.data);
+
+            setSelectedForm("");
+            setSelected("");
+            success("Create product success");
         } catch (error) {
-            showToast(false, "Error sending request");
             // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
             console.error("Error sending request:", error);
+            fail("Somthing wrong");
         }
     };
     const DynamicForm = ({ labels }) => {
@@ -173,17 +179,6 @@ function Product() {
                     });
                 } else data.append(label.id, formData[label.id]);
             });
-
-            // labels.map(label => {
-            //   if (label.id === "color") {
-            //     const selectedColors = Array.from(formData.getAll(label.id)).filter(
-            //       color => formData.get(label.id + "-" + color)
-            //     );
-            //     formData.append(label.id, selectedColors.join(", "));
-            //   } else {
-            //     formData.append(label.id, document.getElementById(label.id).value);
-            //   }
-            // });
 
             // ส่ง FormData ไปยังเซิร์ฟเวอร์
             console.log("before sens :", data);
@@ -358,78 +353,129 @@ function Product() {
         );
     };
 
-    const [selectedForm, setSelectedForm] = useState(labelsForFormMouse);
+    const [selectedForm, setSelectedForm] = useState("");
+    const [selected, setSelected] = useState("");
+
+    function success(text) {
+        toast.success(text);
+    }
+    function fail(text) {
+        toast.error(text);
+    }
 
     const showFormMouse = () => {
         setSelectedForm(labelsForFormMouse);
+        setSelected("mouse");
     };
     const showFormMousePad = () => {
         setSelectedForm(labelsForFormMousepad);
+        setSelected("mousePad");
     };
     const showFormHeadset = () => {
         setSelectedForm(labelsForFormHeadset);
+        setSelected("headset");
     };
     const showFormKeyboard = () => {
         setSelectedForm(labelsForFormKeyboard);
+        setSelected("keyboard");
     };
     const showFormCPU = () => {
         setSelectedForm(labelsForFormCPU);
+        setSelected("CPU");
     };
     const showFormGPU = () => {
         setSelectedForm(labelsForFormGPU);
+        setSelected("GPU");
     };
     const showFormMonitor = () => {
         setSelectedForm(labelsForFormMonitor);
+        setSelected("monitor");
     };
     return (
         <div className="flex flex-col items-center justify-center flex-1 gap-4 text-200">
+            <ToastContainer position="top-center" theme="dark" />
             <div className="text-4xl">Create new product</div>
             <div className="flex flex-row justify-center min-w-full gap-8">
                 <button
                     type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100"
+                    className={`
+                    ${
+                        selected === "mouse"
+                            ? "bg-100 text-400"
+                            : "bg-300 text-100"
+                    } py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100`}
                     onClick={showFormMouse}
                 >
                     mouse
                 </button>
                 <button
                     type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className={`
+                    ${
+                        selected === "headset"
+                            ? "bg-100 text-400"
+                            : "bg-300 text-100"
+                    } py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100`}
                     onClick={showFormHeadset}
                 >
                     headset
                 </button>
                 <button
                     type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className={`
+                    ${
+                        selected === "mousePad"
+                            ? "bg-100 text-400"
+                            : "bg-300 text-100"
+                    } py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100`}
                     onClick={showFormMousePad}
                 >
                     mousePad
                 </button>
                 <button
                     type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className={`
+                    ${
+                        selected === "keyboard"
+                            ? "bg-100 text-400"
+                            : "bg-300 text-100"
+                    } py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100`}
                     onClick={showFormKeyboard}
                 >
                     keyboard
                 </button>
                 <button
                     type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className={`
+                    ${
+                        selected === "GPU"
+                            ? "bg-100 text-400"
+                            : "bg-300 text-100"
+                    } py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100`}
                     onClick={showFormGPU}
                 >
                     GPU
                 </button>
                 <button
                     type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className={`
+                    ${
+                        selected === "CPU"
+                            ? "bg-100 text-400"
+                            : "bg-300 text-100"
+                    } py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100`}
                     onClick={showFormCPU}
                 >
                     CPU
                 </button>
                 <button
                     type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium bg-300 text-100 focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 focus:ring-4 focus:ring-300 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className={`
+                    ${
+                        selected === "monitor"
+                            ? "bg-100 text-400"
+                            : "bg-300 text-100"
+                    } py-2.5 px-5 me-2 mb-2 text-sm font-medium focus:outline-100 rounded-lg hover:bg-gray-100 hover:text-400 focus:z-10 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-100`}
                     onClick={showFormMonitor}
                 >
                     monitor

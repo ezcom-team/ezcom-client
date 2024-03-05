@@ -35,8 +35,8 @@ const ProcessPage = () => {
 
     const handleActive = (status) => {
         setCurrentStatus(status);
-        
-        console.log("---",currentStatus);
+
+        console.log("---", currentStatus);
     };
 
     // console.log(matchedOrder);
@@ -49,7 +49,7 @@ const ProcessPage = () => {
                     {/* Display card for each order */}
                     <div className="p-4 mb-4 overflow-auto h-[900px]">
                         <div className="flex justify-center text-2xl text-200">
-                        must be received
+                            must be received
                         </div>
                         {matchedOrder !== null ? (
                             <>
@@ -84,10 +84,7 @@ const ProcessPage = () => {
                     </div>
                     <div className="flex-grow p-4 overflow-y-auto h-[650px] mt-10">
                         <div className="flex flex-col gap-3 p-4 ">
-                            <CardDetail
-                                title={"prepare"}
-                                status={currentStatus}
-                            />
+                            <CardDetail title={"sent"} status={currentStatus} />
                             <CardDetail
                                 title={"verify"}
                                 status={currentStatus}

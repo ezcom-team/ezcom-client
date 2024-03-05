@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import pic from "../../img/p1.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -15,6 +14,11 @@ function index() {
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
+    };
+    const toggleClickDropdown = () => {
+        if (isOpen !== true) {
+            setIsOpen(true);
+        }
     };
     function success(text) {
         toast.success(text);
@@ -75,7 +79,7 @@ function index() {
             <ToastContainer position="top-center" theme="dark" />
             {storedUser ? (
                 <button
-                    onClick={toggleDropdown}
+                    onClick={toggleClickDropdown}
                     type="button"
                     className="px-4 py-2 font-medium text-white bg-primary border-[2px] border-transparent hover:border-orange-700 rounded-md  focus:outline-none focus-visible:ring focus-visible:ring-blue-300"
                 >
@@ -110,7 +114,7 @@ function index() {
                         <li>
                             <a
                                 href="/admin"
-                                className="block px-4 py-2 text-slate-300 hover:bg-gray-100"
+                                className="block px-4 py-2 text-200 hover:bg-300"
                             >
                                 Admin
                             </a>
