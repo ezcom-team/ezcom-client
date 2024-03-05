@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../store/counterSlice";
 import "./home.css"
 import { Link } from "react-router-dom";
-
+import PopDetail from "../components/Modal/ModalTellDetail";
 function Home() {
   const count = useSelector(state => state.counter.value);
   const user = useSelector(state => state.user.user);
@@ -51,7 +51,7 @@ function Home() {
           </div>
         </div>
       </div>
-
+      
     </div>
   );
 }

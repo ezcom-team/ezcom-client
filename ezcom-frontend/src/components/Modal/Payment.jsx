@@ -6,6 +6,7 @@ import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ModalTellDetail from "./ModalTellDetail";
 
 const CreditCardForm = ({
     dataToSend,
@@ -17,6 +18,9 @@ const CreditCardForm = ({
     const [expiryDateMonth, setexpiryDateMonth] = useState("");
     const [expiryDateYear, setexpiryDateYear] = useState("");
     const [cvv, setCVV] = useState("");
+
+    const [response, setResponse] = useState({});
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleCardNumberChange = (e) => {
         setCardNumber(e.target.value.replace(/[^\d]/g, "").slice(0, 16));
@@ -50,6 +54,10 @@ const CreditCardForm = ({
         };
         console.log("_______", updatedFormData);
         createOrder(updatedFormData);
+        setIsModalOpen(true);
+        // setIsPaymentModalOpen(false);
+        
+
     };
 
     const closeModal = () => {
@@ -69,7 +77,8 @@ const CreditCardForm = ({
                     },
                 }
             );
-            console.log("Created order", response.data);
+            console.log("This is response", response.data);
+            setResponse(response.data)
         } catch (error) {
             showToast(false, "Fetch Error");
             console.log("error is ....");
@@ -77,7 +86,7 @@ const CreditCardForm = ({
         }
 
         // resetDataToSend();
-        window.location.reload();
+        // window.location.reload();
     }
 
     function showToast(bool, text) {
@@ -85,11 +94,12 @@ const CreditCardForm = ({
             toast.success(text);
         } else toast.error(text);
     }
-
+    console.log("response data ----",response)
     return (
         <div>
             {isPaymentModalOpen && (
                 <div className="modal">
+                    <ModalTellDetail response={response} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
                     <div className="flex justify-center bg-400  p-10 rounded-lg ml-20 mt-10  ">
                         <div className="w-96 h-60 text-100 pb-5 pt-10 px-9 mx-1 text-start align-middle bg-blue-500  bg-gradient-to-b from-blue-800 border-400 border-1 rounded-2xl drop-shadow-xl shadow-xl">
                             <DeveloperBoardIcon
