@@ -107,7 +107,7 @@ function Detail() {
                         highestBuyOrder={highestPrice}
                         recentMatchedOrder={recentPrice}
                     />
-                    <BuyOrSellOrTrade pid={id} />
+                    <BuyOrSellOrTrade pid={id} date={data.CreatedAt} />
                 </div>
             ) : (
                 <div className="mt-[200px]">

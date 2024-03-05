@@ -4,7 +4,7 @@ import Buy from "../Buy/Buy";
 import Sell from "../Sell/Sell";
 import Graph from "../RealGraph/RealGraph";
 
-const BuyOrSellOrTrade = ({ pid }) => {
+const BuyOrSellOrTrade = ({ pid, date }) => {
     const location = useLocation();
     const [activeComponent, setActiveComponent] = useState("Buy");
     const [selectedButton, setSelectedButton] = useState(null);
@@ -42,7 +42,7 @@ const BuyOrSellOrTrade = ({ pid }) => {
             CurrentComponent = <Sell pid={pid} />;
             break;
         case "Trade":
-            CurrentComponent = <Graph />;
+            CurrentComponent = <Graph pid={pid} date={date} />;
             break;
         default:
             CurrentComponent = null;
