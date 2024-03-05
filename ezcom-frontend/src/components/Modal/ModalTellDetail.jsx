@@ -4,9 +4,9 @@ import { HelpOutline as HelpOutlineIcon } from "@mui/icons-material";
 import "./style.css";
 
 const ModalTellDetail = ({ response, isModalOpen, setIsModalOpen }) => {
-  const [text, setText] = useState("Error");
+  const [text, setText] = useState("");
   const [textStatus, setTextStatus] = useState("");
-console.log(response);
+  console.log("hear---", response);
 
   useEffect(() => {
     if (response && response.type === "buyOrder") {
@@ -15,25 +15,27 @@ console.log(response);
     } else if (response && response.type === "sellOrder") {
       setText("Create Sell Order ");
       setTextStatus("Successfully.");
-    } else if (response && response.type === "matchOrder") {
+    } else if (response && response.type === "matchedOrder") {
       setText("Your order has been ");
       setTextStatus("Matched.");
-    } 
+    }
   }, [response]);
 
-//   // Function to close modal and reload window
+  //   // Function to close modal and reload window
   const closeModal = () => {
     setIsModalOpen(false);
     window.location.reload();
   };
 
-//   // Determine text color based on response type
+  //   // Determine text color based on response type
   const textColorClass =
     response.type === "buyOrder"
-      ? "text-green-500 text-xl" 
+      ? "text-green-500 text-xl"
       : response.type === "sellOrder"
-      ? "text-green-500 text-xl" 
-      : "";
+        ? "text-green-500 text-xl"
+        : response.type === "matchedOrder"
+        ? "text-green-500 text-xl"
+        : ""
 
   return (
     <div>
@@ -53,10 +55,10 @@ console.log(response);
                   {textStatus}
                 </span>
               </div>
-              
+
             </div>
           </div>
-          
+
         </div>
       )}
     </div>

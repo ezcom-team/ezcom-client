@@ -44,7 +44,7 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
     console.log("datasent",dataToSend);
     try {
       const response = await axios.post(
-        `https://ezcom-backend-production-09b5.up.railway.app/order/sell`,
+        `https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
         dataToSend,
         {
           headers: {
