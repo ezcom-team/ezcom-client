@@ -470,13 +470,13 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                     <div className="flex justify-center gap-5 mt-4">
                         <button
                             onClick={handleSubmit}
-                            className="w-40 p-2 transition bg-green-600 rounded hover:bg-green-400 text-200"
+                            className="w-40 p-2 transition bg-green-600 rounded hover:bg-green-700 text-200"
                         >
                             <span>Save</span>
                         </button>
                         <button
                             onClick={closeModal}
-                            className="w-40 p-2 transition border rounded border-primary hover:bg-primary text-200"
+                            className="w-40 p-2 transition rounded bg-primary hover:bg-orange-700 text-200"
                         >
                             Cancel
                         </button>
@@ -491,7 +491,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
             <ToastContainer position="top-center" />
             {open && (
                 <div className="modal">
-                    <div className="bg-400 rounded-lg p-[24px]">
+                    <div className="bg-400 rounded-lg p-[24px] border border-300">
                         <div className="flex justify-center text-2xl">
                             <span>Edit Product</span>
                         </div>
@@ -519,7 +519,7 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                                 </div>
                             </div>
                             <form>
-                                <div className="p-4 rounded-lg bg-300">
+                                <div className="p-4 rounded-lg">
                                     {selectedForm && (
                                         <DynamicForm
                                             labels={selectedForm}

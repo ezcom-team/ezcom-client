@@ -49,6 +49,7 @@ const Sell = ({ pid }) => {
                                 condition={order.Condition}
                                 color={order.Color}
                                 price={order.Price}
+                                sellerImg={order.Seller_img}
                                 sellerName={order.Seller_name}
                                 id={order.Product_id}
                             />

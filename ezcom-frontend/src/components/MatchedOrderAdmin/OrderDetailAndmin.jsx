@@ -1,3 +1,5 @@
+import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
+
 const OrderDetailAdmin = ({ order }) => {
     let type = "";
     let name = "";
@@ -19,9 +21,17 @@ const OrderDetailAdmin = ({ order }) => {
                     <div className="ml-2 text-base text-100">
                         {order.Product_name}
                     </div>
-                    <div className="flex ml-2">
-                        <div className="w-4 h-4 mt-1 bg-green-500 rounded-full"></div>
-                        <div className="ml-1">{order.Condition}</div>
+                    <div className="flex">
+                        <div className="flex ml-2">
+                            <div className="w-4 h-4 mt-1 bg-green-500 rounded-full"></div>
+                            <div className="ml-1">{order.Condition}</div>
+                        </div>
+                        {order.Verify === "Verified" && (
+                            <div className="flex ml-2">
+                                <CheckCircleRounded className="text-blue-500" />
+                                <div className="ml-1">{order.Verify}</div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

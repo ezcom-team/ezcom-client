@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
 import "react-toastify/dist/ReactToastify.css";
 
 const BuyCard = ({ order }) => {
@@ -50,13 +51,21 @@ const BuyCard = ({ order }) => {
         <div className="max-w-[95vw] xl:max-w-[75vw] mx-auto gap-10 mt-3">
             <div className="grid grid-cols-[30%_10%_8%_18%_18%_15%] bg-300 py-3 mb-1  text-200 rounded-md">
                 <div className="flex justify-center my-auto">
-                    <div className="flex h-20">
+                    <div className="flex h-20 ml-5">
                         <img
                             src={order.Product_img}
                             className="max-h-full max-w-full"
                         />
-                        <div className="my-auto mx-[16px]">
-                            {order.Product_name}
+                        <div className="my-auto">
+                            <div className="my-auto ml-[8px]">
+                                {order.Product_name}
+                            </div>
+                            {order.Verify === "Verified" && (
+                                <div className="flex my-auto pl-[8px]">
+                                    <CheckCircleRounded className="text-blue-500 mr-[4px]" />
+                                    Verified
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
