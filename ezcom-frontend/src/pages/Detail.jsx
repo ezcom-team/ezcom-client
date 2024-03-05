@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
-import Productdetail from "src/components/ProductDetail/Productdetail";
-import BuyOrSellOrTrade from "src/components/HeaderDetailPage/BuyOrSellOrTrade";
+import Productdetail from "../components/ProductDetail/Productdetail";
+import BuyOrSellOrTrade from "../components/HeaderDetailPage/BuyOrSellOrTrade";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Loading } from "src/components/Loading/Loading.jsx";
+import { Loading } from "../components/Loading/Loading.jsx";
 
 function Detail() {
     const { id } = useParams();
