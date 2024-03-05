@@ -7,9 +7,9 @@ const OrderDetailAdmin = ({ order }) => {
   const formattedTime = dateObject.toLocaleString();
 
   if (order.Seller_name) {
-    type = "Buy";
-  } else if (order.Buyer_name) {
     type = "Sell";
+  } else if (order.Buyer_name) {
+    type = "Buy";
   } else {
     type = "No transaction information available";
   }
