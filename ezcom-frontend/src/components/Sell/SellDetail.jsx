@@ -1,6 +1,5 @@
 import picProduct from '../../img/testPic.png'
-import p1 from '../../img/p1.jpg'
-import p2 from '../../img/p2.jpg'
+
 import { useState } from 'react'
 import Payment from '../Modal/Payment'
 // import "../style.css";
