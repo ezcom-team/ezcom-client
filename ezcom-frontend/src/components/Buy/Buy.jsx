@@ -45,17 +45,9 @@ const Buy = ({ pid }) => {
                 </div>
             ) : (
                 <div>
-                    {buyOrders
-                        .sort((a, b) => a.Price - b.Price)
-                        .map((order) => (
-                            <BuyDetail
-                                conditions={order.Condition}
-                                buyerImg={order.Buyer_img}
-                                colors={order.Color}
-                                buyerName={order.Buyer_name}
-                                price={order.Price}
-                            />
-                        ))}
+                    {buyOrders.sort((a, b) => b.Price - a.Price).map((order) => (
+                        <BuyDetail conditions={order.Condition} buyerImg={order.Buyer_img} colors={order.Color} buyerName={order.Buyer_name} price={order.Price} />
+                    ))}
                 </div>
             )}
         </div>

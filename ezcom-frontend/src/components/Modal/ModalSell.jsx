@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style.css";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import ModalTellDetail from "./ModalTellDetail";
 
 const ModalSell = ({
     product,
@@ -14,11 +15,15 @@ const ModalSell = ({
     const [condition, setCondition] = useState("");
     const [showTip, setShowTip] = useState(false);
 
-    function showToast(bool, text) {
-        if (bool) {
-            toast.success(text);
-        } else toast.error(text);
-    }
+    const [response, setResponse] = useState({});
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+    // function showToast(bool, text) {
+    //     if (bool) {
+    //         toast.success(text);
+    //     } else toast.error(text);
+    // }
 
     const handleConditionChange = (event) => {
         setCondition(event.target.value);
@@ -32,9 +37,10 @@ const ModalSell = ({
         setColor(event.target.value);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         createOrder();
-        setisBuyModalOpen(false);
+        // setIsModalOpen(true);
     };
 
     const closeModal = () => {
@@ -61,15 +67,17 @@ const ModalSell = ({
                     },
                 }
             );
-            console.log("Created order", response.data);
+            console.log("This is response ", response.data);
+            setResponse(response.data);
         } catch (error) {
-            showToast(false, "Fetch Error");
+            // showToast(false, "Fetch Error");
             console.log("error is ....");
             console.error("Fetch Error", error);
         }
+        setIsModalOpen(true);
 
         resetDataToSend();
-        window.location.reload();
+        // window.location.reload();
     }
 
     const resetDataToSend = () => {
@@ -82,6 +90,7 @@ const ModalSell = ({
         <div>
             {isBuyModalOpen && (
                 <div className="modal ">
+                    <ModalTellDetail response={response} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
                     <div className="bg-400 rounded border border-300">
                         <div className="flex justify-center text-200 text-base mt-[32px]">
                             <span>Sell order</span>
