@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
-import Productdetail from "../components/ProductDetail/Productdetail";
+import Productdetail from "../components/ProductDetail/Productdetail.jsx";
 import BuyOrSellOrTrade from "../components/HeaderDetailPage/BuyOrSellOrTrade";
 import { useParams } from "react-router-dom";
 import axios from "axios";
