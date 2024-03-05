@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
-import Productdetail from "../components/ProductDetail/Productdetail.jsx";
+import ProductDetail from "../components/ProductDetail/ProductDetail";
 import BuyOrSellOrTrade from "../components/HeaderDetailPage/BuyOrSellOrTrade";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -101,7 +101,7 @@ function Detail() {
             <Nav />
             {loading === false ? (
                 <div>
-                    <Productdetail
+                    <ProductDetail
                         product={data}
                         spec={spec}
                         highestBuyOrder={highestPrice}

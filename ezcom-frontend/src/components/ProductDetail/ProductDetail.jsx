@@ -16,7 +16,7 @@ import {
     mousePadDetails,
 } from "./SpecDetail.jsx";
 
-function Productdetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
+function ProductDetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
     const [isBuyModalOpen, setisBuyModalOpen] = useState(false);
     const [isSellModalOpen, setisSellModalOpen] = useState(false);
     const [isMoreDetail, setIsMoreDetail] = useState(false);
@@ -181,4 +181,4 @@ function Productdetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
     );
 }
 
-export default Productdetail;
+export default ProductDetail;
