@@ -1,12 +1,12 @@
 import axios from "axios";
 import TrackingNumber from "../Modal/TrackingNumber";
 import { useState } from "react";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
-import Verified from "@mui/icons-material/Verified";
+
 const HistoryCard = ({
     orderID,
     productImg,
+    productName,
     price,
     traderImg,
     trader,
@@ -47,7 +47,7 @@ const HistoryCard = ({
     };
 
     return (
-        <div className="grid grid-cols-[25%_15%_25%_15%_20%] bg-300 py-3 mb-1 mt-3 text-200 rounded-md">
+        <div className="grid grid-cols-[30%_10%_25%_15%_20%] bg-300 py-3 mb-1 mt-3 text-200 rounded-md">
             {showSentModal ? (
                 <TrackingNumber
                     orderID={orderID}
@@ -57,15 +57,18 @@ const HistoryCard = ({
                 <></>
             )}
 
-            <div className="flex justify-center align-middle">
+            <div className="justify-center align-middle">
                 <div className="h-20 ml-5 flex my-auto">
                     <img src={productImg} className="max-w-full max-h-full" />
-                    {verify === "Verified" && (
-                        <div className="flex my-auto pl-[8px]">
-                            <CheckCircleRounded className="text-blue-500 mr-[4px]" />
-                            Verified
-                        </div>
-                    )}
+                    <div className="my-auto m-[8px]">
+                        <div>{productName}</div>
+                        {verify === "Verified" && (
+                            <div className="flex my-auto pl-[8px]">
+                                <CheckCircleRounded className="text-blue-500 mr-[4px]" />
+                                Verified
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
             <div className="flex justify-center align-middle">

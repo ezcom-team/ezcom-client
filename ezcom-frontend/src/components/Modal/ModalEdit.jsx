@@ -94,7 +94,7 @@ const ModalEdit = ({ user, isBuyModalOpen, setisBuyModalOpen }) => {
         <div>
             {isBuyModalOpen && (
                 <div className="modal">
-                    <div className="p-6 rounded-md bg-400">
+                    <div className="p-6 rounded-md bg-400 border border-300">
                         <div className="flex justify-center text-2xl text-100">
                             <span>Edit User Profile</span>
                         </div>

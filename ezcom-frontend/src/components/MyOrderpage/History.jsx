@@ -22,6 +22,7 @@ const History = () => {
                         },
                     }
                 );
+                console.log(response.data);
                 setMatchOrder(response.data);
                 setLoading(false);
             } catch (error) {
@@ -34,7 +35,7 @@ const History = () => {
 
     return (
         <div className=" min-w-full bg-400 p-5 rounded-b-md">
-            <div className="grid grid-cols-[25%_15%_25%_15%_20%]  text-200 rounded-md pb-2">
+            <div className="grid grid-cols-[30%_10%_25%_15%_20%]  text-200 rounded-md pb-2">
                 <div className="flex justify-center">Items</div>
                 <div className="flex justify-center">Price</div>
                 <div className="flex justify-center">Trader</div>
@@ -54,6 +55,7 @@ const History = () => {
                                             ? order.Product_img
                                             : "https://github.com/identicons/sumetsm.png"
                                     }
+                                    productName={order.Product_name}
                                     price={order.Price}
                                     traderImg={
                                         order.Seller_id === userId

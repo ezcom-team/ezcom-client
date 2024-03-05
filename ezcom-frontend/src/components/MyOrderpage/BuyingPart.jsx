@@ -38,7 +38,7 @@ const Buying = () => {
                 <div className="flex justify-center">Condition</div>
                 <div className="flex justify-center">Color</div>
                 <div className="flex justify-center">Create Time</div>
-                <div className="flex justify-center">Status</div>
+                <div className="flex justify-center"></div>
             </div>
             <hr className="h-[2px] border-0 bg-300"></hr>
             {loading ? (
