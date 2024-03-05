@@ -4,14 +4,15 @@ import p2 from '../../img/p2.jpg'
 import { useState } from 'react'
 import Payment from '../Modal/Payment'
 import "../modal/style.css";
-const SellDetail = ({ condition, color, sellerName, price }) => {
+import Verify from '../Modal/Verify'
+const SellDetail = ({ condition, color,sellerName, price ,id}) => {
 
     const [isPaymentOpen, setIsPaymentOpen] = useState(false)
     const [formData, setFormData] = useState({
-        condition: condition,
-        color: color,
-        sellerName: sellerName,
+        condition: [condition],
+        color: [color],
         price: price,
+        product_id: id,
 
     })
 
@@ -32,12 +33,12 @@ const SellDetail = ({ condition, color, sellerName, price }) => {
                 return 'bg-white';
         }
     }
-
+    // console.log("---color condition---",condition , color)
     return (
         <div>
             {isPaymentOpen && (
                 <div className='modal'>
-                    <Payment dataToSend={formData} isPaymentModalOpen={isPaymentOpen} setIsPaymentModalOpen={setIsPaymentOpen} />
+                    <Verify dataToSend={formData} isPaymentModalOpen={isPaymentOpen} setIsPaymentModalOpen={setIsPaymentOpen}/>
                 </div>
             )}
             <div className="grid grid-cols-[15%_40%_15%_15%_15%] bg-300 py-3 mb-1 text-200 rounded-md">

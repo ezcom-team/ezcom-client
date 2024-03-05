@@ -67,7 +67,7 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
 
   return (
     <div className="grid grid-cols-[15%_40%_15%_15%_15%] bg-300 py-3 mb-1 text-200 rounded-md">
-      <div className="flex my-auto">
+      <div className="flex my-auto justify-center">
         {conditions.map(condition => (
           <div
             className={`flex justify-center mx-1 p-[2px] rounded-3xl w-[44px] h-[28px] font-bold ${getBackgroundColor(
