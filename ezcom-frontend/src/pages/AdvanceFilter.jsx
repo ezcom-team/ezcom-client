@@ -93,7 +93,7 @@ export const AdvanceFilter = () => {
         const box = {};
         let keys = Object.keys(filterKey);
         let countKey = keys.length;
-        if (keys) {
+        if (!keys) {
             console.log("in if by range")
             spec.map((item) => {
                 storedID.push(item.PID);
