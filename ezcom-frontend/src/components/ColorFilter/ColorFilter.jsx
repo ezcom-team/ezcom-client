@@ -33,8 +33,6 @@ export const ColorFilter = ({ onColorChange }) => {
         onColorChange([]);
     };
 
-    console.log(color);
-
     return (
         <div>
             <div className="w-[160px] lg:w-[200px] xl:w-[240px] px-2.5 py-3 lg:p-3 bg-300 text-200 rounded-lg flex flex-col justify-between align-middle lg:text-base">

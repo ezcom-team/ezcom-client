@@ -72,29 +72,8 @@ const ModalBuy = ({
             product_id: product.ID,
             verify: verified,
         };
-        // console.log("my buy order ");
-        // console.log(dataToSend);
         setData(dataToSend);
-        // console.log(data)
-        // try {
-        //   const response = await axios.post(
-        //     `https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
-        //     dataToSend,
-        //     {
-        //       headers: {
-        //         Authorization: token,
-        //       },
-        //     }
-        //   );
-        //   console.log("Created order", response.data);
-        // } catch (error) {
-        //   showToast(false, "Fetch Error")
-        //   console.log("error is ....");
-        //   console.error("Fetch Error", error);
-        // }
-
         resetDataToSend();
-        // window.location.reload();
     }
 
     const resetDataToSend = () => {
@@ -116,8 +95,6 @@ const ModalBuy = ({
                 return "bg-white";
         }
     };
-
-    console.log(verified);
 
     return (
         <div>

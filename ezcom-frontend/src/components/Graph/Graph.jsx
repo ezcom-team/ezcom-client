@@ -33,8 +33,6 @@ const Graph = () => {
         setOpenModal(!openModal);
     };
 
-    // console.log("🚀 ~ Graph ~ allProduct:", allProduct);
-
     return (
         <div className="mx-auto px-10 rounded-md">
             <div className="text-200 flex justify-center mb-[24px] text-4xl">

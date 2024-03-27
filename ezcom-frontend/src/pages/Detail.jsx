@@ -51,10 +51,6 @@ function Detail() {
                 highestBuyOrder(responeOrder.data);
                 recentMatchedOrder(responeMatchedOrder.data);
                 setLoading(false);
-                console.log(
-                    "🚀 ~ fetchData ~ responeMatchedOrder:",
-                    responeMatchedOrder.data
-                );
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -62,8 +58,6 @@ function Detail() {
 
         fetchData();
     }, []);
-
-    console.log(data);
 
     const highestBuyOrder = (orders) => {
         if (orders !== null) {
@@ -95,7 +89,6 @@ function Detail() {
         setRecentPrice(mostRecentOrder ? mostRecentOrder.Price : 0);
     };
 
-    // console.log(id)
     return (
         <div className="bg-back">
             <Nav />

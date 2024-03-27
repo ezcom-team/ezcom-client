@@ -64,7 +64,6 @@ function Admin() {
                         },
                     }
                 );
-                console.log(usersResponse.data.length);
                 setUsers(usersResponse.data.length);
 
                 const itemsResponse = await axios.get(
@@ -75,7 +74,6 @@ function Admin() {
                         },
                     }
                 );
-                // console.log(itemsResponse.data);
                 setItems(itemsResponse.data.length);
 
                 const itembuyResponse = await axios.get(
@@ -86,7 +84,6 @@ function Admin() {
                         },
                     }
                 );
-                // console.log("itembuy data:", itembuyResponse.data);
 
                 const itemsellResponse = await axios.get(
                     `https://ezcom-backend-production-09b5.up.railway.app/order/sells`,
@@ -96,11 +93,8 @@ function Admin() {
                         },
                     }
                 );
-                // console.log("itemsell data:", itemsellResponse.data);
 
-                const totalLength =
-                    itembuyResponse.data.length + itemsellResponse.data.length;
-                // console.log("Total length:", totalLength);
+                const totalLength = itembuyResponse.data.length + itemsellResponse.data.length;
                 setOrders(totalLength);
             } catch (error) {
                 console.error("Fetch Error", error);

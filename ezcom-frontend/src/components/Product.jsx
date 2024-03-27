@@ -107,11 +107,8 @@ function Product() {
     ];
 
     const sendData = async (formData) => {
-        console.log("form data :", formData);
         try {
-            console.log("color is " + " : " + formData.color);
             // สร้าง request ด้วย Axios
-
             const response = await axios.post(
                 "https://ezcom-backend-production-09b5.up.railway.app/products",
                 formData,
@@ -121,8 +118,6 @@ function Product() {
                     },
                 }
             );
-            console.log(response.data);
-
             setSelectedForm("");
             setSelected("");
             success("Create product success");
@@ -162,17 +157,15 @@ function Product() {
                     [name]: value,
                 });
             }
-            console.log(formData);
         };
 
         const handleSubmit = (e) => {
             e.preventDefault();
 
-            let data = new FormData(); // สร้าง FormData ใหม่
+            // สร้าง FormData ใหม่
+            let data = new FormData();
 
             labels.map((label) => {
-                // temp = label.id;
-                console.log("check : ", label.id, formData[label.id]);
                 if (label.id === "color") {
                     formData[label.id].forEach((element) => {
                         data.append(label.id, element);
@@ -181,7 +174,6 @@ function Product() {
             });
 
             // ส่ง FormData ไปยังเซิร์ฟเวอร์
-            console.log("before sens :", data);
             sendData(data);
         };
 

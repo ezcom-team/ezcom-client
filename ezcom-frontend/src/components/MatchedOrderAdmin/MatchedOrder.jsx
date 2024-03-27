@@ -20,7 +20,6 @@ const MatchedOrder = () => {
                         },
                     }
                 );
-                console.log(response.data);
                 setOrder(response.data);
                 setLoading(false)
             } catch (error) {

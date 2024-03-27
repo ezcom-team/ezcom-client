@@ -22,7 +22,6 @@ const ProcessPage = () => {
                         },
                     }
                 );
-                console.log(response.data);
                 setMatchedOrder(response.data);
                 setLoading(false);
             } catch (error) {
@@ -35,11 +34,7 @@ const ProcessPage = () => {
 
     const handleActive = (status) => {
         setCurrentStatus(status);
-
-        console.log("---", currentStatus);
     };
-
-    // console.log(matchedOrder);
 
     return (
         <div className="flex justify-center">

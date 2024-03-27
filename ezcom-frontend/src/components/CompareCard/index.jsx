@@ -13,8 +13,6 @@ export const CompareCard = (props) => {
       props.onAddToCompare(props.id);
     }
   }
-  
-  console.log(selectedItemId)
 
   return (
       <div onClick={() => addToCompare(props.id)} className='m-5 w-52 h-[240px] p-2 bg-300 hover-drop-shadow shadow-lg hover:shadow-black rounded-lg flex justify-center cursor-pointer'>

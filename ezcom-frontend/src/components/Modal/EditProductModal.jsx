@@ -78,16 +78,12 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
             const response = await axios.delete(
                 `https://ezcom-backend-production-09b5.up.railway.app/products/${item.ID}`
             );
-            console.log(response.data);
             showToast(true, "Success from");
         } catch (error) {
             console.error("Error sending request:", error);
             showToast(false, "Error sending request");
         }
     };
-
-    console.log("🚀 ~ EditProductModal ~ itemID:", item.ID);
-    console.log("🚀 ~ EditProductModal ~ itemSpec:", item.Specs);
 
     const mouse = [
         { id: "image", text: "Image", type: "file" },
@@ -198,13 +194,9 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
         const [formData, setFormData] = useState(combinedObj);
         const [colors, setColors] = useState([]);
 
-        console.log("🚀 ~ DynamicForm ~ combinedObj:", combinedObj);
-        console.log("🚀 ~ DynamicForm ~ initialData:", initialData);
-
         const handleInputChange = (e) => {
             const { name, value, files, checked } = e.target;
             if (name === "Image") {
-                console.log("🚀 ~ handleInputChange ~ name:", name);
                 setFormData({
                     ...formData,
                     Image: files[0],
@@ -220,14 +212,12 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                     ); // ลบค่าที่ถูก uncheck ออกจากอาร์เรย์
                 }
                 setColors(updatedArray);
-                console.log("color === ", updatedArray);
             } else {
                 setFormData({
                     ...formData,
                     [name]: value,
                 });
             }
-            console.log("🚀 ~ handleInputChange ~ :", formData["Color"]);
         };
 
         const handleSubmit = (e) => {
@@ -236,8 +226,6 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
             let data = new FormData(); // สร้าง FormData ใหม่
 
             labels.map((label) => {
-                // temp = label.id;
-                console.log("check : ", label.id, formData[label.text]);
                 if (label.id === "color") {
                     colors.forEach((element) => {
                         data.append(label.id, element);
@@ -246,19 +234,15 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
             });
             data.append("specs", item.Specs);
             data.append("pID", spec.PID);
-            console.log("check : ", "specs", item.Specs);
 
             // ส่ง FormData ไปยังเซิร์ฟเวอร์
-            console.log("before sens :", data);
             sendData(data);
             showToast(true, "Success before sent");
             setIsOpen(false);
         };
 
         const sendData = async (data) => {
-            console.log("form data :", data);
             try {
-                console.log("color is " + " : " + data.color);
                 // สร้าง request ด้วย Axios
 
                 const response = await axios.put(
@@ -270,7 +254,6 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                         },
                     }
                 );
-                console.log(response.data);
                 showToast(true, "Success sent data");
             } catch (error) {
                 // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
@@ -278,8 +261,6 @@ export const EditProductModal = ({ open, item, setIsOpen }) => {
                 showToast(false, "Error sending request:");
             }
         };
-
-        console.log(formData.image);
 
         return (
             <div>

@@ -41,7 +41,6 @@ function Landing() {
     // merge filter
 
     const handleSearchChange = (filterValue) => {
-        console.log("SearchValue = ", filterValue);
         setSearchFilters(filterValue);
 
         const newData = allData.filter((product) => {
@@ -65,7 +64,6 @@ function Landing() {
     };
 
     const handleTypeChange = (filterValue) => {
-        console.log("Filtervalue = ", filterValue);
         setTypeFilters(filterValue);
 
         const newData = allData.filter((product) => {
@@ -87,7 +85,6 @@ function Landing() {
     };
 
     const handleColorChange = (color) => {
-        console.log("🚀 ~ colorChangeHandler ~ colorFilters:", color);
         setColorFilters(color);
 
         const newData = allData.filter((product) => {
@@ -108,7 +105,6 @@ function Landing() {
     };
 
     const handlePriceChange = (price) => {
-        console.log("Price = ", price);
         setPriceFilters(price);
 
         const newData = allData.filter((product) => {

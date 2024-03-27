@@ -38,7 +38,6 @@ const BuyCard = ({ order }) => {
                     },
                 }
             );
-            console.log(response.data);
             showToast(true, "Success");
         } catch (error) {
             console.error("Error sending request:", error);
@@ -46,7 +45,6 @@ const BuyCard = ({ order }) => {
         }
     };
 
-    console.log(order);
     return (
         <div className="max-w-[95vw] xl:max-w-[75vw] mx-auto gap-10 mt-3">
             <div className="grid grid-cols-[30%_10%_8%_18%_18%_15%] bg-300 py-3 mb-1  text-200 rounded-md">

@@ -41,20 +41,17 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting form with data:", formData);
 
     // Concatenate first name and last name into a single field
     const fullName = `${formData.fname} ${formData.lname}`;
     const fullAddress = `${formData.address} ${formData.zip}`;
 
-    // console.log("fullname", fullName)
     // Create a new object with the updated formData
     const updatedFormData = {
       ...formData,
       name: fullName,
       address: fullAddress,
     };
-    console.log("Updateformdata: ", updatedFormData);
 
     delete updatedFormData.confirmPassword;
     delete updatedFormData.zip;
@@ -64,7 +61,6 @@ const Register = () => {
     delete updatedFormData.lname;
 
     try {
-      // console.log("string" + " : " + updatedFormData.name);
       const response = await axios.post(
         "https://ezcom-backend-production-09b5.up.railway.app/auth/register",
         updatedFormData,
@@ -76,7 +72,6 @@ const Register = () => {
       );
 
       if (response.status === 200) {
-        console.log("resposedata:", response.data);
         navigate("/login");
       } else {
         console.error("Register failed");

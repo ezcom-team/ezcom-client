@@ -22,7 +22,6 @@ const History = () => {
                         },
                     }
                 );
-                console.log(response.data);
                 setMatchOrder(response.data);
                 setLoading(false);
             } catch (error) {

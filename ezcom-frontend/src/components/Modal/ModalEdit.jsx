@@ -23,14 +23,11 @@ const ModalEdit = ({ user, isBuyModalOpen, setisBuyModalOpen }) => {
         data.append("phoneNumber", user.PhoneNumber);
         data.append("createdAt", user.CreatedAt);
         e.preventDefault();
-        // console.log("formDataSubmit",data)
-        console.log("formDataSubmit", formData);
         sendData(data);
         closeModal();
     };
 
     const sendData = async (data) => {
-        console.log("form data :", data);
         const token = localStorage.getItem("access-token");
         try {
             // สร้าง request ด้วย Axios
@@ -45,36 +42,12 @@ const ModalEdit = ({ user, isBuyModalOpen, setisBuyModalOpen }) => {
                     },
                 }
             );
-            console.log(response.data);
         } catch (error) {
             showToast(false, "Error sending request");
             // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
             console.error("Error sending request:", error);
         }
     };
-
-    //   const handleSubmit = (e) => {
-    //     e.preventDefault();
-
-    //     let data = new FormData(); // สร้าง FormData ใหม่
-
-    //     labels.map((label) => {
-    //         // temp = label.id;
-    //         console.log("check : ", label.id, formData[label.text]);
-    //         if (label.id === "color") {
-    //             colors.forEach((element) => {
-    //                 data.append(label.id, element);
-    //             });
-    //         } else data.append(label.id, formData[label.text]);
-    //     });
-    //     data.append("specs", item.Specs);
-    //     console.log("check : ", "specs", item.Specs);
-
-    //     // ส่ง FormData ไปยังเซิร์ฟเวอร์
-    //     console.log("before sens :", data);
-    //     sendData(data);
-    //     setIsOpen(false);
-    // };
 
     const handleInputChange = (event) => {
         setFormData({
@@ -89,7 +62,7 @@ const ModalEdit = ({ user, isBuyModalOpen, setisBuyModalOpen }) => {
             [event.target.id]: event.target.files[0],
         });
     };
-    console.log("modalEdit:", user.Name);
+
     return (
         <div>
             {isBuyModalOpen && (

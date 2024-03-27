@@ -6,7 +6,6 @@ import "./style.css";
 const ModalTellDetail = ({ response, isModalOpen, setIsModalOpen }) => {
     const [text, setText] = useState("");
     const [textStatus, setTextStatus] = useState("");
-    console.log("hear---", response);
 
     useEffect(() => {
         if (response && response.type === "buyOrder") {

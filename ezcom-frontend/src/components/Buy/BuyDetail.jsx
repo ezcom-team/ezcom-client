@@ -2,8 +2,6 @@ import { useState } from "react";
 import p1 from "../../img/p1.jpg";
 
 const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
-    // console.log(colors);
-
     const [formData, setFormData] = useState({
         conditions: conditions,
         colors: colors,
@@ -34,14 +32,13 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
             buyerImg: "",
         });
     };
-    // console.log("checkformdata",formData)
+
     async function createOrder() {
         const token = localStorage.getItem("access-token");
         const dataToSend = {
             ...formData,
         };
-        console.log("my sell order ");
-        console.log("datasent", dataToSend);
+
         try {
             const response = await axios.post(
                 `https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
@@ -52,10 +49,7 @@ const BuyDetail = ({ conditions, colors, buyerName, price, buyerImg }) => {
                     },
                 }
             );
-            console.log("Created order ----", response.data);
         } catch (error) {
-            // showToast(false, "Fetch Error")
-            console.log("error is ....");
             console.error("Fetch Error", error);
         }
 

@@ -24,9 +24,6 @@ const Account = ({ openModalBuy }) => {
                         }
                     ),
                 ]);
-
-                // console.log("Response from /order/sells:", userData.data);
-
                 setUsers(userData.data); // Corrected line
                 setLoading(false);
             } catch (error) {

@@ -40,7 +40,6 @@ function index() {
 
     const checkValidateHandler = async () => {
         const token = localStorage.getItem("access-token");
-        console.log(token);
         try {
             const response = await axios.get(
                 `https://ezcom-backend-production-09b5.up.railway.app/auth/validate`,
@@ -60,8 +59,6 @@ function index() {
                 }
             );
             success("login already");
-            console.log(response.data);
-            console.log("Role", responseRole.data.Role);
 
             if (responseRole.data.Role === "admin") setUserRole(true);
         } catch (error) {

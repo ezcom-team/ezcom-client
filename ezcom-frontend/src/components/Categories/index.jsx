@@ -41,7 +41,6 @@ export const Categories = ({ onFilterChange }) => {
         setFilter([]);
         onFilterChange([]);
     };
-    console.log("filter", filter);
 
     return (
         <div>

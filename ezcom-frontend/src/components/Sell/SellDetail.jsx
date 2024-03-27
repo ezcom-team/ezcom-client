@@ -13,7 +13,6 @@ const SellDetail = ({ condition, color, sellerImg, sellerName, price, id }) => {
         product_id: id,
     });
 
-    console.log(formData);
     const popUp = () => {
         setIsPaymentOpen(true);
     };
@@ -30,7 +29,7 @@ const SellDetail = ({ condition, color, sellerImg, sellerName, price, id }) => {
                 return "bg-white";
         }
     };
-    // console.log("---color condition---",condition , color)
+
     return (
         <div>
             {isPaymentOpen && (
