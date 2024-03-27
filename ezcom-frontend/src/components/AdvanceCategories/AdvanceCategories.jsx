@@ -95,6 +95,7 @@ export const AdvanceCategories = ({
                 Glide: [],
             });
         } else if (event.target.value === "monitor") {
+            setInputValue({});
             setCheckboxValue({
                 Aspect_Ratio: [],
                 Refresh_Rate: [],
@@ -168,7 +169,6 @@ export const AdvanceCategories = ({
 
     const handleCheckboxChange = async (e) => {
         const updatedCheckboxValue = (() => {
-            // console.log("eeeee", checkboxValue[e.target.id], e.target.value);
             if (checkboxValue[e.target.id].includes(e.target.value)) {
                 let index = checkboxValue[e.target.id].indexOf(e.target.value);
                 if (index !== -1) {
@@ -191,9 +191,6 @@ export const AdvanceCategories = ({
         setCheckboxValue(updatedCheckboxValue);
         onCheckboxChange(typeFilters, color, inputValue, updatedCheckboxValue);
     };
-    // console.log("🚀 ~ handleCheckboxChange ~ setCheckboxValue:", checkboxValue);
-
-    const submitFilter = () => {};
 
     return (
         <div>

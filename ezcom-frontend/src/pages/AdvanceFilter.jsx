@@ -26,7 +26,6 @@ export const AdvanceFilter = () => {
                 setAllData(responseData.data);
                 setData(responseData.data);
                 setLoading(false);
-                // console.log("🚀 ~ fetchData ~ setData:", responseData.data);
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -65,16 +64,12 @@ export const AdvanceFilter = () => {
     };
 
     const handleTypeChange = ({ typeFilters, colorFilters }) => {
-        // console.log("Adv Filtervalue = ", typeFilters);
-        // console.log("Color Filters = ", colorFilters);
         async function fetchData() {
             const responseSpec = await axios.get(
                 `https://ezcom-backend-production-09b5.up.railway.app/products/specs/${typeFilters}`
             );
             setAllSpec(responseSpec.data);
             setSpec(responseSpec.data);
-
-            console.log("🚀 ~ fetchData ~ setSpec:", allSpec);
         }
         fetchData();
 
@@ -88,13 +83,22 @@ export const AdvanceFilter = () => {
         setData(newData);
     };
 
+    const handleNumberChange = (type, colorValue, filterValue, checkValue) => {
+        setNumberValue(filterValue);
+        combinedFilter(type, colorValue, filterValue, checkValue);
+    };
+
+    const handleCheckboxChange = (type, colorValue, n, c) => {
+        setCheckboxValue(c);
+        combinedFilter(type, colorValue, n, c);
+    };
+
     const filterByRange = (spec, filterKey) => {
         const storedID = [];
         const box = {};
         let keys = Object.keys(filterKey);
         let countKey = keys.length;
-        if (!keys) {
-            console.log("in if by range")
+        if (Object.keys(filterKey).length == 0) {
             spec.map((item) => {
                 storedID.push(item.PID);
             });
@@ -103,9 +107,6 @@ export const AdvanceFilter = () => {
         spec.map((item) => {
             for (const key in filterKey) {
                 const itemValue = parseFloat(item[key]);
-                // console.log("🚀 ~ spec.map ~ itemValue:", itemValue);
-                // console.log("🚀 ~ spec.map ~ key 0 :", filterKey[key][0]);
-                // console.log("🚀 ~ spec.map ~ key 1 :", filterKey[key][1]);
                 if (
                     itemValue >= parseFloat(filterKey[key][0]) &&
                     itemValue <= parseFloat(filterKey[key][1])
@@ -127,18 +128,13 @@ export const AdvanceFilter = () => {
         return storedID;
     };
 
-    const handleNumberChange = (type, colorValue, filterValue, checkValue) => {
-        setNumberValue(filterValue);
-        combinedFilter(type, colorValue, filterValue, checkValue);
-    };
-
     const filterByCheckbox = (spec, filterKey) => {
         const storedID = [];
         const box = {};
         let keys = Object.keys(filterKey);
         let countKey = keys.length;
+        
         if (Object.keys(filterKey).length == 0) {
-            console.log("in if by checkbox")
             spec.map((item) => {
                 storedID.push(item.PID);
             });
@@ -146,14 +142,10 @@ export const AdvanceFilter = () => {
         }
         spec.map((item) => {
             for (const key in filterKey) {
-                // console.log("fil keyyyyy", filterKey[key]);
-                // console.log("item keyyyyy", item[key]);
-                // console.log("key length", filterKey[key].length);
                 if (
                     filterKey[key].length === 0 ||
                     filterKey[key].includes(item[key])
                 ) {
-                    console.log("true");
                     if (!(item.PID in box)) {
                         box[item.PID] = 1;
                     } else {
@@ -162,7 +154,6 @@ export const AdvanceFilter = () => {
                 }
             }
         });
-        console.log("boxx", box);
         for (const id in box) {
             if (box[id] == countKey) {
                 storedID.push(id);
@@ -171,12 +162,6 @@ export const AdvanceFilter = () => {
         // [id, id]
 
         return storedID;
-    };
-
-    const handleCheckboxChange = (type, colorValue, n, c) => {
-        console.log("🚀 ~ handleCheckboxChange ~ c:", colorValue);
-        setCheckboxValue(c);
-        combinedFilter(type, colorValue, n, c);
     };
 
     const combinedFilter = (
@@ -188,22 +173,15 @@ export const AdvanceFilter = () => {
         const newID = filterByColor(allData, typeFilters, colorValue);
         const newID1 = filterByRange(allSpec, numberValue);
         const newID2 = filterByCheckbox(allSpec, checkboxValue);
-        console.log("🚀 ~ combinedFilter ~ newID:", newID);
-        console.log("🚀 ~ combinedFilter ~ newID1:", newID1);
-        console.log("🚀 ~ combinedFilter ~ newID2:", newID2);
-
         const combinedID = newID.filter(
             (value) => newID1.includes(value) && newID2.includes(value)
         );
-        console.log("🚀 ~ combinedFilter ~ combinedID:", combinedID);
 
         setPID(combinedID);
         const newData = allData.filter((item) => combinedID.includes(item.ID));
         setData(newData);
     };
 
-    // console.log("🚀 ~ combinedFilter ~ numberValue:", numberValue);
-    // console.log("🚀 ~ combinedFilter ~ checkboxValue:", checkboxValue);
     return (
         <div>
             <Nav />
