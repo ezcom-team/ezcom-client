@@ -70,7 +70,6 @@ export const Compare = () => {
 
                 setMoreData((moreData) => [...moreData, responseProduct.data]);
                 setMoreSpec((moreSpec) => [...moreSpec, responseSpec.data]);
-                console.log(" ---- ", moreData);
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -88,8 +87,6 @@ export const Compare = () => {
 
     const handleAddToCompare = (itemId) => {
         setSelectedItemId(itemId);
-        console.log("Selected item ID at compare:", selectedItemId);
-        console.log("here :", moreData);
     };
 
     const handleMoreCompareDelete = (index) => {

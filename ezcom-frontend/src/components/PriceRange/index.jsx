@@ -18,7 +18,6 @@ export const PriceRange = ({ onPriceChange }) => {
         setPrice(e.target.value);
         onPriceChange(e.target.value);
     };
-    // console.log('price', price);
 
     return (
         <div>

@@ -12,7 +12,6 @@ const AccountDetail = ({ user, openModalBuy }) => {
     if (!user.File) {
         user.File = "https://github.com/identicons/sumetsm.png";
     }
-    console.log(" accountde" + user);
 
     return (
         <div className="grid grid-cols-[20%_25%_25%_10%_10%_10%]  bg-300 py-3 mb-[8px] rounded-md ">

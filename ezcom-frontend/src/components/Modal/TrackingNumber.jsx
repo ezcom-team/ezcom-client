@@ -23,7 +23,6 @@ function TrackingNumber({ setShowSentModal, orderID }) {
                     },
                 }
             );
-            console.log(response.data);
             setShowSentModal(false);
         } catch (error) {
             console.error("Fetch Error", error);

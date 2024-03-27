@@ -29,10 +29,6 @@ const RealGraph = ({ pid, date }) => {
                 );
                 setMatchedOrder(responeMatchedOrder.data);
                 setLoading(false);
-                console.log(
-                    "🚀 ~ fetchData ~ responeMatchedOrder:",
-                    responeMatchedOrder.data
-                );
             } catch (error) {
                 console.error("Fetch Error", error);
             }
@@ -72,7 +68,6 @@ const RealGraph = ({ pid, date }) => {
                             <YAxis tick={{ fill: "#fff" }} />
                             <Tooltip />
                             <Legend />
-                            {/* <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={3} activeDot={{ r: 8 }} /> */}
                             <Line
                                 type="monotone"
                                 dataKey="Price"

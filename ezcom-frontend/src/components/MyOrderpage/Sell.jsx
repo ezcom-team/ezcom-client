@@ -20,7 +20,6 @@ const Sell = () => {
                         },
                     }
                 );
-                console.log(response.data);
                 setMySellOrder(response.data);
                 setLoading(false);
             } catch (error) {

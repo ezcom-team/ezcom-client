@@ -1,10 +1,6 @@
 import React from "react";
 
 export const MoreCompareSpec = ({ item, spec }) => {
-    // console.log(item.Specs)
-    // console.log(typeof(item.Specs))
-
-    // console.log('more spec = ', spec)
 
     return (
         <div>

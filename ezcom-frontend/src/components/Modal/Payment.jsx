@@ -46,13 +46,11 @@ const CreditCardForm = ({
         e.preventDefault();
         // Handle form submission logic (e.g., send data to payment gateway)
         const alldata = `${cardNumber} ${cardHolder} ${expiryDateMonth} ${expiryDateYear} ${cvv}`;
-        console.log("____alldata___", alldata);
 
         const updatedFormData = {
             ...dataToSend,
             creditCard: alldata,
         };
-        console.log("_______", updatedFormData);
         createOrder(updatedFormData);
         setIsModalOpen(true);
         // setIsPaymentModalOpen(false);
@@ -66,7 +64,6 @@ const CreditCardForm = ({
 
     async function createOrder(dataToSend) {
         const token = localStorage.getItem("access-token");
-        console.log("dataformPayment", dataToSend);
         try {
             const response = await axios.post(
                 `https://ezcom-backend-production-09b5.up.railway.app/order/buy`,
@@ -77,16 +74,11 @@ const CreditCardForm = ({
                     },
                 }
             );
-            console.log("This is response", response.data);
             setResponse(response.data)
         } catch (error) {
             showToast(false, "Fetch Error");
-            console.log("error is ....");
             console.error("Fetch Error", error);
         }
-
-        // resetDataToSend();
-        // window.location.reload();
     }
 
     function showToast(bool, text) {
@@ -94,7 +86,7 @@ const CreditCardForm = ({
             toast.success(text);
         } else toast.error(text);
     }
-    console.log("response data ----",response)
+
     return (
         <div>
             {isPaymentModalOpen && (

@@ -9,14 +9,12 @@ function Verify({ dataToSend, isPaymentModalOpen, setIsPaymentModalOpen }) {
 
     const yes = (e) => {
         setVerify("Verified");
-        console.log("yessssssssss", verify);
         setData();
         setIsPaymentOpen(true);
     };
 
     const no = (e) => {
         setVerify("");
-        console.log("nooooooo", verify);
         setData();
         setIsPaymentOpen(true);
     };
@@ -29,7 +27,6 @@ function Verify({ dataToSend, isPaymentModalOpen, setIsPaymentModalOpen }) {
         };
         setDataSent(temp);
     };
-    console.log("data----", dataToSend);
     return (
         <div className="modal">
             {isPaymentModalOpen && (

@@ -38,7 +38,6 @@ const SellCard = ({ order }) => {
                     },
                 }
             );
-            console.log(response.data);
             showToast(true, "Success");
         } catch (error) {
             console.error("Error sending request:", error);

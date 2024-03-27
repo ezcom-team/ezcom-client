@@ -37,7 +37,6 @@ const HistoryCard = ({
                     },
                 }
             );
-            console.log(response.data);
         } catch (error) {
             console.error("Fetch Error", error);
         }

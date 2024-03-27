@@ -44,7 +44,6 @@ export const AddCompare = ({
   const handleAddToCompare = itemId => {
     setOpen(false);
     setSelectedItemId(itemId);
-    console.log("Selected item ID:", itemId);
   };
 
   return (

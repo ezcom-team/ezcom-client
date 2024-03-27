@@ -18,8 +18,6 @@ const Buy = ({ pid }) => {
                         },
                     }
                 );
-                console.log(response.data);
-
                 setBuyOrders(response.data);
             } catch (error) {
                 console.error("Fetch Error", error);

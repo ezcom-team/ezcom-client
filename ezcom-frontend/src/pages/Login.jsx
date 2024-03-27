@@ -51,12 +51,10 @@ function Login() {
         email,
         password,
       });
-      console.log(response.data);
       // ตรวจสอบการตอบกลับจาก API
       if (response.status === 200) {
         success("Login Success")
         const cookieValue = document.cookie;
-        console.log(response.data.user);
         setDataUser(response.data.user);
         dispatch(setUser(response.data.user));
         localStorage.setItem(
@@ -84,14 +82,6 @@ function Login() {
           );
         }
         localStorage.setItem("access-token", response.data.token);
-        // localStorage.setItem("access-token", response.data.token);
-
-        if (response.data.token) {
-          console.log("your token is ", response.data.token);
-          // ทำสิ่งที่คุณต้องการด้วย token ที่อ่านได้
-        } else {
-          console.log("ไม่พบคุกกี้ token");
-        }
 
         // ดึง Token มาใช้งาน
         navigate("/landing");
@@ -105,7 +95,6 @@ function Login() {
       // ดำเนินการเมื่อมีข้อผิดพลาดในการส่ง request
       console.error("Error sending request:", error);
     }
-    // console.log(`Username: ${username}, Password: ${password}`);
   };
 
   const handleEmailFocus = () => {

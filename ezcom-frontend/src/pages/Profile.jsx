@@ -21,9 +21,7 @@ function Profile () {
                         },
                     }
                 );
-                console.log(response.data);
                 let formattedPhoneNumber = user.phoneNumber ? `${user.phoneNumber.slice(0, 2)}-${user.phoneNumber.slice(2, 6)}-${user.phoneNumber.slice(6)}` : '';
-                console.log("----------",formattedPhoneNumber);
                 setUser(response.data);
             } catch (error) {
                 console.error("Fetch Error", error);
@@ -32,10 +30,7 @@ function Profile () {
         
         fetchData();
     }, []);
-    console.log("user : ",user)
-    // console.log(data);
-    // console.log(formattedPhoneNumber)
-    // console.log(id)
+
     return (
         <div className="bg-back">
             <Nav />

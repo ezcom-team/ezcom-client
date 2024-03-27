@@ -55,8 +55,6 @@ const ModalSell = ({
             color,
             product_id: product.ID,
         };
-        console.log("my sell order ");
-        console.log(dataToSend);
         try {
             const response = await axios.post(
                 `https://ezcom-backend-production-09b5.up.railway.app/order/sell`,
@@ -67,17 +65,12 @@ const ModalSell = ({
                     },
                 }
             );
-            console.log("This is response ", response.data);
             setResponse(response.data);
         } catch (error) {
-            // showToast(false, "Fetch Error");
-            console.log("error is ....");
             console.error("Fetch Error", error);
         }
         setIsModalOpen(true);
-
         resetDataToSend();
-        // window.location.reload();
     }
 
     const resetDataToSend = () => {

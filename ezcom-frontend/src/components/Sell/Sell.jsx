@@ -17,8 +17,6 @@ const Sell = ({ pid }) => {
                         },
                     }
                 );
-                console.log(response.data);
-
                 setSellOrders(response.data);
             } catch (error) {
                 console.error("Fetch Error", error);
