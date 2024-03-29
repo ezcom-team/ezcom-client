@@ -94,7 +94,8 @@ function Admin() {
                     }
                 );
 
-                const totalLength = itembuyResponse.data.length + itemsellResponse.data.length;
+                const totalLength =
+                    itembuyResponse.data.length + itemsellResponse.data.length;
                 setOrders(totalLength);
             } catch (error) {
                 console.error("Fetch Error", error);
@@ -113,17 +114,17 @@ function Admin() {
                 <div className=" w-max-40 mt-3 pt-[180px] px-5">
                     <div className="left-0 w-64 overflow-y-auto text-white bg-400 h-fit rounded-s-lg rounded-e-lg">
                         <div className="flex flex-col text-xl p-2x">
-                            <a
+                            <button
                                 onClick={() => toggle("Graph")}
                                 className={
                                     active === "Graph"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-orange-600 hover:bg-300 cursor-pointer`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-orange-600 hover:bg-300 cursor-pointer`
+                                        ? `w-full p-3 text-primary border-b-2 border-300 hover:text-orange-600 hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 border-b-2 border-300 hover:text-orange-600 hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <TrendingUpIcon /> Products
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 onClick={() => toggle("Product")}
                                 className={
                                     active === "Product"
@@ -132,8 +133,8 @@ function Admin() {
                                 }
                             >
                                 <ShoppingBasketIcon /> Create Product
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 onClick={() => toggle("Order")}
                                 className={
                                     active === "Order"
@@ -142,8 +143,8 @@ function Admin() {
                                 }
                             >
                                 <ShoppingCartIcon /> Order
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 onClick={() => toggle("MatchedOrder")}
                                 className={
                                     active === "MatchedOrder"
@@ -152,8 +153,8 @@ function Admin() {
                                 }
                             >
                                 <ShoppingCartIcon /> Matched Order
-                            </a>
-                            <a
+                            </button>
+                            <button
                                 onClick={() => toggle("User")}
                                 className={
                                     active === "User"
@@ -162,7 +163,7 @@ function Admin() {
                                 }
                             >
                                 <AccountCircleIcon /> Manage User
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

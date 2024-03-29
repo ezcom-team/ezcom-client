@@ -109,43 +109,41 @@ function index() {
                 <ul className="py-2">
                     {storedUserRole == "admin" && (
                         <li>
-                            <a
-                                href="/admin"
+                            <Link
+                                to="/admin"
                                 className="block px-4 py-2 text-200 hover:bg-300"
                             >
                                 Admin
-                            </a>
+                            </Link>
                         </li>
                     )}
                     {storedUser && (
                         <div>
                             <li>
-                                <a
-                                    href="/profile"
+                                <Link
+                                    to="/profile"
                                     className="block px-4 py-2 text-200 hover:bg-300"
                                 >
                                     Profile
-                                </a>
+                                </Link>
                             </li>
 
                             <li>
-                                <a
-                                    href="#"
+                                <button
                                     className="block px-4 py-2 text-200 hover:bg-300"
                                     onClick={checkValidateHandler}
                                 >
                                     Check Validate
-                                </a>
+                                </button>
                             </li>
 
                             <li>
-                                <a
-                                    href="#"
+                                <button
                                     className="block px-4 py-2 text-red-400 hover:bg-300"
                                     onClick={logoutHandler}
                                 >
                                     Log out
-                                </a>
+                                </button>
                             </li>
                         </div>
                     )}

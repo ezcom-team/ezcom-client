@@ -93,9 +93,9 @@ function Profile () {
                                 <div className="flex flex-col align-bottom ">
                                     <div className="font-semibold">social media</div>
                                     <div className="flex  gap-3 mt-2">
-                                        <a href="#"><GoogleIcon fontSize="large" sx={{ color: red[600] }} /></a>
-                                        <a href="#"><FacebookIcon fontSize="large" sx={{ color: blue[600] }} /></a>
-                                        <a href="#"><InstagramIcon fontSize="large" sx={{ color: pink[600] }} /></a></div>
+                                        <button><GoogleIcon fontSize="large" sx={{ color: red[600] }} /></button>
+                                        <button><FacebookIcon fontSize="large" sx={{ color: blue[600] }} /></button>
+                                        <button><InstagramIcon fontSize="large" sx={{ color: pink[600] }} /></button></div>
 
                                 </div>
                             </div>

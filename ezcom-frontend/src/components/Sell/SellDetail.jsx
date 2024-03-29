@@ -82,12 +82,12 @@ const SellDetail = ({ condition, color, sellerImg, sellerName, price, id }) => {
 
                 <div className="flex align-middle">
                     <div className="my-auto flex gap-2 round">
-                        <a
+                        <button
                             className="border-[2px] border-green-600 px-8 py-2 rounded-md hover:bg-green-600 duration-500"
                             onClick={popUp}
                         >
                             Buy
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

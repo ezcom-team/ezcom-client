@@ -46,12 +46,12 @@ const AccountDetail = ({ user, openModalBuy }) => {
 
             <div className="flex justify-center align-middle">
                 <button className="flex gap-2 my-auto round">
-                    <a
+                    <button
                         className="px-4 py-1 text-base text-green-600 rounded-md bg-300 px-auto py-auto hover:bg-green-600 hover:text-100"
                         onClick={() => openModalEdit(user)}
                     >
                         Edit
-                    </a>
+                    </button>
                 </button>
             </div>
             <ModalEdit
