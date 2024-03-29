@@ -110,7 +110,9 @@ function index() {
                     {storedUserRole == "admin" && (
                         <li>
                             <button
-                                onClick={navigate("/admin")}
+                                onClick={() => {
+                                    navigate("/admin");
+                                }}
                                 className="block px-4 py-2 text-200 hover:bg-300"
                             >
                                 Admin
@@ -121,7 +123,9 @@ function index() {
                         <div>
                             <li>
                                 <button
-                                    onClick={navigate("/profile")}
+                                    onClick={() => {
+                                        navigate("/profile");
+                                    }}
                                     className="block px-4 py-2 text-200 hover:bg-300"
                                 >
                                     Profile
