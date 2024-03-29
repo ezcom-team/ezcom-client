@@ -18,13 +18,6 @@ const ModalSell = ({
     const [response, setResponse] = useState({});
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-
-    // function showToast(bool, text) {
-    //     if (bool) {
-    //         toast.success(text);
-    //     } else toast.error(text);
-    // }
-
     const handleConditionChange = (event) => {
         setCondition(event.target.value);
     };
@@ -40,7 +33,7 @@ const ModalSell = ({
     const handleSubmit = (e) => {
         e.preventDefault();
         createOrder();
-        // setIsModalOpen(true);
+        closeModal();
     };
 
     const closeModal = () => {
@@ -83,7 +76,11 @@ const ModalSell = ({
         <div>
             {isBuyModalOpen && (
                 <div className="modal ">
-                    <ModalTellDetail response={response} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+                    <ModalTellDetail
+                        response={response}
+                        isModalOpen={isModalOpen}
+                        setIsModalOpen={setIsModalOpen}
+                    />
                     <div className="bg-400 rounded border border-300">
                         <div className="flex justify-center text-200 text-base mt-[32px]">
                             <span>Sell order</span>

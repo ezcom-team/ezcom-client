@@ -91,7 +91,7 @@ const CreditCardForm = ({
         <div>
             {isPaymentModalOpen && (
                 <div className="modal">
-                    <ModalTellDetail response={response} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+                    <ModalTellDetail pid={pid} response={response} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} setIsPaymentModalOpen={setIsPaymentModalOpen}/>
                     <div className="flex justify-center bg-400  p-10 rounded-lg ml-20 mt-10  ">
                         <div className="w-96 h-60 text-100 pb-5 pt-10 px-9 mx-1 text-start align-middle bg-blue-500  bg-gradient-to-b from-blue-800 border-400 border-1 rounded-2xl drop-shadow-xl shadow-xl">
                             <DeveloperBoardIcon

@@ -3,7 +3,7 @@ import axios from "axios";
 import { HelpOutline as HelpOutlineIcon } from "@mui/icons-material";
 import "./style.css";
 
-const ModalTellDetail = ({ response, isModalOpen, setIsModalOpen }) => {
+const ModalTellDetail = ({ response, isModalOpen, setIsModalOpen, setIsPaymentModalOpen }) => {
     const [text, setText] = useState("");
     const [textStatus, setTextStatus] = useState("");
 
@@ -23,7 +23,7 @@ const ModalTellDetail = ({ response, isModalOpen, setIsModalOpen }) => {
     //   // Function to close modal and reload window
     const closeModal = () => {
         setIsModalOpen(false);
-        window.location.reload();
+        setIsPaymentModalOpen(false);
     };
 
     //   // Determine text color based on response type

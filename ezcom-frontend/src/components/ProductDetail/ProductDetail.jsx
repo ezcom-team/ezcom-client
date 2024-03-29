@@ -16,7 +16,12 @@ import {
     mousePadDetails,
 } from "./SpecDetail.jsx";
 
-function ProductDetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
+function ProductDetail({
+    product,
+    spec,
+    highestBuyOrder,
+    recentMatchedOrder,
+}) {
     const [isBuyModalOpen, setisBuyModalOpen] = useState(false);
     const [isSellModalOpen, setisSellModalOpen] = useState(false);
     const [isMoreDetail, setIsMoreDetail] = useState(false);
@@ -46,22 +51,26 @@ function ProductDetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
     return (
         <div className="mx-auto md:max-w-[95vw] lg:max-w-[85vw] xl:max-w-[75vw]">
             <ModalBuy
-                        product={product}
-                        isBuyModalOpen={isBuyModalOpen}
-                        setisBuyModalOpen={setisBuyModalOpen}
-                        highestBuyOrder={highestBuyOrder}
-                    />
-                    <ModalSell
-                        product={product}
-                        isBuyModalOpen={isSellModalOpen}
-                        setisBuyModalOpen={setisSellModalOpen}
-                        highestBuyOrder={highestBuyOrder}
-                    />
+                product={product}
+                isBuyModalOpen={isBuyModalOpen}
+                setisBuyModalOpen={setisBuyModalOpen}
+                highestBuyOrder={highestBuyOrder}
+            />
+            <ModalSell
+                product={product}
+                isBuyModalOpen={isSellModalOpen}
+                setisBuyModalOpen={setisSellModalOpen}
+                highestBuyOrder={highestBuyOrder}
+            />
             <div className="w-100 md:grid md:grid-cols-2 mt-10 ">
                 <div className="border border-300 rounded-l-md flex justify-center align-bottom">
-                    <img src={product.Image} className="w-fit h-[330px] my-10 " alt="Product Image" />
+                    <img
+                        src={product.Image}
+                        className="w-fit h-[330px] my-10 "
+                        alt="Product Image"
+                    />
                 </div>
-                
+
                 <div className="flex flex-col gap-3  p-5 rounded-r-md justify-between">
                     {/* Product Details */}
                     <div className="">
@@ -120,7 +129,6 @@ function ProductDetail({ product, spec, highestBuyOrder, recentMatchedOrder }) {
                     </div>
 
                     {/* Modal */}
-                    
                 </div>
             </div>
             <div className="w-100%">
