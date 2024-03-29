@@ -128,8 +128,8 @@ function Admin() {
                                 onClick={() => toggle("Product")}
                                 className={
                                     active === "Product"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
+                                        ? `w-full p-3 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <ShoppingBasketIcon /> Create Product
@@ -138,8 +138,8 @@ function Admin() {
                                 onClick={() => toggle("Order")}
                                 className={
                                     active === "Order"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
+                                        ? `w-full p-3 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <ShoppingCartIcon /> Order
@@ -148,8 +148,8 @@ function Admin() {
                                 onClick={() => toggle("MatchedOrder")}
                                 className={
                                     active === "MatchedOrder"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
+                                        ? `w-full p-3 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 border-b-2 border-300 hover:text-primary  hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <ShoppingCartIcon /> Matched Order
@@ -158,8 +158,8 @@ function Admin() {
                                 onClick={() => toggle("User")}
                                 className={
                                     active === "User"
-                                        ? `w-full p-3 pl-10 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
-                                        : `w-full p-3 pl-10 border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        ? `w-full p-3 text-primary border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
+                                        : `w-full p-3 border-b-2 border-300 hover:text-primary hover:bg-300 cursor-pointer`
                                 }
                             >
                                 <AccountCircleIcon /> Manage User

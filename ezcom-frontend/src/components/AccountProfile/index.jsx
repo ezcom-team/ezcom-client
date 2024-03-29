@@ -109,23 +109,23 @@ function index() {
                 <ul className="py-2">
                     {storedUserRole == "admin" && (
                         <li>
-                            <Link
-                                to="/admin"
+                            <button
+                                onClick={navigate("/admin")}
                                 className="block px-4 py-2 text-200 hover:bg-300"
                             >
                                 Admin
-                            </Link>
+                            </button>
                         </li>
                     )}
                     {storedUser && (
                         <div>
                             <li>
-                                <Link
-                                    to="/profile"
+                                <button
+                                    onClick={navigate("/profile")}
                                     className="block px-4 py-2 text-200 hover:bg-300"
                                 >
                                     Profile
-                                </Link>
+                                </button>
                             </li>
 
                             <li>
